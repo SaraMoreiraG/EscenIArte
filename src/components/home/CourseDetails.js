@@ -1,4 +1,6 @@
 import React from "react";
+import DifferentGallery from "./DifferentGallery";
+
 import "../../images/1.jpg";
 
 const CourseDetails = () => {
@@ -49,6 +51,11 @@ const CourseDetails = () => {
           </div>
         ))}
       </div>
+      <div className="header-center">
+        <h2>Detalles del curso</h2>
+      </div>
+      <DifferentGallery />
+
     </div>
   );
 };

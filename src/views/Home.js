@@ -8,7 +8,7 @@ function Home() {
   return (
     <>
       <div className="hero">
-        <button className="purple-button">Iniciar sesión</button>
+        {/* <button className="purple-button">Iniciar sesión</button> */}
         <div className="hero-text">
           <h1>
             Desbloquea el Potencial Creativo de ChatGPT en las Artes Escénicas
@@ -21,28 +21,14 @@ function Home() {
           <button className="continue-button">Más información</button>
         </div>
       </div>
-      {/* <div className="course-details">
-        <h1>Una gran frase que describa el curso</h1>
-        <div className="course-grid">
-          <div className="course-grid-item">
-            <div className="course-image">imagen</div>
-            <p>Text</p>
-          </div>
-          <div className="course-grid-item">
-            <div className="course-image">imagen</div>
-            <p>Text</p>
-          </div>
-          <div className="course-grid-item">
-            <div className="course-image">imagen</div>
-            <p>Text</p>
-          </div>
-          <div className="course-grid-item">
-            <div className="course-image">imagen</div>
-            <p>Text</p>
-          </div>
-        </div>
-      </div> */}
       <CourseDetails />
+      <div className="instructor">
+        <div className="instructor-container">
+        <img src="https://esceniarte.s3.amazonaws.com/logo.jpeg" alt="Avatar de Kike"/>
+          <h2>Enrique Torre</h2>
+          <h3>Distribuidor de Sol y Tierra,  compañia que lleva más de 25 años sobre los escenarios.</h3>
+      </div>
+      </div>
       <NavbarHome />
     </>
   );

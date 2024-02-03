@@ -1,7 +1,7 @@
 /* General application styles */
 .app {
   text-align: center;
-  color: #041110;
+  color: #f6f6f6;
   background: linear-gradient(145deg, #025d48, #041110);
   height: 100vh;
   display: flex;
@@ -17,6 +17,7 @@ h2{
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-bottom: 20px;
 }
 .purple-button {
   position: fixed; /* Fixed position relative to the viewport */

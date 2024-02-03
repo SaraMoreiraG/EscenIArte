@@ -35,6 +35,20 @@
 	color: #f6f6f6;
 }
 
+.instructor {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background-image: url('https://ann.axiomthemes.com/splash/src/img/reward/bg.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #f6f6f6;
+}
+
 /* Hero styles */
 .hero-text {
 	flex-grow: 1;
@@ -87,6 +101,7 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+	margin-bottom: 50px;
 }
 
 .details-block{
@@ -110,7 +125,6 @@
 
 .image-hover:hover img {
 	transform: scale(1.05);
-	/* Escala más sutil para dispositivos móviles */
 }
 
 .image-hover:hover .hover-text {
@@ -134,32 +148,16 @@
 	font-weight: bold;
 }
 
-/* Media queries para pantallas más pequeñas */
-@media (max-width: 768px) {
-	.course-details h2 {
-		font-size: 32px;
-		/* Tamaño de fuente más pequeño para pantallas más pequeñas */
-	}
+/* INSTRUCTOR */
 
-	.images-container {
-		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-		/* Ajusta el tamaño mínimo de las columnas */
-	}
+.instructor img{
+	width: 250px;
+	border-radius: 100%;
 }
 
-@media (max-width: 480px) {
-	.course-details h2 {
-		font-size: 24px;
-		/* Tamaño de fuente aún más pequeño para pantallas muy pequeñas */
-	}
-
-	.image-hover:hover img {
-		transform: none;
-		/* Elimina la transformación en dispositivos móviles para evitar problemas de usabilidad */
-	}
+.instructor h2{
+	margin: 0;
 }
-
-
 /* Responsive design adjustments */
 @media (max-width: 992px) {
 	.hero-text h1 {
@@ -201,5 +199,10 @@
 
 	.hero-text p {
 		display: none;
+	}
+
+	.image-hover:hover img {
+		transform: none;
+		/* Elimina la transformación en dispositivos móviles para evitar problemas de usabilidad */
 	}
 }

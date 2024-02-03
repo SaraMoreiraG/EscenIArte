@@ -1,0 +1,50 @@
+.gallery {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start; /* Align items to the top */
+	gap: 20px;
+	padding: 20px;
+	flex-wrap: wrap;
+  }
+
+  .card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	border: 2px solid #fff; /* White border as per your design */
+	padding: 20px;
+	border-radius: 8px;
+	color: white; /* White text color */
+	width: 300px; /* Fixed width for all cards */
+  }
+
+  .card.large {
+	height: 300px; /* Larger height */
+  }
+
+  .card.medium {
+	height: 250px; /* Medium height */
+  }
+
+  .card.small {
+	height: 200px; /* Smaller height */
+  }
+
+  .icon {
+	/* Replace with your icon implementation */
+	border: 1px solid #fff; /* For demonstration */
+	padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+	.gallery {
+	  flex-direction: column;
+	}
+
+	.card {
+	  width: auto; /* Cards take full width on small screens */
+	  height: auto; /* Height becomes auto on small screens */
+	}
+  }
