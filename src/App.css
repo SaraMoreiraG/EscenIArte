@@ -8,6 +8,16 @@
   flex-direction: column;
 }
 
+h2{
+  font-size: 48px;
+  width: 750px;
+}
+
+.header-center{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
 .purple-button {
   position: fixed; /* Fixed position relative to the viewport */
   top: 40px; /* Space from the top */
@@ -30,4 +40,35 @@
   cursor: pointer;
   transition: all 0.3s ease-in;
 
+}
+
+
+/* Responsive design adjustments */
+@media (max-width: 992px) {
+	h2 {
+		font-size: 36px;
+		width: 600px;
+	}
+}
+
+@media (max-width: 768px) {
+	h2 {
+		font-size: 32px;
+		width: 500px;
+	}
+}
+
+@media (max-width: 576px) {
+	h2 {
+		font-size: 24px;
+		width: 400px;
+	}
+}
+
+@media (max-width: 480px) {
+
+	h2 {
+		font-size: 20px;
+		width: 320px;
+	}
 }
