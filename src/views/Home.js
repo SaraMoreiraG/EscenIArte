@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import NavbarHome from "../components/NavbarHome";
 import CourseDetails from "../components/home/CourseDetails";
 
@@ -8,7 +9,8 @@ function Home() {
   return (
     <>
       <div className="hero">
-        <button className="purple-button">Iniciar sesión</button>
+      <Link to="/login" className="purple-button">Iniciar sesión</Link>
+
         <div className="hero-text">
           <h1>
             Desbloquea el Potencial Creativo de ChatGPT en las Artes Escénicas

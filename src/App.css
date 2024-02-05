@@ -1,7 +1,6 @@
 /* General application styles */
 .app {
   text-align: center;
-  color: #f6f6f6;
   background: linear-gradient(145deg, #025d48, #041110);
   height: 100vh;
   display: flex;
@@ -31,6 +30,7 @@ h2{
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  text-decoration: none;
   z-index: 1000; /* Ensure the button is above other elements */
   transition: all 0.3s ease-in;
 }
@@ -51,6 +51,7 @@ h2{
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  text-decoration: none;
   transition: all 0.3s ease-in;
 }
 
@@ -128,7 +129,7 @@ textarea:focus, input:focus{
 	padding: 0 60px;
 }
 
-.login a{
+.remember-password{
   color: #a9a7b0;
   text-decoration: none;
   font-size: 12px;
@@ -139,6 +140,7 @@ textarea:focus, input:focus{
   color: #ff5b4a;
   display: none;
 }
+
 /* Responsive design adjustments */
 @media (max-width: 992px) {
 	h2 {

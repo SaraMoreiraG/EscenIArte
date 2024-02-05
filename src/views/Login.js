@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -14,13 +15,13 @@ function Login() {
             <input type="password" placeholder="Contraseña"></input>
           </div>
           <div className="d-flex justify-content-center">
-            <button className="btn-green">Entrar</button>
+		  <Link to="/dashboard" className="btn-green">Entrar</Link>
           </div>
 		  <div className="d-flex justify-content-center">
             <p className="error mt-2">Usuario o contraseña incorrectos</p>
           </div>
 		  <div className="d-flex justify-content-center">
-            <a href="/home">Recordar contraseña</a>
+            <a href="/home" className="remember-password">Recordar contraseña</a>
           </div>
         </div>
       </div>

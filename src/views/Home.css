@@ -222,6 +222,21 @@
 	/* background-attachment: fixed; */
 }
 
+/* DASHBOARD */
+.dashboard{
+	background-color: #000319;
+  	padding: 70px;
+
+}
+
+
+
+.module img {
+	border-radius: 20px;
+	/* height: 200px; */
+	transition: transform 0.3s ease;
+	cursor: pointer;
+}
 /* Responsive design adjustments */
 @media (max-width: 992px) {
 	.hero-text h1 {
