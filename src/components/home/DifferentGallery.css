@@ -7,7 +7,7 @@
 	flex-wrap: wrap;
   }
 
-  .card {
+  .uniform-card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -17,18 +17,18 @@
 	padding: 20px;
 	border-radius: 8px;
 	color: white; /* White text color */
-	width: 300px; /* Fixed width for all cards */
+	 /* Fixed width for all uniform-cards */
   }
 
-  .card.large {
+  .uniform-card.large {
 	height: 300px; /* Larger height */
   }
 
-  .card.medium {
+  .uniform-card.medium {
 	height: 250px; /* Medium height */
   }
 
-  .card.small {
+  .uniform-card.small {
 	height: 200px; /* Smaller height */
   }
 
@@ -39,12 +39,13 @@
   }
 
   @media (max-width: 768px) {
-	.gallery {
+	/* .gallery {
 	  flex-direction: column;
-	}
+	} */
 
-	.card {
-	  width: auto; /* Cards take full width on small screens */
-	  height: auto; /* Height becomes auto on small screens */
+	.uniform-card.large,
+	.uniform-card.medium,
+	.uniform-card.small{
+		height: 200px;
 	}
   }

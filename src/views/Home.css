@@ -36,7 +36,6 @@
 }
 
 .instructor {
-	text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -47,6 +46,16 @@
 	background-size: cover;
 	background-attachment: fixed;
 	color: #f6f6f6;
+}
+
+.payment{
+	/* display: flex; */
+	background-color: #000319;
+	color: #f6f6f6;
+	height: 100vh;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 60px;
 }
 
 /* Hero styles */
@@ -99,7 +108,7 @@
 
 .images-container {
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	flex-wrap: wrap;
 	margin-bottom: 50px;
 }
@@ -149,7 +158,9 @@
 }
 
 /* INSTRUCTOR */
-
+.instructor-container{
+	text-align: center;
+}
 .instructor img{
 	width: 250px;
 	border-radius: 100%;
@@ -158,11 +169,52 @@
 .instructor h2{
 	margin: 0;
 }
+
+/* PAYMENT */
+/* .payment img{
+	height: 300px;
+} */
+
+.payment .left {
+ margin-right: 50px;
+}
+.icon-name{
+	display: flex;
+	align-items: center;
+}
+
+.fa-check{
+	margin-right: 12px;
+	background-color: #09a050;
+	border-radius: 50%;
+	padding: 6px;
+}
+
+/* Asegúrate de que el contenedor tenga una posición relativa */
+.position-relative {
+	position: relative;
+  }
+.position-absolute{
+	position: absolute;
+}
+  /* Posicionamiento absoluto para la imagen superpuesta */
+  .overlay-image-container {
+	position: absolute;
+	top: 80%;  /* Ajusta según sea necesario */
+	left: 25%; /* Ajusta según sea necesario */
+	transform: translate(-50%, -50%);
+	z-index: 10; /* Asegúrate de que esté sobre la otra imagen */
+  }
+
 /* Responsive design adjustments */
 @media (max-width: 992px) {
 	.hero-text h1 {
 		font-size: 48px;
 		width: 600px;
+	}
+
+	.image-wrapper img {
+		width: 180px;
 	}
 }
 
@@ -175,6 +227,10 @@
 	.hero-text p {
 		max-width: 500px;
 		font-size: 14px;
+	}
+
+	.image-wrapper img {
+		width: 350px;
 	}
 }
 
@@ -199,6 +255,10 @@
 
 	.hero-text p {
 		display: none;
+	}
+
+	.course-details {
+		padding: 40px 0;
 	}
 
 	.image-hover:hover img {

@@ -40,36 +40,45 @@ h2{
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: all 0.3s ease-in;
-
 }
 
+.btn-green{
+  padding: 1em 2em;
+  background-image: linear-gradient(to left, #025d48, #258a59, #5ab75b);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in;
+}
 
+.btn-green:hover {
+  background-image: linear-gradient(to left, #025d48, #483a97, #623a97);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
 /* Responsive design adjustments */
 @media (max-width: 992px) {
 	h2 {
 		font-size: 36px;
-		width: 600px;
 	}
 }
 
 @media (max-width: 768px) {
 	h2 {
 		font-size: 32px;
-		width: 500px;
 	}
 }
 
 @media (max-width: 576px) {
 	h2 {
-		font-size: 24px;
-		width: 400px;
+		font-size: 26px;
 	}
 }
 
 @media (max-width: 480px) {
 
-	h2 {
-		font-size: 20px;
-		width: 320px;
-	}
 }

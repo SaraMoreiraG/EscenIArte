@@ -12,9 +12,9 @@ const DifferentGallery = () => {
   ];
 
   return (
-    <div className="gallery">
+    <div className="gallery row m-0">
       {galleryItems.map((item) => (
-        <div key={item.id} className={`card ${item.size}`}>
+        <div key={item.id} className={`uniform-card col-3 ${item.size}`}>
           <div className="icon">{item.icon}</div>
           <h3>{item.header}</h3>
           <p>{item.description}</p>
