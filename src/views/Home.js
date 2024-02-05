@@ -8,7 +8,7 @@ function Home() {
   return (
     <>
       <div className="hero">
-        {/* <button className="purple-button">Iniciar sesión</button> */}
+        <button className="purple-button">Iniciar sesión</button>
         <div className="hero-text">
           <h1>
             Desbloquea el Potencial Creativo de ChatGPT en las Artes Escénicas
@@ -110,7 +110,7 @@ function Home() {
       <div className="contact row m-0">
         <div className="col-6">
           <h4>CONTACTO</h4>
-          <h1>¿Tienes alguna Duda? <br></br>Ponte en Contacto con Nosotros.</h1>
+          <h1>¿Tienes alguna Duda? <br></br>Contáctanos</h1>
           <div className="mt-3">
           <img
               src="https://ann.axiomthemes.com/splash/src/img/elm/1.jpg"
@@ -121,28 +121,28 @@ function Home() {
         </div>
         <div className="form col-6">
           <div className="form-group my-4">
-            <i class="fa-regular fa-user me-3"></i>
+            <i className="fa-regular fa-user me-3"></i>
             <input type="text" placeholder="Nombre"></input>
           </div>
           <div className="form-group my-4">
-            <i class="fa-solid fa-phone me-3"></i>
+            <i className="fa-solid fa-phone me-3"></i>
             <input type="text" placeholder="Teléfono"></input>
           </div>
           <div className="form-group my-4">
-            <i class="fa-regular fa-envelope me-3"></i>
+            <i className="fa-regular fa-envelope me-3"></i>
             <input type="text" placeholder="Email"></input>
           </div>
           <div className="form-group my-4">
-            <i class="fa-regular fa-comment me-3"></i>
+            <i className="fa-regular fa-comment me-3"></i>
             <input type="tex" placeholder="Asunto"></input>
           </div>
           <div className="form-group d-flex align-items-top my-4">
-            <i class="fa-solid fa-pen me-3"></i>
+            <i className="fa-solid fa-pen me-3"></i>
             <textarea rows="3" cols="50" placeholder="Mensaje"></textarea>
           </div>
           <div className="d-flex justify-content-end">
             <button className="btn-green">
-              <i class="fa-regular fa-paper-plane me-2"></i> Enviar
+              <i className="fa-regular fa-paper-plane me-2"></i> Enviar
             </button>
           </div>
         </div>

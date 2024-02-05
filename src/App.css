@@ -42,9 +42,9 @@ h2{
   transition: all 0.3s ease-in;
 }
 
-.btn-green{
+.btn-green,
+.btn-purple {
   padding: 1em 2em;
-  background-image: linear-gradient(to left, #025d48, #258a59, #5ab75b);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   color: white;
   border: none;
@@ -54,31 +54,139 @@ h2{
   transition: all 0.3s ease-in;
 }
 
-.btn-green:hover {
+.btn-green{
+  background-image: linear-gradient(to left, #025d48, #258a59, #5ab75b);
+}
+
+.btn-purple{
   background-image: linear-gradient(to left, #025d48, #483a97, #623a97);
+
+}
+.btn-green:hover,
+.btn-purple:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: all 0.3s ease-in;
+}
+.btn-green:hover{
+  background-image: linear-gradient(to left, #025d48, #483a97, #623a97);
+}
+.btn-purple:hover{
+  background-image: linear-gradient(to left, #025d48, #258a59, #5ab75b);
+}
+/* FORMS */
+.form{
+	background-color: #0d111a;
+	padding: 50px 60px;
+}
+.form-group {
+	position: relative;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #2a2e36;
+	overflow: hidden;
+  }
+
+  .form-group::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 1px;
+	background-color: #f6f6f6;
+	transition: width 0.5s ease-in-out;
+  }
+
+  .form-group:hover::after {
+	width: 100%;
+  }
+
+.form-group i{
+	font-size: 24px;
+	color: #a9a7b0;
+}
+input,
+textarea{
+	background-color: transparent;
+	border: none;
+	color: #f6f6f6;
+	resize: none;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+
+/* LOGIN */
+.login{
+  display: flex;
+  flex-direction: row;
+	background-color: #000319;
+	color: #f6f6f6;
+	height: 100vh;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 60px;
+}
+
+.login a{
+  color: #a9a7b0;
+  text-decoration: none;
+  font-size: 12px;
+  margin: 12px 0 0 0;
+}
+
+.error{
+  color: #ff5b4a;
+  display: none;
 }
 /* Responsive design adjustments */
 @media (max-width: 992px) {
 	h2 {
 		font-size: 36px;
 	}
+  .form-group i{
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 768px) {
 	h2 {
 		font-size: 32px;
 	}
+
+  .login{
+    height: 100%;
+    padding: 20px 0;
+    /* flex-direction: row-reverse; */
+    justify-content: start;
+  }
+
+  .no-small-screen{
+    display: none;
+  }
+  .form-image{
+    padding: 100px 60px;
+  }
 }
 
 @media (max-width: 576px) {
 	h2 {
 		font-size: 26px;
 	}
+
+  .form-image{
+    padding: 100px 20px;
+  }
 }
 
 @media (max-width: 480px) {
+  .form-image{
+    padding: 80px 10px;
+  }
+}
 
+@media (max-width: 340px) {
+  .form-group i{
+    font-size: 14px;
+  }
 }

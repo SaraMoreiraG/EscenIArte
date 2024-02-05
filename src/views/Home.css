@@ -50,13 +50,17 @@
 
 .payment,
 .contact{
-	/* display: flex; */
 	background-color: #000319;
 	color: #f6f6f6;
 	height: 100vh;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 60px;
+}
+
+/* HELPERS */
+.text-purple{
+	color: #618de7;
 }
 
 /* Hero styles */
@@ -207,51 +211,17 @@
 	z-index: 10; /* Asegúrate de que esté sobre la otra imagen */
   }
 
-/* CONTACT FORM */
-.form{
-	background-color: #0d111a;
-	padding: 50px 60px;
+.form-image{
+	display: flex;
+	align-items: center;
+	background-image: url('https://esceniarte.s3.amazonaws.com/logo.jpeg');
+	height: 70%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* background-attachment: fixed; */
 }
-.form-group{
-	padding-bottom: 10px;
-	border-bottom: 1px solid #2a2e36;
-}
-.form-group {
-	position: relative;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #2a2e36;
-	overflow: hidden;
-  }
 
-  .form-group::after {
-	content: '';
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 0;
-	height: 1px;
-	background-color: #f6f6f6;
-	transition: width 0.5s ease-in-out;
-  }
-
-  .form-group:hover::after {
-	width: 100%;
-  }
-
-.form-group i{
-	font-size: 24px;
-	color: #a9a7b0;
-}
-input,
-textarea{
-	background-color: transparent;
-	border: none;
-	color: #f6f6f6;
-	resize: none;
-}
-textarea:focus, input:focus{
-    outline: none;
-}
 /* Responsive design adjustments */
 @media (max-width: 992px) {
 	.hero-text h1 {
