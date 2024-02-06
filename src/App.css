@@ -189,11 +189,6 @@ textarea:focus, input:focus{
   background-color: #0d111a;
 }
 
-.full-modal{
-  /* height: 100vh; */
-  /* background-color: yellowgreen; */
-}
-
 .full-modal .fa-x{
   cursor: pointer;
   font-size: 26px;
