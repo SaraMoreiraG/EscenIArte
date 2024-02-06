@@ -1,5 +1,7 @@
 // import React, { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 function Dashboard() {
   const modules = [
     {
@@ -64,7 +66,8 @@ function Dashboard() {
       <p> Inicia tu aventura en el universo de la tecnología del futuro.</p>
       <div className="row my-5">
         {modules.map((module) => (
-          <div className="module col-lg-4 col-md-5 col-12 p-2">
+          <Link to={`/module/${module.id}`} key={module.id} className="module col-lg-4 col-md-5 col-12 p-2">
+
             <img
               src={module.image}
               className="img-fluid"
@@ -73,7 +76,8 @@ function Dashboard() {
             <div className="module-hover-text">
               <p>{module.name}</p>
             </div>
-          </div>
+
+          </Link>
         ))}
         {/* <div className="module col-lg-4 col-md-5 col-12 p-2">
           <img

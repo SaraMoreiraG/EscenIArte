@@ -15,7 +15,7 @@ function NavbarHome() {
       {/* Use onClick instead of href to scroll */}
 	  <div className="arrow-wrapper">
 	  <div className="arrow">
-		<button onClick={() => scrollToSection("hero")}><i class="fa-solid fa-arrow-up"></i></button>
+		<button onClick={() => scrollToSection("hero")}><i className="fa-solid fa-arrow-up"></i></button>
 	  </div>
 	  </div>
 	  <div className="links">
