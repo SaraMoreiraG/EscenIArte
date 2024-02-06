@@ -35,7 +35,7 @@ function Login() {
           teatral. Inicia tu aventura en el universo de la tecnología del
           futuro.
         </p>
-        <button className="btn-purple no-small-screen">Comprar</button>
+		<a href="https://buy.stripe.com/test_5kA8x3g4Rd2x3oQcMM" target="_blank" rel="noreferrer" className="btn-purple no-small-screen">Comprar</a>
       </div>
     </div>
   );

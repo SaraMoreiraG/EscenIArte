@@ -32,7 +32,7 @@ const CourseDetails = () => {
   ];
 
   return (
-    <div className="course-details">
+    <div className="course-details" id="detalles-curso">
       <div className="header-center">
         <h2>Una gran frase que describa el curso</h2>
       </div>
