@@ -66,7 +66,7 @@ const scrollToSection = (sectionId) => {
           <div className="class-wrapper row">
             <div className="col-6 p-0">
               <img
-                src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
+                src="https://esceniarte-images.s3.amazonaws.com/1-potencial-creativo/modules/1-Introduccion+a+la+IA+en+Artes+Escenicas.webp"
                 alt="class 1"
                 className="img-fluid"
                 onClick={() => openModal('https://player.vimeo.com/video/896261088?h=cc5afb0f31&title=0&byline=0&portrait=0')}
@@ -89,7 +89,7 @@ const scrollToSection = (sectionId) => {
 		  <div className="class-wrapper row">
             <div className="col-6 p-0">
               <img
-                src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
+                src="https://esceniarte-images.s3.amazonaws.com/1-potencial-creativo/modules/2-ChatGPT+y+Creatividad.png"
                 alt="class 1"
                 className="img-fluid"
                 onClick={() => openModal('https://player.vimeo.com/video/896261088?h=cc5afb0f31&title=0&byline=0&portrait=0')}
@@ -112,7 +112,7 @@ const scrollToSection = (sectionId) => {
 		  <div className="class-wrapper row">
             <div className="col-6 p-0">
               <img
-                src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
+                src="https://esceniarte-images.s3.amazonaws.com/1-potencial-creativo/modules/3-IA+en+Produccio%CC%81n+y+Promocio%CC%81n.png"
                 alt="class 1"
                 className="img-fluid"
                 onClick={() => openModal('https://player.vimeo.com/video/885725676?h=b558d90589&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture')}
