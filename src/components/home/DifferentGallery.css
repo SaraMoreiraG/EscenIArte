@@ -1,51 +1,45 @@
-.gallery {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start; /* Align items to the top */
-	gap: 20px;
-	padding: 20px;
-	flex-wrap: wrap;
-  }
-
-  .uniform-card {
+  .benefit-card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
-	border: 2px solid #fff; /* White border as per your design */
+	background-color: #13142b;
 	padding: 20px;
-	border-radius: 8px;
-	color: white; /* White text color */
-	 /* Fixed width for all uniform-cards */
   }
 
-  .uniform-card.large {
-	height: 300px; /* Larger height */
+  .benefit-card.large {
+	height: 300px;
   }
 
-  .uniform-card.medium {
-	height: 250px; /* Medium height */
+  .benefit-card.medium {
+	height: 250px;
   }
 
-  .uniform-card.small {
-	height: 200px; /* Smaller height */
+  .benefit-card.small {
+	height: 200px;
   }
 
-  .icon {
-	/* Replace with your icon implementation */
-	border: 1px solid #fff; /* For demonstration */
-	padding: 10px;
+  .benefit-card i {
+	font-size: 24px;
+  }
+
+  .benefit-card.large img {
+	width: 150px;
+  }
+
+  .benefit-card.medium img {
+	width: 100px;
+  }
+
+  .benefit-card.small img {
+	width: 70px;
   }
 
   @media (max-width: 768px) {
-	/* .gallery {
-	  flex-direction: column;
-	} */
-
-	.uniform-card.large,
-	.uniform-card.medium,
-	.uniform-card.small{
+	.benefit-card.large,
+	.benefit-card.medium,
+	.benefit-card.small{
 		height: 200px;
 	}
   }

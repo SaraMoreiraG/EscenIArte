@@ -21,7 +21,6 @@ function Home() {
         <Link to="/login" className="purple-button">
           Iniciar sesión
         </Link>
-
         <div className="hero-text">
           <h1>
             Desbloquea el Potencial Creativo de ChatGPT en las Artes Escénicas
@@ -35,11 +34,66 @@ function Home() {
             onClick={() => scrollToSection("detalles-curso")}
             className="continue-button"
           >
-            Más información
+            Más información <i class="fa-solid fa-angles-down ms-1"></i>
           </button>
         </div>
       </div>
       <CourseDetails />
+
+    <div className="benefits text-center">
+      <h4>FÁCIL E INTUITIVA</h4>
+      <h2>Beneficios de los alumnos</h2>
+      <div className="row mt-5">
+        <div className="col-4 p-2">
+          <div className="benefit-card small mb-3">
+            <div className="text-green">
+              <img src="https://cdn-icons-png.flaticon.com/512/2001/2001761.png" />
+            </div>
+            <h3>7 módulos</h3>
+            <p>Más de 8 horas de contenido</p>
+          </div>
+          <div className="benefit-card large">
+            <div className="text-green">
+              <img src="https://www.iconarchive.com/download/i110095/thalita-torres/office/documents.1024.png" />
+            </div>
+            <h3>Guarda el contenido</h3>
+            <p>Descarga el temario en PDF</p>
+          </div>
+        </div>
+        <div className="col-4 p-2">
+          <div className="benefit-card large mb-3">
+            <div className="text-green">
+              <img src="https://ann.axiomthemes.com/splash/src/img/benefits/2.png" />
+            </div>
+            <h3>Acceso ilimitado</h3>
+            <p>Compra una vez, utilizalo siempre</p>
+          </div>
+          <div className="benefit-card small">
+            <div className="text-green">
+              <img src="https://cdn-icons-png.freepik.com/512/8424/8424046.png" />
+            </div>
+            <h3>Obtén un certificado</h3>
+            <p>Al completar todos los módulos</p>
+          </div>
+        </div>
+        <div className="col-4 p-2">
+          <div className="benefit-card medium mb-3">
+            <div className="text-green">
+              <img src="https://ann.axiomthemes.com/splash/src/img/benefits/3.png" />
+            </div>
+            <h3>6 meses de soporte premium</h3>
+            <p>Obtén soporte técnico profesional</p>
+          </div>
+          <div className="benefit-card medium">
+            <div className="text-green">
+              <img src="https://ann.axiomthemes.com/splash/src/img/benefits/6.png" />
+            </div>
+            <h3>FAQ y Tutoriales en Video</h3>
+            <p>Toda la información en un solo lugar</p>
+          </div>
+        </div>
+      </div>
+    </div>
       <div className="instructor m-0" id="instructor">
         <div className="d-flex justify-content-center m-0 p-0">
           <img
@@ -48,11 +102,11 @@ function Home() {
             className=""
           />
         </div>
-        <div className="col-8 text-center m-0 p-0">
+        <div className="col-7 text-center m-0 p-0">
           <h2>Enrique Torre</h2>
-          <h3>
+          <h5>
           Con más de dos décadas de trayectoria en la Compañía de Teatro Sol y Tierra, mi viaje artístico trasciende los escenarios para explorar cómo las nuevas tecnologías, como ChatGPT, pueden transformar la narrativa y la experiencia teatral.
-          </h3>
+          </h5>
           </div>
       </div>
       <div className="payment row m-0" id="precio">
