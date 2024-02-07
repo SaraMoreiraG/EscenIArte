@@ -40,70 +40,57 @@ function Home() {
         </div>
       </div>
       <CourseDetails />
-      <div className="instructor" id="instructor">
-        <div className="instructor-container text-center">
+      <div className="instructor m-0" id="instructor">
+        <div className="d-flex justify-content-center m-0 p-0">
           <img
-            src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
+            src="https://esceniarte-images.s3.amazonaws.com/avatar-kike.webp"
             alt="Avatar de Kike"
+            className=""
           />
-          <h2 className="col-12 my-3">Enrique Torre</h2>
-          <h3 className="">
-            Distribuidor de Sol y Tierra, compañia que lleva más de 25 años
-            sobre los escenarios.
-          </h3>
         </div>
+        <div className="col-8 text-center m-0 p-0">
+          <h2>Enrique Torre</h2>
+          <h3>
+          Con más de dos décadas de trayectoria en la Compañía de Teatro Sol y Tierra, mi viaje artístico trasciende los escenarios para explorar cómo las nuevas tecnologías, como ChatGPT, pueden transformar la narrativa y la experiencia teatral.
+          </h3>
+          </div>
       </div>
       <div className="payment row m-0" id="precio">
-        <div className="col-6">
+        <div className="col-7">
           <h4>INSCRIPCIÓN Y PRECIOS</h4>
-          <h2>Lorem ipsum dolor sit</h2>
+          <h2>Impulsa tu Arte Escénico Hoy</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+          Equípate con Chat GPT para liderar la innovación teatral, ampliar tu creatividad y consolidar tu presencia en el mercado. Aprende estrategias digitales avanzadas, sé pionero en adoptar técnicas futuras y destaca en un campo competitivo. ¡Transforma tu arte y asegura tu lugar en la vanguardia del teatro moderno.
           </p>
           <div className="d-flex">
             <div className="left">
               <div className="icon-name">
                 <i className="fa-solid fa-check"></i>
-                <p>Lorem ipsum dolor sit amet</p>
+                <p>Transforma tu arte. ¡Inscríbete ya!</p>
               </div>
               <div className="icon-name">
                 <i className="fa-solid fa-check"></i>
-                <p>Lorem ipsum dolor sit amet</p>
+                <p> Innova en escena. Descubre el futuro.</p>
               </div>
               <div className="icon-name">
                 <i className="fa-solid fa-check"></i>
-                <p>Lorem ipsum dolor sit amet</p>
-              </div>
-              <div className="icon-name">
-                <i className="fa-solid fa-check"></i>
-                <p>Lorem ipsum dolor sit amet</p>
+                <p>Desbloquea creatividad. Comienza hoy.</p>
               </div>
             </div>
             <div className="right">
               <div className="icon-name">
                 <i className="fa-solid fa-check"></i>
-                <p>Lorem ipsum dolor sit amet</p>
+                <p>Revitaliza tu teatro. Sé pionero.</p>
               </div>
               <div className="icon-name">
                 <i className="fa-solid fa-check"></i>
-                <p>Lorem ipsum dolor sit amet</p>
-              </div>
-              <div className="icon-name">
-                <i className="fa-solid fa-check"></i>
-                <p>Lorem ipsum dolor sit amet</p>
-              </div>
-              <div className="icon-name">
-                <i className="fa-solid fa-check"></i>
-                <p>Lorem ipsum dolor sit amet</p>
+                <p>Aprende técnicas futuras. Actúa ahora.</p>
               </div>
             </div>
           </div>
           <div className="col-11 mt-3 text-end">
             <a
-              href="https://buy.stripe.com/test_5kA8x3g4Rd2x3oQcMM"
+              href="https://buy.stripe.com/4gw037bHd7OP2HedQQ"
               target="_blank"
               rel="noreferrer"
               className="btn-green"
@@ -112,7 +99,7 @@ function Home() {
             </a>
           </div>
         </div>
-        <div className="col-5">
+        <div className="col-4">
           <div className="position-relative text-center col-12 bg-primary">
             {/* <!-- Imagen de fondo --> */}
             <img

@@ -6,9 +6,9 @@ const DifferentGallery = () => {
     { id: 1, icon: 'Icon 1', header: 'Header Text 1', description: 'Sort Description 1', size: 'small' },
     { id: 2, icon: 'Icon 2', header: 'Header Text 2', description: 'Sort Description 2', size: 'large' },
     { id: 3, icon: 'Icon 3', header: 'Header Text 3', description: 'Sort Description 3', size: 'medium' },
-    { id: 1, icon: 'Icon 1', header: 'Header Text 1', description: 'Sort Description 1', size: 'large' },
-    { id: 2, icon: 'Icon 2', header: 'Header Text 2', description: 'Sort Description 2', size: 'small' },
-    { id: 3, icon: 'Icon 3', header: 'Header Text 3', description: 'Sort Description 3', size: 'medium' },
+    { id: 4, icon: 'Icon 1', header: 'Header Text 1', description: 'Sort Description 1', size: 'large' },
+    { id: 5, icon: 'Icon 2', header: 'Header Text 2', description: 'Sort Description 2', size: 'small' },
+    { id: 6, icon: 'Icon 3', header: 'Header Text 3', description: 'Sort Description 3', size: 'medium' },
   ];
 
   return (

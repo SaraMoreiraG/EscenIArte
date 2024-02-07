@@ -54,6 +54,7 @@
 
 .instructor {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
@@ -89,13 +90,10 @@
 }
 
 .hero-text h1 {
-	font-size: 4em;
-	color: #f6f6f6;
 	background: rgba(0, 0, 0, 0.7);
 	padding: 0.5em;
 	border-radius: 10px;
 	margin-bottom: 0.5em;
-	animation: pulse 2s infinite ease-in-out;
 	width: 750px;
 }
 
@@ -157,38 +155,32 @@
 }
 
 .image-hover:hover .hover-text {
-	bottom: 0;
+	top: 0;
 }
 
 .hover-text {
 	position: absolute;
-	bottom: -100%;
+	top: 100%;
 	left: 0;
 	right: 0;
 	background-color: rgba(0, 0, 0, 0.7);
 	color: white;
 	padding: 20px;
-	transition: bottom 0.3s ease;
+	transition: top 0.3s ease;
 	max-height: 100%;
+	max-width: 100%;
 	overflow: auto;
-}
 
-.image-description {
-	font-weight: bold;
 }
 
 /* INSTRUCTOR */
-.instructor-container{
-	text-align: center;
-}
 .instructor img{
 	width: 250px;
-	border-radius: 100%;
 }
 
-.instructor h2{
+/* .instructor h2{
 	margin: 0;
-}
+} */
 
 /* PAYMENT */
 /* .payment img{

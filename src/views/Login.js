@@ -42,7 +42,7 @@ function Login() {
           futuro. <br></br> ¿Aún no tienes el curso?
         </p>
         <a
-          href="https://buy.stripe.com/test_5kA8x3g4Rd2x3oQcMM"
+          href="https://buy.stripe.com/4gw037bHd7OP2HedQQ"
           target="_blank"
           rel="noreferrer"
           className="btn-purple no-small-screen"

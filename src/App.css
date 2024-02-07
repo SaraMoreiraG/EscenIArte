@@ -1,3 +1,6 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
 /* General application styles */
 .app {
   text-align: center;
@@ -6,12 +9,22 @@
   display: flex;
   flex-direction: column;
 }
-
+h1{
+  font-size: 4em;
+	font-weight: 700;
+}
 h2{
   font-size: 48px;
-  width: 750px;
-}
+  /* width: 700px; */
+	font-weight: 700;
 
+}
+h5{
+  font-weight: 600;
+}
+p{
+  font-weight: 400;
+}
 a{
   color: #f6f6f6;
   text-decoration: none;
