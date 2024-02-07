@@ -47,14 +47,14 @@ function Home() {
         <div className="col-4 p-2">
           <div className="benefit-card small mb-3">
             <div className="text-green">
-              <img src="https://cdn-icons-png.flaticon.com/512/2001/2001761.png" />
+              <img src="https://cdn-icons-png.flaticon.com/512/2001/2001761.png" alt="7 modulos"/>
             </div>
             <h3>7 módulos</h3>
             <p>Más de 8 horas de contenido</p>
           </div>
           <div className="benefit-card large">
             <div className="text-green">
-              <img src="https://www.iconarchive.com/download/i110095/thalita-torres/office/documents.1024.png" />
+              <img src="https://www.iconarchive.com/download/i110095/thalita-torres/office/documents.1024.png" alt="descarga de contenido"/>
             </div>
             <h3>Guarda el contenido</h3>
             <p>Descarga el temario en PDF</p>
@@ -63,14 +63,14 @@ function Home() {
         <div className="col-4 p-2">
           <div className="benefit-card large mb-3">
             <div className="text-green">
-              <img src="https://ann.axiomthemes.com/splash/src/img/benefits/2.png" />
+              <img src="https://ann.axiomthemes.com/splash/src/img/benefits/2.png" alt="acceso ilimitado"/>
             </div>
             <h3>Acceso ilimitado</h3>
             <p>Compra una vez, utilizalo siempre</p>
           </div>
           <div className="benefit-card small">
             <div className="text-green">
-              <img src="https://cdn-icons-png.freepik.com/512/8424/8424046.png" />
+              <img src="https://cdn-icons-png.freepik.com/512/8424/8424046.png" alt="certificado"/>
             </div>
             <h3>Obtén un certificado</h3>
             <p>Al completar todos los módulos</p>
@@ -79,14 +79,14 @@ function Home() {
         <div className="col-4 p-2">
           <div className="benefit-card medium mb-3">
             <div className="text-green">
-              <img src="https://ann.axiomthemes.com/splash/src/img/benefits/3.png" />
+              <img src="https://ann.axiomthemes.com/splash/src/img/benefits/3.png" alt="soporte técnico"/>
             </div>
             <h3>6 meses de soporte premium</h3>
             <p>Obtén soporte técnico profesional</p>
           </div>
           <div className="benefit-card medium">
             <div className="text-green">
-              <img src="https://ann.axiomthemes.com/splash/src/img/benefits/6.png" />
+              <img src="https://ann.axiomthemes.com/splash/src/img/benefits/6.png" alt="video tutoriales"/>
             </div>
             <h3>FAQ y Tutoriales en Video</h3>
             <p>Toda la información en un solo lugar</p>
