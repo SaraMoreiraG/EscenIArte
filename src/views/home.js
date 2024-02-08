@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavbarHome from "../components/NavbarHome";
 import CourseDetails from "../components/home/CourseDetails";
@@ -6,6 +6,65 @@ import CourseDetails from "../components/home/CourseDetails";
 import "./Home.css";
 
 function Home() {
+  const [contactForm, setContactForm] = useState({});
+  const [errors, setErrors] = useState({});
+  const [formLoading, setFormLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setContactForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    if (errors[name] || errors.general) {
+      // Limpiar errores específicos al cambiar el valor y errores generales
+      setErrors((prev) => ({ ...prev, [name]: "", general: "", status: "" }));
+    }
+  };
+
+  const handleValidations = () => {
+    let isValid = true;
+    // let newErrors = {};
+
+    // // Validación para campos requeridos
+    // if (!contactForm.name || !contactForm.email || !contactForm.message) {
+    //   newErrors.general = "*Faltan uno o más campos requeridos.";
+    //   isValid = false;
+    // }
+    // if (!/\S+@\S+\.\S+/.test(contactForm.email) && contactForm.email) {
+    //   newErrors.email = "*El correo electrónico no es válido.";
+    //   isValid = false;
+    // }
+    // if (!/^\d{9}$/.test(contactForm.phone) && contactForm.phone) {
+    //   newErrors.phone = "*El número de teléfono no es válido.";
+    //   isValid = false;
+    // }
+
+    // setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!handleValidations()) {
+      console.log("Validación falló");
+      return false;
+    } else {
+      console.log("Validación exitosa");
+      setFormLoading(true);
+
+
+
+      // IF MESSAGE SENT
+      setFormLoading(false);
+      setErrors({'status': 'Mensaje eviado. En breves nos pondremos en contacto.'});
+
+
+      // IF MESSAGE NOT SENT , ERROR HANDLING
+      setErrors({'status': 'Ha ocurrido un error, vuelve a intentarlo.'});
+    }
+  };
+
   // Function to handle the scroll
   const scrollToSection = (sectionId) => {
     // Prevent the default anchor link behavior
@@ -38,9 +97,7 @@ function Home() {
           </button>
         </div>
       </div>
-      <div className="promo">
-
-      </div>
+      <div className="promo"></div>
       <CourseDetails />
       <div className="benefits text-center">
         <h4>FÁCIL E INTUITIVA</h4>
@@ -139,8 +196,8 @@ function Home() {
           <p>
             Equípate con Chat GPT para liderar la innovación teatral, ampliar tu
             creatividad y consolidar tu presencia en el mercado. Aprende
-            estrategias digitales avanzadas. ¡Transforma tu arte y
-            aseguraté un lugar en la vanguardia del teatro moderno.
+            estrategias digitales avanzadas. ¡Transforma tu arte y aseguraté un
+            lugar en la vanguardia del teatro moderno.
           </p>
           <div className="d-flex">
             <div className="left">
@@ -202,9 +259,7 @@ function Home() {
       <div className="contact row m-0" id="contacto">
         <div className="col-lg-6 col-md-5 col-12">
           <h4>CONTACTO</h4>
-          <h2>
-            ¿Tienes alguna Duda?
-          </h2>
+          <h2>¿Tienes alguna Duda?</h2>
           <div className="no-small-screen mt-3">
             <img
               src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
@@ -213,26 +268,80 @@ function Home() {
             />
           </div>
         </div>
-        <div className="form col-lg-6 col-md-7">
-          <div className="form-group my-4">
-            <i className="fa-regular fa-user me-3"></i>
-            <input type="text" placeholder="Nombre"></input>
+        <div className="form col-lg-6 col-md-7 col-12">
+          <div
+            className={`form-group my-4 ${errors.general ? "input-error" : ""}`}
+          >
+            <i className="fa-regular fa-user"></i>
+            <input
+              type="text"
+              className="col-11 ps-3"
+              placeholder="Nombre"
+              name="name"
+              value={contactForm.name || ""}
+              onChange={handleChange}
+            ></input>
           </div>
-          <div className="form-group my-4">
-            <i className="fa-solid fa-phone me-3"></i>
-            <input type="text" placeholder="Teléfono"></input>
+          <div
+            className={`form-group my-4 ${
+              !errors.general && errors.phone ? "input-error" : ""
+            }`}
+          >
+            <i className="fa-solid fa-phone"></i>
+            <input
+              type="text"
+              className="col-11 ps-3"
+              placeholder="Teléfono"
+              name="phone"
+              value={contactForm.phone || ""}
+              onChange={handleChange}
+            ></input>
           </div>
-          <div className="form-group my-4">
-            <i className="fa-regular fa-envelope me-3"></i>
-            <input type="text" placeholder="Email"></input>
+          <p className="error">{!errors.general && errors.phone}</p>
+          <div
+            className={`form-group my-4 ${
+              errors.general || errors.email ? "input-error" : ""
+            }`}
+          >
+            <i className="fa-regular fa-envelope"></i>
+            <input
+              type="text"
+              className="col-11 ps-3"
+              placeholder="Email"
+              name="email"
+              value={contactForm.email || ""}
+              onChange={handleChange}
+            ></input>
           </div>
-          <div className="form-group d-flex align-items-top my-4">
+          <p>{errors.email}</p>
+          <div
+            className={`form-group d-flex align-items-top my-4 ${
+              errors.general ? "input-error" : ""
+            }`}
+          >
             <i className="fa-solid fa-pen me-3"></i>
-            <textarea rows="3" cols="50" placeholder="Mensaje"></textarea>
+            <textarea
+              rows="3"
+              cols="50"
+              placeholder="Mensaje"
+              name="message"
+              value={contactForm.message || ""}
+              onChange={handleChange}
+            ></textarea>
           </div>
+          <p className="text-error">{errors.general}</p>
+          <p className="error">{errors.status}</p>
           <div className="d-flex justify-content-end">
-            <button className="btn-green">
-              <i className="fa-regular fa-paper-plane me-2"></i> Enviar
+            <button className="btn-green" onClick={handleSubmit}>
+              {formLoading ? (
+                <div className="spinner-border text-light p-0" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                <>
+                  <i className="fa-regular fa-paper-plane me-2"></i> Enviar
+                </>
+              )}
             </button>
           </div>
         </div>
