@@ -29,6 +29,9 @@ a{
   color: #f6f6f6;
   text-decoration: none;
 }
+.no-big-screen{
+  display: none;
+}
 .header-center{
   display: flex;
   justify-content: center;
@@ -214,12 +217,56 @@ textarea:focus, input:focus{
   .form-group i{
     font-size: 20px;
   }
+
+  .purple-button{
+    top: 20px; /* Space from the top */
+    right: 20px; /* Space from the right */
+    padding: 0.8em 1.9em;
+  }
 }
 
 @media (max-width: 768px) {
 	h2 {
 		font-size: 32px;
 	}
+
+  .contact{
+    background-image: url('https://esceniarte.s3.amazonaws.com/logo.jpeg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+  padding: 40px 20px;
+  }
+  .contact h2, .contact h4 {
+    position: relative;
+    z-index: 1;
+    /* margin-bottom: 20px; */
+
+  }
+
+  .contact h2::before, .contact h4::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #0d111adb;
+    height: fit-content;
+    border-radius: 8px;
+     /* Ajuste el padding según necesites */
+     /* padding: 20px; */
+  }
+  .contact h4::before{
+    width: 125px;
+    height: 30px;
+  }
+  .contact h2::before{
+    width: 345px;
+    height: 45px;
+  }
 
   .login{
     height: 100%;
@@ -231,8 +278,18 @@ textarea:focus, input:focus{
   .no-small-screen{
     display: none;
   }
+
+  .no-big-screen{
+    display: flex;
+  }
+
   .form-image{
     padding: 100px 60px;
+  }
+
+  .btn-green{
+    padding: 0.7em 1.5em;
+    font-size: 14px;
   }
 }
 
@@ -249,6 +306,9 @@ textarea:focus, input:focus{
 @media (max-width: 480px) {
   .form-image{
     padding: 80px 10px;
+  }
+  .contact{
+    padding: 0;
   }
 }
 

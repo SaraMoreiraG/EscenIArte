@@ -29,7 +29,7 @@ const scrollToSection = (sectionId) => {
         <div className="full-modal" id="video">
           <div className="modal-content">
             <div className="text-end">
-              <i class="fa-solid fa-x" onClick={closeModal}></i>
+              <i className="fa-solid fa-x" onClick={closeModal}></i>
             </div>
             <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
               <iframe
@@ -59,7 +59,7 @@ const scrollToSection = (sectionId) => {
         </div>
       )}
       <div className="header-center">
-        <h2>1. Introducción a la IA</h2>
+        <h2>1. Introducción a la IA en las Artes Escénicas</h2>
       </div>
       <div className="row justify-content-center my-5">
         <div className="col-7">
@@ -73,12 +73,12 @@ const scrollToSection = (sectionId) => {
               />
             </div>
             <div className="col-6 p-3">
-              <h3>Class Title</h3>
-              <p>Class Description</p>
+              <h3>¿Qué es la  Inteligencia Artificial?</h3>
+              <p>Descubre como la IA puede abrir nuevas fuentes de inspiración</p>
               <hr></hr>
               <div className="col-6 d-flex justify-content-between my-3">
                 <span>
-                  <i className="fa-regular fa-clock ms-2"></i> 10'
+                  <i className="fa-regular fa-clock ms-2"></i> 7'
                 </span>
                 <button className="btn-pdf">
                   <i className="fa-solid fa-angles-down me-1"></i> PDF

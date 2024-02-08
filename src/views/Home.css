@@ -34,16 +34,19 @@
 }
 
 /* Section styles */
-.hero {
+.hero,
+.promo {
 	align-items: center;
 	display: flex;
 	height: 100vh;
 	position: relative;
-	background-image: url('../images/home-bg.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
+}
+.hero{
+	background-image: url('../images/home-bg.png');
 }
 
 .course-details {
@@ -105,8 +108,8 @@
 }
 
 .hero-text p {
-	color: #ddd;
-	background: rgba(0, 0, 0, 0.7);
+	color: #f6f6f6;
+	background: rgb(0, 0, 0);
 	padding: 0.5em;
 	border-radius: 10px;
 	max-width: 600px;
