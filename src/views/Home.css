@@ -69,12 +69,17 @@
 	color: #f6f6f6;
 }
 
-.payment,
+
 .contact{
 	height: 100vh;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 60px;
+}
+
+.payment{
+	padding: 80px 60px;
+	justify-content: space-between;
 }
 
 .benefits{
@@ -126,7 +131,7 @@
 	font-weight: bold;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	position: absolute;
-	bottom: 100px;
+	bottom: 60px;
 	left: 50%;
 	transform: translateX(-50%);
 }
@@ -193,13 +198,14 @@
 } */
 
 /* PAYMENT */
-/* .payment img{
-	height: 300px;
+/* .img-back{
+	height: 400px;
 } */
 
-.payment .left {
+/* .payment .left {
  margin-right: 50px;
-}
+} */
+
 .icon-name{
 	display: flex;
 	align-items: center;
@@ -227,6 +233,7 @@
 	transform: translate(-50%, -50%);
 	z-index: 10; /* Asegúrate de que esté sobre la otra imagen */
   }
+
 
 .form-image{
 	display: flex;
@@ -298,6 +305,18 @@
 
 
 /* Responsive design adjustments */
+@media (max-width: 1149px) {
+	.course-details,
+	.benefits,
+	.payment,
+	.contact{
+		padding: 50px 25px;
+	}
+	.no-1149-screen{
+		display: none;
+	}
+}
+
 @media (max-width: 992px) {
 	.hero-text h1 {
 		font-size: 48px;

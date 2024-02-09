@@ -37,7 +37,7 @@ a {
 .text-error{
   color: #9f1d1d;
 }
-.no-big-screen {
+.no-big-medium-screen {
   display: none;
 }
 
@@ -237,6 +237,11 @@ input:focus {
   font-size: 26px;
 }
 
+.no-big-screen{
+  display: none;
+  margin: 40px 0;
+}
+
 /* Responsive design adjustments */
 @media (max-width: 992px) {
   h2 {
@@ -253,6 +258,15 @@ input:focus {
     right: 20px;
     /* Space from the right */
     padding: 0.8em 1.9em;
+  }
+
+  .no-medium-screen{
+    display: none;
+  }
+
+  .no-big-screen{
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -315,7 +329,7 @@ input:focus {
     display: none;
   }
 
-  .no-big-screen {
+  .no-big-medium-screen {
     display: flex;
   }
 

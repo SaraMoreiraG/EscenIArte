@@ -53,15 +53,14 @@ function Home() {
       console.log("Validación exitosa");
       setFormLoading(true);
 
-
-
       // IF MESSAGE SENT
       setFormLoading(false);
-      setErrors({'status': 'Mensaje eviado. En breves nos pondremos en contacto.'});
-
+      setErrors({
+        status: "Mensaje eviado. En breves nos pondremos en contacto.",
+      });
 
       // IF MESSAGE NOT SENT , ERROR HANDLING
-      setErrors({'status': 'Ha ocurrido un error, vuelve a intentarlo.'});
+      setErrors({ status: "Ha ocurrido un error, vuelve a intentarlo." });
     }
   };
 
@@ -97,13 +96,13 @@ function Home() {
           </button>
         </div>
       </div>
-      <div className="promo"></div>
+      {/* <div className="promo"></div> */}
       <CourseDetails />
-      <div className="benefits text-center">
+      <div className="benefits row m-0 text-center">
         <h4>FÁCIL E INTUITIVA</h4>
         <h2>Beneficios de los alumnos</h2>
         <div className="row my-5">
-          <div className="col-4 p-2">
+          <div className="col-lg-4 col-md-6 p-2">
             <div className="benefit-card small mb-3">
               <div className="text-green">
                 <img
@@ -125,7 +124,7 @@ function Home() {
               <p>Descarga el temario en PDF</p>
             </div>
           </div>
-          <div className="col-4 p-2">
+          <div className="col-lg-4 col-md-6 p-2">
             <div className="benefit-card large mb-3">
               <div className="text-green">
                 <img
@@ -147,7 +146,7 @@ function Home() {
               <p>Al completar todos los módulos</p>
             </div>
           </div>
-          <div className="col-4 p-2">
+          <div className="col-lg-4 col-md-6 p-2">
             <div className="benefit-card medium mb-3">
               <div className="text-green">
                 <img
@@ -180,7 +179,7 @@ function Home() {
           />
         </div>
         <div className="col-7 text-center m-0 p-0">
-          <h2>Enrique Torre</h2>
+          <h2 className="my-4">Enrique Torre</h2>
           <h5>
             Con más de dos décadas de trayectoria en la Compañía de Teatro Sol y
             Tierra, mi viaje artístico trasciende los escenarios para explorar
@@ -190,53 +189,70 @@ function Home() {
         </div>
       </div>
       <div className="payment row m-0" id="precio">
-        <div className="col-7">
+        <div className="col-lg-6 col-md-12">
           <h4>INSCRIPCIÓN Y PRECIOS</h4>
-          <h2>Impulsa tu Arte Escénico Hoy</h2>
-          <p>
+          <h2>Impulsa tu <span className="text-purple">Arte Escénico </span><span className="no-1149-screen">Hoy Mismo</span></h2>
+          <p className="col-lg-12 col-md-8 mt-3">
             Equípate con Chat GPT para liderar la innovación teatral, ampliar tu
             creatividad y consolidar tu presencia en el mercado. Aprende
             estrategias digitales avanzadas. ¡Transforma tu arte y aseguraté un
-            lugar en la vanguardia del teatro moderno.
+            lugar en la vanguardia del teatro moderno!
           </p>
-          <div className="d-flex">
-            <div className="left">
+          <div className="no-big-screen">
+            <div className="col-10">
+            <img
+              src="https://ann.axiomthemes.com/splash/src/img/elm/1.jpg"
+              className="img-fluid"
+              alt="Background"
+            />
+            </div>
+          </div>
+          <div className="row m-0 pt-3">
+            <div className="left col-md-6 col-sm-12">
               <div className="icon-name">
                 <i className="fa-solid fa-check"></i>
-                <p>Transforma tu arte. ¡Inscríbete ya!</p>
+                <p>Aprende a tu ritmo, sin límites.</p>
+              </div>
+              <div className="right">
+                <div className="icon-name">
+                  <i className="fa-solid fa-check"></i>
+                  <p>Casos prácticos y reales.</p>
+                </div>
               </div>
               <div className="icon-name">
                 <i className="fa-solid fa-check"></i>
-                <p> Innova en escena. Descubre el futuro.</p>
-              </div>
-              <div className="icon-name">
-                <i className="fa-solid fa-check"></i>
-                <p>Desbloquea creatividad. Comienza hoy.</p>
+                <p>Obtén tu certificado oficial.</p>
               </div>
             </div>
-            <div className="right">
+            <div className="right col-md-6 col-sm-12">
               <div className="icon-name">
                 <i className="fa-solid fa-check"></i>
-                <p>Revitaliza tu teatro. Sé pionero.</p>
+                <p> 7 módulos de innovación.</p>
+              </div>
+              <div className="right">
+                <div className="icon-name">
+                  <i className="fa-solid fa-check"></i>
+                  <p>Desbloquea tu creatividad.</p>
+                </div>
               </div>
               <div className="icon-name">
                 <i className="fa-solid fa-check"></i>
-                <p>Aprende técnicas futuras. Actúa ahora.</p>
+                <p>Acceso a ChatGPT 4.</p>
               </div>
             </div>
           </div>
-          <div className="col-11 mt-3 text-end">
+          <div className="col-11 my-5 text-end">
             <a
               href="https://buy.stripe.com/4gw037bHd7OP2HedQQ"
               target="_blank"
               rel="noreferrer"
               className="btn-green"
             >
-              Comprar
+              ¡Inscribete ya!
             </a>
           </div>
         </div>
-        <div className="col-4">
+        <div className="col-lg-5 ps-4 col-md-5 no-medium-screen">
           <div className="position-relative text-center col-12 bg-primary">
             {/* <!-- Imagen de fondo --> */}
             <img
@@ -246,7 +262,7 @@ function Home() {
             />
 
             {/* <!-- Imagen superpuesta --> */}
-            <div className="overlay-image-container position-absolute">
+            <div className="overlay-image-container">
               <img
                 src="https://ann.axiomthemes.com/splash/src/img/elm/1.jpg"
                 className="img-fluid "
