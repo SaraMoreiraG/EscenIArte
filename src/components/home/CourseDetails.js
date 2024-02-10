@@ -36,7 +36,7 @@ const CourseDetails = () => {
         {/* <h2><span className="text-green">Creatividad</span> Sin Límites: <br></br><span className="text-green">IA</span> en las <span className="text-green">Artes Escénicas</span></h2> */}
         <h2>Creatividad Sin Límites: <br></br>IA en las Artes Escénicas</h2>
       </div>
-      <div className="images-container row my-5 mx-0">
+      <div className="images-container row mt-5 mx-0">
         {imagesInfo.map((image) => (
           <div key={image.id} className="details-block col-md-3 col-sm-5">
             <div className="image-wrapper">

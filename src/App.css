@@ -50,11 +50,8 @@ a {
 
 .purple-button {
   position: fixed;
-  /* Fixed position relative to the viewport */
   top: 40px;
-  /* Space from the top */
   right: 40px;
-  /* Space from the right */
   padding: 1.1em 2.1em;
   background-image: linear-gradient(to left, #025d48, #483a97, #623a97);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -65,7 +62,6 @@ a {
   font-weight: bold;
   text-decoration: none;
   z-index: 1000;
-  /* Ensure the button is above other elements */
   transition: all 0.3s ease-in;
 }
 
@@ -76,6 +72,9 @@ a {
   transition: all 0.3s ease-in;
 }
 
+.purple-button .button-icon{
+  display: none;
+}
 .btn-green,
 .btn-purple {
   padding: 1em 2em;
@@ -254,11 +253,11 @@ input:focus {
 
   .purple-button {
     top: 20px;
-    /* Space from the top */
     right: 20px;
-    /* Space from the right */
     padding: 0.8em 1.9em;
   }
+
+
 
   .no-medium-screen{
     display: none;
@@ -355,6 +354,18 @@ input:focus {
   .contact h2::before {
     width: 275px;
     height: 35px;
+  }
+
+
+  .purple-button {
+    padding: 0.5em 1em;
+  }
+
+  .purple-button .button-icon{
+    display: inline;
+  }
+  .purple-button .button-text{
+    display: none;
   }
 }
 

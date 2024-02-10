@@ -77,10 +77,8 @@ function Home() {
     <>
       <div className="hero" id="hero">
         <Link to="/login" className="purple-button">
-          Entrar
-          {/* <p className="no-big-screen">
-          <i class="fa-solid fa-right-to-bracket"></i>
-          </p> */}
+          <span className="button-text">Entrar</span>
+          <i className="fa-solid fa-right-to-bracket button-icon"></i>
         </Link>
         <div className="hero-text">
           <h1>

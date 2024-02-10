@@ -6,25 +6,26 @@
 	/* padding: 1em 0; */
 }
 
-.arrow-wrapper{
+.arrow-wrapper {
 	display: flex;
 	justify-content: flex-end;
 	margin-right: 40px;
 }
 
-.arrow{
+.arrow {
 	padding: 5px 7px;
 	border-radius: 8px;
 	font-size: 14px;
 	background-image: linear-gradient(to left, #025d48, #258a59, #5ab75b);
 }
-.navigation-bar .links{
+
+.navigation-bar .links {
 	display: flex;
 	justify-content: space-evenly;
 	background-color: #000000;
 }
 
-.navigation-bar button{
+.navigation-bar button {
 	color: white;
 	background-color: transparent;
 	border: none;
@@ -45,14 +46,13 @@
 	background-size: cover;
 	background-attachment: fixed;
 }
-.hero{
+
+.hero {
 	background-image: url('../images/home-bg.png');
 }
 
 .course-details {
-	padding: 80px 80px;
-	background-color: #000319;
-	color: #f6f6f6;
+	padding: 80px 60px 50px 60px;
 }
 
 .instructor {
@@ -70,27 +70,28 @@
 }
 
 
-.contact{
+.contact {
 	height: 100vh;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 60px;
 }
 
-.payment{
+.payment {
 	padding: 80px 60px;
 	justify-content: space-between;
 }
 
-.benefits{
+.benefits {
 	padding: 0px 60px;
 }
 
 /* HELPERS */
-.text-purple{
+.text-purple {
 	color: #623a97;
 }
-.text-green{
+
+.text-green {
 	color: #258a59;
 }
 
@@ -146,7 +147,7 @@
 	margin-bottom: 50px;
 }
 
-.details-block{
+.details-block {
 	text-align: center;
 }
 
@@ -189,29 +190,17 @@
 }
 
 /* INSTRUCTOR */
-.instructor img{
+.instructor img {
 	width: 250px;
 }
 
-/* .instructor h2{
-	margin: 0;
-} */
-
 /* PAYMENT */
-/* .img-back{
-	height: 400px;
-} */
-
-/* .payment .left {
- margin-right: 50px;
-} */
-
-.icon-name{
+.icon-name {
 	display: flex;
 	align-items: center;
 }
 
-.fa-check{
+.fa-check {
 	margin-right: 12px;
 	background-color: #09a050;
 	border-radius: 50%;
@@ -221,21 +210,26 @@
 /* Asegúrate de que el contenedor tenga una posición relativa */
 .position-relative {
 	position: relative;
-  }
-.position-absolute{
+}
+
+.position-absolute {
 	position: absolute;
 }
-  /* Posicionamiento absoluto para la imagen superpuesta */
-  .overlay-image-container {
+
+/* Posicionamiento absoluto para la imagen superpuesta */
+.overlay-image-container {
 	position: absolute;
-	top: 80%;  /* Ajusta según sea necesario */
-	left: 25%; /* Ajusta según sea necesario */
+	top: 80%;
+	/* Ajusta según sea necesario */
+	left: 25%;
+	/* Ajusta según sea necesario */
 	transform: translate(-50%, -50%);
-	z-index: 10; /* Asegúrate de que esté sobre la otra imagen */
-  }
+	z-index: 10;
+	/* Asegúrate de que esté sobre la otra imagen */
+}
 
 
-.form-image{
+.form-image {
 	display: flex;
 	align-items: center;
 	background-image: url('https://esceniarte.s3.amazonaws.com/logo.jpeg');
@@ -247,13 +241,11 @@
 }
 
 /* DASHBOARD */
-.dashboard{
+.dashboard {
 	background-color: #000319;
-  	padding: 70px;
+	padding: 70px;
 
 }
-
-
 
 .module img {
 	border-radius: 20px;
@@ -273,46 +265,51 @@
 	gap: 10px;
 	background-color: #13142b;
 	padding: 20px;
-  }
+}
 
-  .benefit-card.large {
+.benefit-card.large {
 	height: 300px;
-  }
+}
 
-  .benefit-card.medium {
+.benefit-card.medium {
 	height: 250px;
-  }
+}
 
-  .benefit-card.small {
+.benefit-card.small {
 	height: 200px;
-  }
+}
 
-  .benefit-card i {
+.benefit-card i {
 	font-size: 24px;
-  }
+}
 
-  .benefit-card.large img {
+.benefit-card.large img {
 	width: 150px;
-  }
+}
 
-  .benefit-card.medium img {
+.benefit-card.medium img {
 	width: 100px;
-  }
+}
 
-  .benefit-card.small img {
+.benefit-card.small img {
 	width: 70px;
-  }
+}
 
 
 /* Responsive design adjustments */
 @media (max-width: 1149px) {
-	.course-details,
+
 	.benefits,
 	.payment,
-	.contact{
+	.contact {
 		padding: 50px 25px;
 	}
-	.no-1149-screen{
+
+.course-details {
+	padding: 80px 25px 30px 25px;
+}
+
+	.no-1149-screen {
 		display: none;
 	}
 }
@@ -325,6 +322,10 @@
 
 	.image-wrapper img {
 		width: 180px;
+	}
+
+	.arrow-wrapper {
+		margin-right: 20px;
 	}
 }
 
@@ -345,8 +346,12 @@
 
 	.benefit-card.large,
 	.benefit-card.medium,
-	.benefit-card.small{
+	.benefit-card.small {
 		height: 200px;
+	}
+
+	.course-details {
+		padding: 80px 20px 20px 20px;
 	}
 }
 
@@ -360,12 +365,15 @@
 		max-width: 400px;
 		font-size: 12px;
 	}
+
+	.course-details {
+		padding: 80px 20px 10px 20px;
+	}
 }
 
 @media (max-width: 480px) {
 
 	.hero-text h1 {
-		font-size: 24px;
 		width: 320px;
 	}
 
@@ -373,12 +381,16 @@
 		display: none;
 	}
 
-	.course-details {
-		padding: 40px 0;
-	}
-
 	.image-hover:hover img {
 		transform: none;
 		/* Elimina la transformación en dispositivos móviles para evitar problemas de usabilidad */
+	}
+
+	.arrow {
+		padding: 2px 5px;
+	}
+
+	.course-details {
+		padding: 80px 0px 5px 0px;
 	}
 }
