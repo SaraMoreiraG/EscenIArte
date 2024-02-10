@@ -141,7 +141,7 @@ function Home() {
         </div>
         <div className="images-container row mt-5 mx-0">
           {imagesInfo.map((image) => (
-            <div key={image.id} className="details-block col-md-3 col-sm-5">
+            <div key={image.id} className="details-block col-md-3 col-sm-6">
               <div className="image-wrapper">
                 <div className="image-hover">
                   <img src={image.imgSrc} alt={`Descripción ${image.id}`} />
@@ -158,8 +158,8 @@ function Home() {
       <div className="benefits row m-0 text-center">
         <h4>FÁCIL E INTUITIVA</h4>
         <h2>Beneficios de los alumnos</h2>
-        <div className="row my-5">
-          <div className="col-lg-4 col-md-6 p-2">
+        <div className="row justify-content-between mx-0 my-5">
+          <div className="col-lg-4 col-md-4 col-sm-6 p-2">
             <div className="benefit-card small mb-3">
               <div className="text-green">
                 <img
@@ -181,7 +181,7 @@ function Home() {
               <p>Descarga el temario en PDF</p>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 p-2">
+          <div className="col-lg-4 col-md-4 col-sm-6 p-2">
             <div className="benefit-card large mb-3">
               <div className="text-green">
                 <img
@@ -203,8 +203,8 @@ function Home() {
               <p>Al completar todos los módulos</p>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 p-2">
-            <div className="benefit-card medium mb-3">
+          <div className="change-display col-lg-4 col-md-4 col-sm-12 p-2">
+            <div className="benefit-card medium col-sm-6 col-12 mb-3">
               <div className="text-green">
                 <img
                   src="https://ann.axiomthemes.com/splash/src/img/benefits/3.png"
@@ -214,7 +214,7 @@ function Home() {
               <h3>6 meses de soporte premium</h3>
               <p>Obtén soporte técnico profesional</p>
             </div>
-            <div className="benefit-card medium">
+            <div className="benefit-card medium col-sm-6 col-12">
               <div className="text-green">
                 <img
                   src="https://ann.axiomthemes.com/splash/src/img/benefits/6.png"
@@ -252,7 +252,7 @@ function Home() {
             Impulsa tu <span className="text-purple">Arte Escénico </span>
             <span className="no-1149-screen">Hoy Mismo</span>
           </h2>
-          <p className="col-lg-12 col-md-8 mt-3">
+          <p className="col-lg-12 col-md-9 mt-3">
             Equípate con Chat GPT para liderar la innovación teatral, ampliar tu
             creatividad y consolidar tu presencia en el mercado. Aprende
             estrategias digitales avanzadas. ¡Transforma tu arte y aseguraté un

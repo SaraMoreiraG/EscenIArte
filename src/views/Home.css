@@ -184,41 +184,6 @@
 	overflow: auto;
 }
 
-/* ========== Instructor Section ========== */
-.instructor img {
-	width: 250px;
-}
-
-/* ========== Payment Section ========== */
-.icon-name {
-	display: flex;
-	align-items: center;
-}
-
-.fa-check {
-	margin-right: 12px;
-	background-color: #09a050;
-	border-radius: 50%;
-	padding: 6px;
-}
-
-.position-relative {
-	position: relative;
-}
-
-.position-absolute {
-	position: absolute;
-}
-
-/* Overlay image */
-.overlay-image-container {
-	position: absolute;
-	top: 80%;
-	left: 25%;
-	transform: translate(-50%, -50%);
-	z-index: 10;
-}
-
 /* ========== Benefits Section ========== */
 
 .benefit-card {
@@ -259,6 +224,41 @@
 	width: 70px;
 }
 
+/* ========== Instructor Section ========== */
+.instructor img {
+	width: 250px;
+}
+
+/* ========== Payment Section ========== */
+.icon-name {
+	display: flex;
+	align-items: center;
+}
+
+.fa-check {
+	margin-right: 12px;
+	background-color: #09a050;
+	border-radius: 50%;
+	padding: 6px;
+}
+
+.position-relative {
+	position: relative;
+}
+
+.position-absolute {
+	position: absolute;
+}
+
+/* Overlay image */
+.overlay-image-container {
+	position: absolute;
+	top: 80%;
+	left: 25%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+}
+
 /* ========== Contact ========== */
 .form-image {
 	display: flex;
@@ -279,13 +279,20 @@
 
 	.benefits,
 	.payment,
-	.contact,
-	.footer {
+	.contact{
 		padding: 50px 25px;
+	}
+
+	.footer {
+	padding: 25px 25px;
 	}
 
 	.course-details {
 		padding: 80px 25px 30px 25px;
+	}
+
+	.benefit-card.medium img {
+		width: 80px;
 	}
 
 	.no-1149-screen {
@@ -306,6 +313,12 @@
 
 	.arrow-wrapper {
 		margin-right: 20px;
+	}
+
+	.benefit-card.large,
+	.benefit-card.medium,
+	.benefit-card.small {
+		height: 300px;
 	}
 }
 
@@ -330,10 +343,23 @@
 		width: 350px;
 	}
 
+	.change-display{
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.benefit-card.large,
 	.benefit-card.medium,
 	.benefit-card.small {
-		height: 200px;
+		height: 250px;
+	}
+
+	.benefit-card.large img {
+		width: 100px;
+	}
+
+	.benefit-card.medium img {
+		width: 70px;
 	}
 
 	.contact,
@@ -394,6 +420,11 @@
 
 	.course-details {
 		padding: 80px 20px 10px 20px;
+	}
+
+	.change-display{
+		display: inline;
+		justify-content: space-between;
 	}
 
 	.contact h2::before {

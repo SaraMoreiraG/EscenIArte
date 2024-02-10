@@ -170,6 +170,14 @@ p {
 }
 
 /* ========== Responsive Adjustments ========== */
+@media (max-width: 1149px) {
+  .fixed-button {
+    top: 20px;
+    right: 20px;
+    padding: 0.8em 1.9em;
+  }
+}
+
 @media (max-width: 992px) {
   h2 {
     font-size: 36px;
@@ -177,12 +185,6 @@ p {
 
   .form-group i {
     font-size: 20px;
-  }
-
-  .fixed-button {
-    top: 20px;
-    right: 20px;
-    padding: 0.8em 1.9em;
   }
 
   .no-medium-screen {
