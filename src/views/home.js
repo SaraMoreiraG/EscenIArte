@@ -1,15 +1,46 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavbarHome from "../components/NavbarHome";
-import CourseDetails from "../components/home/CourseDetails";
 
 import "./Home.css";
 
 function Home() {
+  // State management for contact form inputs, validation errors, and loading status.
   const [contactForm, setContactForm] = useState({});
   const [errors, setErrors] = useState({});
   const [formLoading, setFormLoading] = useState(false);
+  const imagesInfo = [
+    {
+      id: 1,
+      text: "Aprenderás a integrar ChatGPT en tu proceso creativo, utilizando IA para la generación de ideas innovadoras y la creación de contenidos artísticos.",
+      shortText: "Dominio de ChatGPT en el Arte",
+      imgSrc:
+        "https://esceniarte-images.s3.amazonaws.com/home/1.-Dominio-de-ChatGPT-en-el-Arte.webp",
+    },
+    {
+      id: 2,
+      text: "Desarrollarás estrategias para emplear la IA en la mejora de la producción artística y en la ejecución de campañas de marketing digital efectivas.",
+      shortText: "Innovación en Producción y Promoción",
+      imgSrc:
+        "https://esceniarte-images.s3.amazonaws.com/home/2.Innovacio%CC%81n-en-Produccio%CC%81n-y-Promocio%CC%81n.webp",
+    },
+    {
+      id: 3,
+      text: "Adquirirás habilidades para crear y distribuir contenido digital atractivo, ampliando tu alcance y conectando con audiencias globales",
+      shortText: "Expansión de Audiencia Digital",
+      imgSrc:
+        "https://esceniarte-images.s3.amazonaws.com/home/3.Expansio%CC%81n-de-Audiencia-Digital.webp",
+    },
+    {
+      id: 4,
+      text: "Te posicionarás a la vanguardia de la intersección entre arte y tecnología, preparado para explorar y liderar innovaciones en las artes escénicas.",
+      shortText: "Liderazgo Artístico Tecnológico",
+      imgSrc:
+        "https://esceniarte-images.s3.amazonaws.com/home/4.-Liderazgo-Arti%CC%81stico-Tecnolo%CC%81gico.webp",
+    },
+  ];
 
+  // Handle input change and manage form state
   const handleChange = (e) => {
     const { name, value } = e.target;
     setContactForm((prev) => ({
@@ -17,33 +48,37 @@ function Home() {
       [name]: value,
     }));
     if (errors[name] || errors.general) {
-      // Limpiar errores específicos al cambiar el valor y errores generales
+      // Clear specific field errors and general errors upon input change.
       setErrors((prev) => ({ ...prev, [name]: "", general: "", status: "" }));
     }
   };
 
+  // Validate form fields
   const handleValidations = () => {
     let isValid = true;
-    // let newErrors = {};
+    let newErrors = {};
 
-    // // Validación para campos requeridos
-    // if (!contactForm.name || !contactForm.email || !contactForm.message) {
-    //   newErrors.general = "*Faltan uno o más campos requeridos.";
-    //   isValid = false;
-    // }
-    // if (!/\S+@\S+\.\S+/.test(contactForm.email) && contactForm.email) {
-    //   newErrors.email = "*El correo electrónico no es válido.";
-    //   isValid = false;
-    // }
-    // if (!/^\d{9}$/.test(contactForm.phone) && contactForm.phone) {
-    //   newErrors.phone = "*El número de teléfono no es válido.";
-    //   isValid = false;
-    // }
+    // Required field validation
+    if (!contactForm.name || !contactForm.email || !contactForm.message) {
+      newErrors.general = "*Faltan uno o más campos requeridos.";
+      isValid = false;
+    }
+    // Email format validation
+    if (!/\S+@\S+\.\S+/.test(contactForm.email) && contactForm.email) {
+      newErrors.email = "*El correo electrónico no es válido.";
+      isValid = false;
+    }
+    // Phone number validation
+    if (!/^\d{9}$/.test(contactForm.phone) && contactForm.phone) {
+      newErrors.phone = "*El número de teléfono no es válido.";
+      isValid = false;
+    }
 
-    // setErrors(newErrors);
+    setErrors(newErrors);
     return isValid;
   };
 
+  // Handles form submission including validation and setting loading state.
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!handleValidations()) {
@@ -64,7 +99,7 @@ function Home() {
     }
   };
 
-  // Function to handle the scroll
+  // Function to scroll to a specific section smoothly.
   const scrollToSection = (sectionId) => {
     // Prevent the default anchor link behavior
     const section = document.getElementById(sectionId);
@@ -76,7 +111,7 @@ function Home() {
   return (
     <>
       <div className="hero" id="hero">
-        <Link to="/login" className="purple-button">
+        <Link to="/login" className="btn-purple fixed-button">
           <span className="button-text">Entrar</span>
           <i className="fa-solid fa-right-to-bracket button-icon"></i>
         </Link>
@@ -97,8 +132,29 @@ function Home() {
           </button>
         </div>
       </div>
-      {/* <div className="promo"></div> */}
-      <CourseDetails />
+      <div className="course-details" id="detalles-curso">
+        <div className="header-center">
+          {/* <h2><span className="text-green">Creatividad</span> Sin Límites: <br></br><span className="text-green">IA</span> en las <span className="text-green">Artes Escénicas</span></h2> */}
+          <h2>
+            Creatividad Sin Límites: <br></br>IA en las Artes Escénicas
+          </h2>
+        </div>
+        <div className="images-container row mt-5 mx-0">
+          {imagesInfo.map((image) => (
+            <div key={image.id} className="details-block col-md-3 col-sm-5">
+              <div className="image-wrapper">
+                <div className="image-hover">
+                  <img src={image.imgSrc} alt={`Descripción ${image.id}`} />
+                  <div className="hover-text">
+                    <p>{image.text}</p>
+                  </div>
+                </div>
+              </div>
+              <h5 className="image-description">{image.shortText}</h5>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="benefits row m-0 text-center">
         <h4>FÁCIL E INTUITIVA</h4>
         <h2>Beneficios de los alumnos</h2>
@@ -192,7 +248,10 @@ function Home() {
       <div className="payment row m-0" id="precio">
         <div className="col-lg-6 col-md-12">
           <h4>INSCRIPCIÓN Y PRECIOS</h4>
-          <h2>Impulsa tu <span className="text-purple">Arte Escénico </span><span className="no-1149-screen">Hoy Mismo</span></h2>
+          <h2>
+            Impulsa tu <span className="text-purple">Arte Escénico </span>
+            <span className="no-1149-screen">Hoy Mismo</span>
+          </h2>
           <p className="col-lg-12 col-md-8 mt-3">
             Equípate con Chat GPT para liderar la innovación teatral, ampliar tu
             creatividad y consolidar tu presencia en el mercado. Aprende
@@ -201,11 +260,11 @@ function Home() {
           </p>
           <div className="no-big-screen">
             <div className="col-10">
-            <img
-              src="https://ann.axiomthemes.com/splash/src/img/elm/1.jpg"
-              className="img-fluid"
-              alt="Background"
-            />
+              <img
+                src="https://ann.axiomthemes.com/splash/src/img/elm/1.jpg"
+                className="img-fluid"
+                alt="Background"
+              />
             </div>
           </div>
           <div className="row m-0 pt-3">
@@ -363,8 +422,58 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="footerdd">
-        <p>Creado por: EscenIArte</p>
+      <div className="footer row m-0">
+        <div className="row d-flex justify-content-between col-12 my-3">
+          <h2 className="col-lg-6 col-md-5 col-sm-12 mb-3">EscenIArte</h2>
+          <h2 className="col-lg-6 col-md-7 col-sm-12">Innovación en escena, actúa ahora</h2>
+        </div>
+        <div className="row">
+          <div className="col-lg-6 col-md-5 col-sm-12 mb-3">
+            <h5>Suscribete a nuestra NewsLetter</h5>
+            <div
+              className={`form-group my-4 col-10${
+                errors.general || errors.email ? "input-error" : ""
+              }`}
+            >
+              <i className="fa-regular fa-envelope"></i>
+              <input
+                type="text"
+                className="col-11 ps-3"
+                placeholder="Email"
+                name="email"
+                value={contactForm.email || ""}
+                onChange={handleChange}
+              ></input>
+            </div>
+            <p>{errors.email}</p>
+          </div>
+          <div className="col-lg-2 col-md-2 col-6 mb-3">
+            <h5 className="mb-3">Redes</h5>
+            <ul>
+              <li>Instagram</li>
+              <li><a href="https://www.facebook.com/profile.php?id=61556099401622" target="_blank" rel="noreferrer">Facebook</a></li>
+              <li>Linkedin</li>
+            </ul>
+          </div>
+          <div className="col-lg-2 col-md-2 col-6 mb-3">
+            <h5 className="mb-3">Menu</h5>
+            <ul>
+              <li onClick={() => scrollToSection("detalles-curso")}>Curso</li>
+              <li onClick={() => scrollToSection("instructor")}>Instructor</li>
+              <li onClick={() => scrollToSection("precio")}>Inscripción</li>
+            </ul>
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-12 mb-3">
+            <h5>Contacto</h5>
+            <ul>
+              <li onClick={() => scrollToSection("contacto")}>esceniarte@gmail.com</li>
+              <li><a href="https://wa.me/34699375412?text=Hola%21%20Estoy%20interesado%2Fa%20en%20vuestro%20curso." target="_blank" rel="noreferrer">699 37 54 12</a></li>
+              <li><a href="https://wa.me/34618196103?text=Hola%21%20Estoy%20interesado%2Fa%20en%20vuestro%20curso." target="_blank" rel="noreferrer">618 19 61 03</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="col-6"></div>
       </div>
       <NavbarHome />
     </>

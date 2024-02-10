@@ -20,7 +20,7 @@ function Login() {
             </Link>
           </div>
           <div className="d-flex justify-content-center">
-            <p className="error mt-2">Usuario o contraseña incorrectos</p>
+            <p className="text-error mt-2">Usuario o contraseña incorrectos</p>
           </div>
           <div className="d-flex justify-content-center">
             <a href="/home" className="remember-password">

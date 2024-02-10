@@ -1,14 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
-
 /* General application styles */
-.app {
-  text-align: center;
-  background: linear-gradient(145deg, #025d48, #041110);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
+/* ========== Typography ========== */
 h1 {
   font-size: 4em;
   font-weight: 700;
@@ -16,9 +7,7 @@ h1 {
 
 h2 {
   font-size: 48px;
-  /* width: 700px; */
   font-weight: 700;
-
 }
 
 h5 {
@@ -29,16 +18,13 @@ p {
   font-weight: 400;
 }
 
-a {
-  color: #f6f6f6;
-  text-decoration: none;
-}
-
-.text-error{
-  color: #9f1d1d;
-}
-.no-big-medium-screen {
-  display: none;
+/* ========== Layout & Grid ========== */
+.app {
+  text-align: center;
+  background: linear-gradient(145deg, #025d48, #041110);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .header-center {
@@ -48,38 +34,19 @@ a {
   margin-bottom: 20px;
 }
 
-.purple-button {
+/* ========== Buttons & Links ========== */
+.fixed-button {
   position: fixed;
   top: 40px;
   right: 40px;
   padding: 1.1em 2.1em;
-  background-image: linear-gradient(to left, #025d48, #483a97, #623a97);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: none;
   z-index: 1000;
-  transition: all 0.3s ease-in;
 }
 
-.purple-button:hover {
-  background-image: linear-gradient(to left, #025d48, #258a59, #5ab75b);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease-in;
-}
-
-.purple-button .button-icon{
-  display: none;
-}
 .btn-green,
 .btn-purple {
   padding: 1em 2em;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  color: white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -94,9 +61,9 @@ a {
 
 .btn-purple {
   background-image: linear-gradient(to left, #025d48, #483a97, #623a97);
-
 }
 
+/* Hover states */
 .btn-green:hover,
 .btn-purple:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
@@ -112,7 +79,7 @@ a {
   background-image: linear-gradient(to left, #025d48, #258a59, #5ab75b);
 }
 
-/* FORMS */
+/* ========== Forms ========== */
 .form {
   background-color: #0d111a;
   padding: 50px 60px;
@@ -149,25 +116,35 @@ a {
   color: #a9a7b0;
 }
 
-input,
-textarea {
-  background-color: transparent;
-  border: none;
-  color: #f6f6f6;
-  resize: none;
+/* ========== Utility Classes ========== */
+.text-error {
+  color: #9f1d1d;
 }
 
-textarea:focus,
-input:focus {
-  outline: none;
+.text-purple {
+	color: #623a97;
 }
 
-/* LOGIN */
+.text-green {
+	color: #258a59;
+}
+
+.no-big-medium-screen {
+  display: none;
+}
+
+.no-big-screen {
+  display: none;
+  margin: 40px 0;
+}
+
+.bold{
+  font-weight: 700;
+}
+/* ========== Login View ========== */
 .login {
   display: flex;
   flex-direction: row;
-  background-color: #000319;
-  color: #f6f6f6;
   height: 100vh;
   align-items: center;
   justify-content: space-between;
@@ -181,67 +158,18 @@ input:focus {
   margin: 12px 0 0 0;
 }
 
-/* .error {
-  color: #ff5b4a;
-  display: none;
-} */
-
-/* MODULE */
-.module-details {
-  padding: 80px 80px;
+/* ========== Dashboard View ========== */
+.dashboard {
+	padding: 70px;
 }
 
-.class-wrapper {
-  background-color: #0d111a;
-  color: #dbdcdd;
-  margin: 30px 0;
-  align-items: center;
+.module img {
+	border-radius: 20px;
+	cursor: pointer;
+	transition: transform 0.3s ease;
 }
 
-.class-wrapper:first-child {
-  margin: 0 0 30px 0;
-}
-
-.class-wrapper h3 {
-  font-weight: bold;
-}
-
-.class-wrapper hr {
-  width: 20%;
-  height: 2px;
-  /* Establece la altura deseada */
-  /* Elimina el borde predeterminado */
-  background-color: #dbdcdd;
-}
-
-.class-wrapper img {
-  cursor: pointer;
-}
-
-.btn-pdf {
-  border: none;
-  background-color: #6601ff;
-  color: #ffffff;
-  padding: 5px 17px 6px;
-  font-size: 11px;
-  border-radius: 8px;
-}
-
-.side-navbar {
-  background-color: #0d111a;
-}
-
-.full-modal .fa-x {
-  cursor: pointer;
-  font-size: 26px;
-}
-
-.no-big-screen{
-  display: none;
-  margin: 40px 0;
-}
-
-/* Responsive design adjustments */
+/* ========== Responsive Adjustments ========== */
 @media (max-width: 992px) {
   h2 {
     font-size: 36px;
@@ -251,19 +179,17 @@ input:focus {
     font-size: 20px;
   }
 
-  .purple-button {
+  .fixed-button {
     top: 20px;
     right: 20px;
     padding: 0.8em 1.9em;
   }
 
-
-
-  .no-medium-screen{
+  .no-medium-screen {
     display: none;
   }
 
-  .no-big-screen{
+  .no-big-screen {
     display: flex;
     justify-content: center;
   }
@@ -272,56 +198,6 @@ input:focus {
 @media (max-width: 768px) {
   h2 {
     font-size: 32px;
-  }
-
-  .contact {
-    background-image: url('https://esceniarte.s3.amazonaws.com/logo.jpeg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    padding: 40px 20px;
-  }
-
-  .contact h2,
-  .contact h4 {
-    position: relative;
-    z-index: 1;
-    /* margin-bottom: 20px; */
-
-  }
-
-  .contact h2::before,
-  .contact h4::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: #0d111adb;
-    height: fit-content;
-    border-radius: 8px;
-    /* Ajuste el padding según necesites */
-    /* padding: 20px; */
-  }
-
-  .contact h4::before {
-    width: 125px;
-    height: 30px;
-  }
-
-  .contact h2::before {
-    width: 345px;
-    height: 45px;
-  }
-
-  .login {
-    height: 100%;
-    padding: 20px 0;
-    /* flex-direction: row-reverse; */
-    justify-content: start;
   }
 
   .no-small-screen {
@@ -340,6 +216,12 @@ input:focus {
     padding: 0.7em 1.5em;
     font-size: 14px;
   }
+
+  .login {
+    height: 100%;
+    padding: 20px 0;
+    justify-content: start;
+  }
 }
 
 @media (max-width: 576px) {
@@ -347,35 +229,26 @@ input:focus {
     font-size: 26px;
   }
 
-  .form-image {
-    padding: 100px 20px;
-  }
-
-  .contact h2::before {
-    width: 275px;
-    height: 35px;
-  }
-
-
-  .purple-button {
+  .fixed-button {
     padding: 0.5em 1em;
   }
 
-  .purple-button .button-icon{
+  .fixed-button .button-icon {
     display: inline;
   }
-  .purple-button .button-text{
+
+  .fixed-button .button-text {
     display: none;
+  }
+
+  .form-image {
+    padding: 100px 20px;
   }
 }
 
 @media (max-width: 480px) {
   .form-image {
     padding: 80px 10px;
-  }
-
-  .contact {
-    padding: 0;
   }
 }
 

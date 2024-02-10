@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function NavbarHome() {
   const [isArrowVisible, setIsArrowVisible] = useState(false);
+  const [isNavBarVisible, setisNavBarVisible] = useState(true);
 
   // Function to handle the scroll to section
   const scrollToSection = (sectionId) => {
@@ -13,10 +14,19 @@ function NavbarHome() {
 
   // Function to toggle the arrow visibility based on scroll position
   const toggleArrowVisibility = () => {
+    const reachedBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight;
     if (window.scrollY > 200) {
       setIsArrowVisible(true);
     } else {
       setIsArrowVisible(false);
+    }
+
+    if (reachedBottom) {
+      setisNavBarVisible(false);
+    } else {
+      setisNavBarVisible(true);
     }
   };
 
@@ -31,7 +41,6 @@ function NavbarHome() {
 
   return (
     <footer className="navigation-bar">
-      {/* Conditional rendering based on isArrowVisible state */}
       {isArrowVisible && (
         <div className="arrow-wrapper">
           <div className="arrow">
@@ -41,12 +50,18 @@ function NavbarHome() {
           </div>
         </div>
       )}
-      <div className="links">
-        <button onClick={() => scrollToSection("detalles-curso")}>Curso</button>
-        <button onClick={() => scrollToSection("instructor")}>Instructor</button>
-        <button onClick={() => scrollToSection("precio")}>Precio</button>
-        <button onClick={() => scrollToSection("contacto")}>Contacto</button>
-      </div>
+      {isNavBarVisible && (
+        <div className="links">
+          <button onClick={() => scrollToSection("detalles-curso")}>
+            Curso
+          </button>
+          <button onClick={() => scrollToSection("instructor")}>
+            Instructor
+          </button>
+          <button onClick={() => scrollToSection("precio")}>Precio</button>
+          <button onClick={() => scrollToSection("contacto")}>Contacto</button>
+        </div>
+      )}
     </footer>
   );
 }

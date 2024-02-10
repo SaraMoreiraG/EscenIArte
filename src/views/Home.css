@@ -1,9 +1,24 @@
-/* Navigation bar styles */
+/* ========== Navigation Bar Home ========== */
 .navigation-bar {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	/* padding: 1em 0; */
+}
+
+.navigation-bar .links {
+	display: flex;
+	justify-content: space-evenly;
+	background-color: #000000;
+}
+
+/* cambiar por a  */
+.navigation-bar button {
+	color: white;
+	background-color: transparent;
+	border: none;
+	text-decoration: none;
+	padding: 0.5em;
+	font-weight: bold;
 }
 
 .arrow-wrapper {
@@ -19,22 +34,7 @@
 	background-image: linear-gradient(to left, #025d48, #258a59, #5ab75b);
 }
 
-.navigation-bar .links {
-	display: flex;
-	justify-content: space-evenly;
-	background-color: #000000;
-}
-
-.navigation-bar button {
-	color: white;
-	background-color: transparent;
-	border: none;
-	text-decoration: none;
-	padding: 0.5em;
-	font-weight: bold;
-}
-
-/* Section styles */
+/* ========== Section Styles ========== */
 .hero,
 .promo {
 	align-items: center;
@@ -69,14 +69,6 @@
 	color: #f6f6f6;
 }
 
-
-.contact {
-	height: 100vh;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0 60px;
-}
-
 .payment {
 	padding: 80px 60px;
 	justify-content: space-between;
@@ -86,38 +78,40 @@
 	padding: 0px 60px;
 }
 
-/* HELPERS */
-.text-purple {
-	color: #623a97;
+.contact {
+	height: 100vh;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 60px;
 }
 
-.text-green {
-	color: #258a59;
+.footer{
+	padding: 30px 60px;
+	background-color: #000000;
 }
 
-/* Hero styles */
+/* ========== Hero Section ========== */
 .hero-text {
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	text-align: center;
 }
 
-.hero-text h1 {
+.hero-text h1,
+.hero-text p {
 	background: rgba(0, 0, 0, 0.7);
 	padding: 0.5em;
 	border-radius: 10px;
-	margin-bottom: 0.5em;
+}
+
+.hero-text h1 {
 	width: 750px;
+	margin-bottom: 0.5em;
 }
 
 .hero-text p {
-	color: #f6f6f6;
-	background: rgb(0, 0, 0);
-	padding: 0.5em;
-	border-radius: 10px;
 	max-width: 600px;
 	margin-bottom: 1em;
 }
@@ -137,8 +131,11 @@
 	transform: translateX(-50%);
 }
 
+.button-icon {
+	display: none;
+}
 
-/* IMAGENES */
+/* ========== Course Details Section ========== */
 
 .images-container {
 	display: flex;
@@ -161,7 +158,6 @@
 
 .image-wrapper img {
 	width: 320px;
-	height: auto;
 	border-radius: 8px;
 	transition: transform 0.3s ease;
 }
@@ -186,15 +182,14 @@
 	max-height: 100%;
 	max-width: 100%;
 	overflow: auto;
-
 }
 
-/* INSTRUCTOR */
+/* ========== Instructor Section ========== */
 .instructor img {
 	width: 250px;
 }
 
-/* PAYMENT */
+/* ========== Payment Section ========== */
 .icon-name {
 	display: flex;
 	align-items: center;
@@ -207,7 +202,6 @@
 	padding: 6px;
 }
 
-/* Asegúrate de que el contenedor tenga una posición relativa */
 .position-relative {
 	position: relative;
 }
@@ -216,46 +210,16 @@
 	position: absolute;
 }
 
-/* Posicionamiento absoluto para la imagen superpuesta */
+/* Overlay image */
 .overlay-image-container {
 	position: absolute;
 	top: 80%;
-	/* Ajusta según sea necesario */
 	left: 25%;
-	/* Ajusta según sea necesario */
 	transform: translate(-50%, -50%);
 	z-index: 10;
-	/* Asegúrate de que esté sobre la otra imagen */
 }
 
-
-.form-image {
-	display: flex;
-	align-items: center;
-	background-image: url('https://esceniarte.s3.amazonaws.com/logo.jpeg');
-	height: 70%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	/* background-attachment: fixed; */
-}
-
-/* DASHBOARD */
-.dashboard {
-	background-color: #000319;
-	padding: 70px;
-
-}
-
-.module img {
-	border-radius: 20px;
-	/* height: 200px; */
-	transition: transform 0.3s ease;
-	cursor: pointer;
-}
-
-
-/* BENEFITS */
+/* ========== Benefits Section ========== */
 
 .benefit-card {
 	display: flex;
@@ -295,25 +259,41 @@
 	width: 70px;
 }
 
+/* ========== Contact ========== */
+.form-image {
+	display: flex;
+	align-items: center;
+	background-image: url('https://esceniarte.s3.amazonaws.com/logo.jpeg');
+	height: 70%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
-/* Responsive design adjustments */
+/* ========== Footer ========== */
+
+
+/* ========== Responsive Design Adjustments ========== */
+/* Adjustments for screens smaller than 1149px */
 @media (max-width: 1149px) {
 
 	.benefits,
 	.payment,
-	.contact {
+	.contact,
+	.footer {
 		padding: 50px 25px;
 	}
 
-.course-details {
-	padding: 80px 25px 30px 25px;
-}
+	.course-details {
+		padding: 80px 25px 30px 25px;
+	}
 
 	.no-1149-screen {
 		display: none;
 	}
 }
 
+/* Adjustments for screens smaller than 992px */
 @media (max-width: 992px) {
 	.hero-text h1 {
 		font-size: 48px;
@@ -329,6 +309,7 @@
 	}
 }
 
+/* Adjustments for screens smaller than 768px */
 @media (max-width: 768px) {
 	.hero-text h1 {
 		font-size: 36px;
@@ -337,7 +318,12 @@
 
 	.hero-text p {
 		max-width: 500px;
-		font-size: 14px;
+		font-size: 12px;
+		font-weight: 600;
+	}
+
+	.course-details {
+		padding: 80px 20px 20px 20px;
 	}
 
 	.image-wrapper img {
@@ -350,28 +336,77 @@
 		height: 200px;
 	}
 
-	.course-details {
-		padding: 80px 20px 20px 20px;
+	.contact,
+	.footer{
+		padding: 40px 20px;
+	}
+
+	.contact {
+		background-image: url('https://esceniarte.s3.amazonaws.com/logo.jpeg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-attachment: fixed;
+	}
+
+	.contact h2,
+	.contact h4 {
+		position: relative;
+		z-index: 1;
+	}
+
+	.contact h2::before,
+	.contact h4::before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-color: #0d111adb;
+		height: fit-content;
+		border-radius: 8px;
+	}
+
+	.contact h4::before {
+		width: 125px;
+		height: 30px;
+	}
+
+	.contact h2::before {
+		width: 345px;
+		height: 45px;
 	}
 }
 
+/* Adjustments for screens smaller than 576px */
 @media (max-width: 576px) {
 	.hero-text h1 {
-		font-size: 32px;
+		font-size: 34px;
 		width: 400px;
 	}
 
 	.hero-text p {
-		max-width: 400px;
+		max-width: 460px;
 		font-size: 12px;
 	}
 
 	.course-details {
 		padding: 80px 20px 10px 20px;
 	}
+
+	.contact h2::before {
+		width: 275px;
+		height: 35px;
+	}
 }
 
+/* Adjustments for screens smaller than 480px */
 @media (max-width: 480px) {
+	.arrow {
+		padding: 2px 5px;
+	}
 
 	.hero-text h1 {
 		width: 320px;
@@ -381,16 +416,16 @@
 		display: none;
 	}
 
-	.image-hover:hover img {
-		transform: none;
-		/* Elimina la transformación en dispositivos móviles para evitar problemas de usabilidad */
-	}
-
-	.arrow {
-		padding: 2px 5px;
-	}
-
 	.course-details {
 		padding: 80px 0px 5px 0px;
+	}
+
+	.image-hover:hover img {
+		transform: none;
+		/* Removes transformation on mobile devices for usability */
+	}
+
+	.contact {
+		padding: 0;
 	}
 }
