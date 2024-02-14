@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [userCredentials, setUserCredentials] = useState({});
@@ -19,25 +19,25 @@ function Login() {
     }
   };
 
-  // Validate form fields
-  const handleValidations = () => {
-    let isValid = true;
-    let newErrors = {};
+  // // // Validate form fields
+  // const handleValidations = () => {
+  //   let isValid = true;
+  //   let newErrors = {};
 
-    // Required field validation
-    if (!userCredentials.password || !userCredentials.email) {
-      newErrors.general = "*Introduce tus datos";
-      isValid = false;
-    }
-    // Email format validation
-    if (!/\S+@\S+\.\S+/.test(userCredentials.email) && userCredentials.email) {
-      newErrors.general = "*El correo electrónico no es válido.";
-      isValid = false;
-    }
+  //   // Required field validation
+  //   if (!userCredentials.password || !userCredentials.email) {
+  //     newErrors.general = "*Introduce tus datos";
+  //     isValid = false;
+  //   }
+  //   // Email format validation
+  //   if (!/\S+@\S+\.\S+/.test(userCredentials.email) && userCredentials.email) {
+  //     newErrors.general = "*El correo electrónico no es válido.";
+  //     isValid = false;
+  //   }
 
-    setErrors(newErrors);
-    return isValid;
-  };
+  //   setErrors(newErrors);
+  //   return isValid;
+  // };
 
   // Handles form submission including validation and setting loading state.
   const handleSubmit = (e) => {
@@ -47,7 +47,7 @@ function Login() {
     //   console.log(userCredentials)
     //   return false;
     // } else {
-      console.log("Validación exitosa");
+      console.log("Validación exitosa", formLoading);
       setFormLoading(true);
 
       // IF MESSAGE SENT
