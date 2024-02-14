@@ -125,7 +125,7 @@ function Home() {
     setErrorUserEmail({});
 
     try {
-      setEmailLoading(true)
+      setEmailLoading(true);
       // Makes a POST request to the API endpoint with the email
       const response = await fetch(
         "https://a8nv0x4ffb.execute-api.us-east-1.amazonaws.com/prod/validate-email",
@@ -146,20 +146,22 @@ function Home() {
           message: "Correo suscrito con éxito",
           code: data.statusCode,
         });
+        setEmailLoading(false);
       } else {
         if (data.statusCode === "409") {
           setErrorUserEmail({
             message: "Correo ya suscrito.",
             code: data.statusCode,
           });
+          setEmailLoading(false);
         } else {
           setErrorUserEmail({
             message: "Error al suscribir el correo.",
             code: data.statusCode,
           });
+          setEmailLoading(false);
         }
       }
-      setEmailLoading(false);
     } catch (error) {
       setErrorUserEmail({ message: "Error al suscribir el correo." });
     }
@@ -516,8 +518,8 @@ function Home() {
               </div>
               {emailLoading ? (
                 <div className="spinner-border email-send" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
+                  <span className="visually-hidden">Loading...</span>
+                </div>
               ) : (
                 <div className="email-send" onClick={handleSendEmail}>
                   <i className="fa-regular fa-paper-plane"></i>
