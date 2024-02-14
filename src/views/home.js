@@ -88,24 +88,40 @@ function Home() {
     return isValid;
   };
 
-  // Handles form submission including validation and setting loading state.
-  const handleSubmit = (e) => {
+  // Async function to handle the contact form sending process
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!handleValidations()) {
       console.log("Validación falló");
       return false;
-    } else {
-      console.log("Validación exitosa");
-      setFormLoading(true);
+    }
 
-      // IF MESSAGE SENT
-      setFormLoading(false);
-      setErrors({
-        status: "Mensaje eviado. En breves nos pondremos en contacto.",
+    console.log("Validación exitosa");
+    setFormLoading(true);
+
+    try {
+      const response = await fetch('https://a8nv0x4ffb.execute-api.us-east-1.amazonaws.com/prod/contact-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactForm)
       });
 
-      // IF MESSAGE NOT SENT , ERROR HANDLING
+      if (!response.ok) throw new Error('Network response was not ok.');
+
+      const data = await response.json();
+      console.log("Mensaje enviado exitosamente", data);
+      setErrors({
+        status: "Mensaje enviado. En breve nos pondremos en contacto."
+      });
+
+    } catch (error) {
+      console.error("Error al enviar el mensaje", error);
       setErrors({ status: "Ha ocurrido un error, vuelve a intentarlo." });
+    } finally {
+      setFormLoading(false);
     }
   };
 
