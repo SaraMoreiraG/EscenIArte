@@ -146,24 +146,23 @@ function Home() {
           message: "Correo suscrito con éxito",
           code: data.statusCode,
         });
-        setEmailLoading(false);
       } else {
         if (data.statusCode === "409") {
           setErrorUserEmail({
             message: "Correo ya suscrito.",
             code: data.statusCode,
           });
-          setEmailLoading(false);
         } else {
           setErrorUserEmail({
             message: "Error al suscribir el correo.",
             code: data.statusCode,
           });
-          setEmailLoading(false);
         }
       }
+      setEmailLoading(false);
     } catch (error) {
-      setErrorUserEmail({ message: "Error al suscribir el correo." });
+          setEmailLoading(false);
+          setErrorUserEmail({ message: "Error al suscribir el correo.", code:'400' });
     }
   };
 
