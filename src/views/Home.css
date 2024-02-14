@@ -271,7 +271,16 @@
 }
 
 /* ========== Footer ========== */
+.email-send i,
+.email-send span{
+	cursor: pointer;
+	font-size: 24px;
+	color: #a9a7b0;
+}
 
+.email-send:hover i{
+	color: #623a97;
+}
 
 /* ========== Responsive Design Adjustments ========== */
 /* Adjustments for screens smaller than 1149px */
@@ -319,6 +328,11 @@
 	.benefit-card.medium,
 	.benefit-card.small {
 		height: 300px;
+	}
+
+	.email-send i,
+	.email-send span{
+		font-size: 20px;
 	}
 }
 
@@ -460,3 +474,10 @@
 		padding: 0;
 	}
 }
+
+@media (max-width: 340px) {
+	.email-send i,
+	.email-send span{
+	  font-size: 14px;
+	}
+  }

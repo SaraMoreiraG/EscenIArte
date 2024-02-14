@@ -6,9 +6,6 @@ import "./Home.css";
 
 function Home() {
   // State management for contact form inputs, validation errors, and loading status.
-  const [contactForm, setContactForm] = useState({});
-  const [errors, setErrors] = useState({});
-  const [formLoading, setFormLoading] = useState(false);
   const imagesInfo = [
     {
       id: 1,
@@ -39,6 +36,12 @@ function Home() {
         "https://esceniarte-images.s3.amazonaws.com/home/4.-Liderazgo-Arti%CC%81stico-Tecnolo%CC%81gico.webp",
     },
   ];
+  const [contactForm, setContactForm] = useState({});
+  const [errors, setErrors] = useState({});
+  const [formLoading, setFormLoading] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+  const [errorUserEmail, setErrorUserEmail] = useState({});
+  const [emailLoading, setEmailLoading] = useState(false);
 
   // Handle input change and manage form state
   const handleChange = (e) => {
@@ -53,6 +56,13 @@ function Home() {
     }
   };
 
+  // Function to validate email format
+  const isValidEmail = (email) => {
+    const regex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
+    return regex.test(String(email).toLowerCase());
+  };
+
   // Validate form fields
   const handleValidations = () => {
     let isValid = true;
@@ -64,7 +74,7 @@ function Home() {
       isValid = false;
     }
     // Email format validation
-    if (!/\S+@\S+\.\S+/.test(contactForm.email) && contactForm.email) {
+    if (!isValidEmail(contactForm.email) && contactForm.email) {
       newErrors.email = "*El correo electrónico no es válido.";
       isValid = false;
     }
@@ -96,6 +106,62 @@ function Home() {
 
       // IF MESSAGE NOT SENT , ERROR HANDLING
       setErrors({ status: "Ha ocurrido un error, vuelve a intentarlo." });
+    }
+  };
+
+  // Async function to handle the email sending process
+  const handleSendEmail = async (e) => {
+    e.preventDefault();
+
+    // Validates the email format before proceeding
+    if (!userEmail || !isValidEmail(userEmail)) {
+      setErrorUserEmail({
+        message: "Por favor, ingresa un correo electrónico válido.",
+        code: "400",
+      });
+      return;
+    }
+
+    setErrorUserEmail({});
+
+    try {
+      setEmailLoading(true)
+      // Makes a POST request to the API endpoint with the email
+      const response = await fetch(
+        "https://a8nv0x4ffb.execute-api.us-east-1.amazonaws.com/prod/validate-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: userEmail }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && data.statusCode === "200") {
+        setUserEmail("");
+        setErrorUserEmail({
+          message: "Correo suscrito con éxito",
+          code: data.statusCode,
+        });
+      } else {
+        if (data.statusCode === "409") {
+          setErrorUserEmail({
+            message: "Correo ya suscrito.",
+            code: data.statusCode,
+          });
+        } else {
+          setErrorUserEmail({
+            message: "Error al suscribir el correo.",
+            code: data.statusCode,
+          });
+        }
+      }
+      setEmailLoading(false);
+    } catch (error) {
+      setErrorUserEmail({ message: "Error al suscribir el correo." });
     }
   };
 
@@ -203,8 +269,8 @@ function Home() {
               <p>Al completar todos los módulos</p>
             </div>
           </div>
-          <div className="change-display col-lg-4 col-md-4 col-sm-12 p-2">
-            <div className="benefit-card medium col-sm-6 col-12 mb-3">
+          <div className="change-display col-lg-4 col-md-4 col-sm-12 p-2 gap-2">
+            <div className="benefit-card medium col-md-12 col-sm-6 col-12 mb-3">
               <div className="text-green">
                 <img
                   src="https://ann.axiomthemes.com/splash/src/img/benefits/3.png"
@@ -214,7 +280,7 @@ function Home() {
               <h3>6 meses de soporte premium</h3>
               <p>Obtén soporte técnico profesional</p>
             </div>
-            <div className="benefit-card medium col-sm-6 col-12">
+            <div className="benefit-card medium col-md-12 col-sm-6 col-12">
               <div className="text-green">
                 <img
                   src="https://ann.axiomthemes.com/splash/src/img/benefits/6.png"
@@ -425,33 +491,62 @@ function Home() {
       <div className="footer row m-0">
         <div className="row d-flex justify-content-between col-12 my-3">
           <h2 className="col-lg-6 col-md-5 col-sm-12 mb-3">EscenIArte</h2>
-          <h2 className="col-lg-6 col-md-7 col-sm-12">Innovación en escena, actúa ahora</h2>
+          <h2 className="col-lg-6 col-md-7 col-sm-12">
+            Innovación en escena, actúa ahora
+          </h2>
         </div>
         <div className="row">
           <div className="col-lg-6 col-md-5 col-sm-12 mb-3">
             <h5>Suscribete a nuestra NewsLetter</h5>
-            <div
-              className={`form-group my-4 col-10${
-                errors.general || errors.email ? "input-error" : ""
+            <div className="d-flex align-items-center">
+              <div
+                className={`form-group my-4 col-9 me-3 mb-0${
+                  errors.general || errors.email ? "input-error" : ""
+                }`}
+              >
+                <i className="fa-regular fa-envelope ms-3"></i>
+                <input
+                  type="text"
+                  className="col-10 ps-3"
+                  placeholder="Email"
+                  name="email"
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                ></input>
+              </div>
+              {emailLoading ? (
+                <div className="spinner-border email-send" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              ) : (
+                <div className="email-send" onClick={handleSendEmail}>
+                  <i className="fa-regular fa-paper-plane"></i>
+                </div>
+              )}
+            </div>
+            <p
+              className={`ms-2 ${
+                errorUserEmail.code && errorUserEmail.code !== "200"
+                  ? "text-error"
+                  : ""
               }`}
             >
-              <i className="fa-regular fa-envelope"></i>
-              <input
-                type="text"
-                className="col-11 ps-3"
-                placeholder="Email"
-                name="email"
-                value={contactForm.email || ""}
-                onChange={handleChange}
-              ></input>
-            </div>
-            <p>{errors.email}</p>
+              {errorUserEmail.message}
+            </p>
           </div>
           <div className="col-lg-2 col-md-2 col-6 mb-3">
             <h5 className="mb-3">Redes</h5>
             <ul>
               <li>Instagram</li>
-              <li><a href="https://www.facebook.com/profile.php?id=61556099401622" target="_blank" rel="noreferrer">Facebook</a></li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61556099401622"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Facebook
+                </a>
+              </li>
               <li>Linkedin</li>
             </ul>
           </div>
@@ -466,14 +561,30 @@ function Home() {
           <div className="col-lg-2 col-md-3 col-sm-12 mb-3">
             <h5>Contacto</h5>
             <ul>
-              <li onClick={() => scrollToSection("contacto")}>esceniarte@gmail.com</li>
-              <li><a href="https://wa.me/34699375412?text=Hola%21%20Estoy%20interesado%2Fa%20en%20vuestro%20curso." target="_blank" rel="noreferrer">699 37 54 12</a></li>
-              <li><a href="https://wa.me/34618196103?text=Hola%21%20Estoy%20interesado%2Fa%20en%20vuestro%20curso." target="_blank" rel="noreferrer">618 19 61 03</a></li>
+              <li onClick={() => scrollToSection("contacto")}>
+                esceniarte@gmail.com
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/34699375412?text=Hola%21%20Estoy%20interesado%2Fa%20en%20vuestro%20curso."
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  699 37 54 12
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/34618196103?text=Hola%21%20Estoy%20interesado%2Fa%20en%20vuestro%20curso."
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  618 19 61 03
+                </a>
+              </li>
             </ul>
           </div>
         </div>
-
-        <div className="col-6"></div>
       </div>
       <NavbarHome />
     </>

@@ -1,26 +1,97 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 
 function Login() {
+  const [userCredentials, setUserCredentials] = useState({});
+  const [errors, setErrors] = useState({});
+  const [formLoading, setFormLoading] = useState(false);
+
+  // Handle input change and manage form state
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserCredentials((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    if (errors[name] || errors.general) {
+      // Clear specific field errors and general errors upon input change.
+      setErrors((prev) => ({ ...prev, [name]: "", general: "", }));
+    }
+  };
+
+  // Validate form fields
+  const handleValidations = () => {
+    let isValid = true;
+    let newErrors = {};
+
+    // Required field validation
+    if (!userCredentials.password || !userCredentials.email) {
+      newErrors.general = "*Introduce tus datos";
+      isValid = false;
+    }
+    // Email format validation
+    if (!/\S+@\S+\.\S+/.test(userCredentials.email) && userCredentials.email) {
+      newErrors.general = "*El correo electrónico no es válido.";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  // Handles form submission including validation and setting loading state.
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    // if (!handleValidations()) {
+    //   console.log("Validación falló");
+    //   console.log(userCredentials)
+    //   return false;
+    // } else {
+      console.log("Validación exitosa");
+      setFormLoading(true);
+
+      // IF MESSAGE SENT
+      setFormLoading(false);
+      setErrors({
+        status: "Credenciales correctas.",
+      });
+
+      // IF MESSAGE NOT SENT , ERROR HANDLING
+      setErrors({ status: "Ha ocurrido un error, vuelve a intentarlo." });
+    // }
+  };
+
   return (
     <div className="login row .flex-md-wrap-reverse flex-sm-wrap-reverse m-0">
       <div className="form-image my-3 col-lg-5 col-md-6 col-sm-12">
         <div className="form col-12">
           <div className="form-group my-4">
             <i className="fa-regular fa-envelope me-3"></i>
-            <input type="text" placeholder="Email"></input>
+            <input
+              type="text"
+              placeholder="Email"
+              name="name"
+              value={userCredentials.name || ""}
+              onChange={handleChange}
+            ></input>
           </div>
           <div className="form-group my-4">
             <i className="fa-solid fa-lock me-2"></i>
-            <input type="password" placeholder="Contraseña"></input>
+            <input
+              type="password"
+              placeholder="Contraseña"
+              name="password"
+              value={userCredentials.password || ""}
+              onChange={handleChange}
+            ></input>
           </div>
           <div className="d-flex justify-content-center">
-            <Link to="/dashboard" className="btn-green">
+            <Link to="/dashboard" className="btn-green" onClick={handleSubmit}>
               Entrar
             </Link>
           </div>
           <div className="d-flex justify-content-center">
-            <p className="text-error mt-2">Usuario o contraseña incorrectos</p>
+            <p className="text-error mt-2">{errors.general}</p>
           </div>
           <div className="d-flex justify-content-center">
             <a href="/home" className="remember-password">
@@ -47,7 +118,7 @@ function Login() {
           rel="noreferrer"
           className="btn-purple no-small-screen"
         >
-          Comprar
+          ¡Inscribete ahora!
         </a>
       </div>
     </div>
