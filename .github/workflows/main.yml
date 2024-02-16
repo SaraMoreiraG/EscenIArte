@@ -36,7 +36,8 @@ jobs:
         run: npm install
 
       - name: Build the React app
-        run: npm run build
+        run: |
+          REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} REACT_APP_CONTACT_FORM_API=${{ secrets.REACT_APP_CONTACT_FORM_API }} REACT_APP_SEND_EMAIL_API=${{ secrets.REACT_APP_SEND_EMAIL_API }} REACT_APP_CHECK_EMAIL=${{ secrets.REACT_APP_CHECK_EMAIL }} npm run build
 
       - name: Deploy to AWS S3
         run: |

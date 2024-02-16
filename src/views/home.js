@@ -101,7 +101,7 @@ function Home() {
     setFormLoading(true);
 
     try {
-      const response = await fetch('https://a8nv0x4ffb.execute-api.us-east-1.amazonaws.com/prod/contact-form', {
+      const response = await fetch(process.env.REACT_APP_CONTACT_FORM_API, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -144,7 +144,7 @@ function Home() {
       setEmailLoading(true);
       // Makes a POST request to the API endpoint with the email
       const response = await fetch(
-        "https://a8nv0x4ffb.execute-api.us-east-1.amazonaws.com/prod/validate-email",
+        process.env.REACT_APP_SEND_EMAIL_API,
         {
           method: "POST",
           headers: {
