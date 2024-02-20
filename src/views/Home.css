@@ -454,7 +454,9 @@
 	}
 
 	.hero,
-	.promo {
+	.promo,
+	.instructor,
+	.contact {
 	  background-attachment: scroll; /* Deshabilita fixed para dispositivos móviles */
 	  background-size: cover; /* Ajusta según necesites */
 	}

@@ -318,7 +318,7 @@ function Home() {
             className=""
           />
         </div>
-        <div className="col-7 text-center m-0 p-0">
+        <div className="col-md-7 col-11 text-center m-0 p-0">
           <h2 className="my-4">Enrique Torre</h2>
           <h5>
             Con más de dos décadas de trayectoria en la Compañía de Teatro Sol y
