@@ -453,6 +453,12 @@
 		padding: 2px 5px;
 	}
 
+	.hero,
+	.promo {
+	  background-attachment: scroll; /* Deshabilita fixed para dispositivos móviles */
+	  background-size: cover; /* Ajusta según necesites */
+	}
+
 	.hero-text h1 {
 		width: 320px;
 	}
