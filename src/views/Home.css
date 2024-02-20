@@ -474,6 +474,12 @@
 		width: 320px;
 	}
 
+	.hero,
+	.promo {
+	  background-attachment: scroll; /* Deshabilita fixed para dispositivos móviles */
+	  background-size: cover; /* Ajusta según necesites */
+	}
+
 	.hero-text p {
 		display: none;
 	}
