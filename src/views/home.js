@@ -116,6 +116,7 @@ function Home() {
       setErrors({
         status: "Mensaje enviado. En breve nos pondremos en contacto."
       });
+      setContactForm({})
 
     } catch (error) {
       console.error("Error al enviar el mensaje", error);
@@ -399,7 +400,7 @@ function Home() {
           <div className="position-relative text-center col-12 bg-primary">
             {/* <!-- Imagen de fondo --> */}
             <img
-              src="https://ann.axiomthemes.com/splash/src/img/elm/1.jpg"
+              src="https://esceniarte-images.s3.amazonaws.com/dashboard.png"
               className="img-fluid"
               alt="Background"
             />
@@ -407,7 +408,7 @@ function Home() {
             {/* <!-- Imagen superpuesta --> */}
             <div className="overlay-image-container">
               <img
-                src="https://ann.axiomthemes.com/splash/src/img/elm/1.jpg"
+                src="https://esceniarte-images.s3.amazonaws.com/dashboard.png"
                 className="img-fluid "
                 alt="Overlay"
               />

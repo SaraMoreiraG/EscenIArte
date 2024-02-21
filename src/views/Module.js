@@ -59,7 +59,7 @@ const scrollToSection = (sectionId) => {
         </div>
       )}
       <div className="header-center">
-        <h2>1. Introducción a la IA en las Artes Escénicas</h2>
+        <h2>Estrategias de Venta y Organización</h2>
       </div>
       <div className="row justify-content-center my-5">
         <div className="col-7">
@@ -73,8 +73,8 @@ const scrollToSection = (sectionId) => {
               />
             </div>
             <div className="col-6 p-3">
-              <h3>¿Qué es la  Inteligencia Artificial?</h3>
-              <p>Descubre como la IA puede abrir nuevas fuentes de inspiración</p>
+              <h3>Introducción a la Distribución Teatral</h3>
+              <p>Descubre cómo ChatGPT revoluciona la distribución teatral desde el primer acto.</p>
               <hr></hr>
               <div className="col-6 d-flex justify-content-between my-3">
                 <span>
@@ -96,8 +96,8 @@ const scrollToSection = (sectionId) => {
               />
             </div>
             <div className="col-6 p-3">
-              <h3>Class Title</h3>
-              <p>Class Description</p>
+              <h3>Creación de Buyer Persona con ChatGPT</h3>
+              <p>Aprende a diseñar tu audiencia ideal con la inteligencia de ChatGPT.</p>
               <hr></hr>
               <div className="col-6 d-flex justify-content-between my-3">
                 <span>
@@ -119,8 +119,8 @@ const scrollToSection = (sectionId) => {
               />
             </div>
             <div className="col-6 p-3">
-              <h3>Class Title</h3>
-              <p>Class Description</p>
+              <h3>Estrategias de Venta y Marketing</h3>
+              <p>Impulsa tus ventas y marketing con estrategias innovadoras gracias a ChatGPT.</p>
               <hr></hr>
               <div className="col-6 d-flex justify-content-between my-3">
                 <span>
@@ -139,23 +139,23 @@ const scrollToSection = (sectionId) => {
             <div className="ps-4">
               <Link to={"/module/1"}>
                 <p>
-                  <i className="fa-solid fa-circle me-1"></i> Módulo 1
+                <i className="fa-regular fa-circle me-1"></i> 1. Introducción a la IA
                 </p>
               </Link>
               <Link to={"/module/2"}>
                 <p>
-                  <i className="fa-solid fa-circle-notch me-1"></i> Módulo 2
+                  <i className="fa-solid fa-circle-notch me-1"></i> 2. Optimización de Comandos y Respuestas
                 </p>
               </Link>
               <Link to={"/module/23"}>
                 <p>
-                  <i className="fa-regular fa-circle me-1"></i> Módulo 3
+                <i className="fa-solid fa-circle me-1"></i> 3. Estrategias de Venta y Organización
                 </p>
               </Link>
-              <p>Módulo 4</p>
-              <p>Módulo 5</p>
-              <p>Módulo 6</p>
-              <p>Módulo 7</p>
+              <p><i className="fa-regular fa-circle me-1"></i> 4. Innovación y Generación de Ideas</p>
+              <p><i className="fa-regular fa-circle me-1"></i> 5. Creación de Imágenes con DALL·E</p>
+              <p><i className="fa-regular fa-circle me-1"></i> 6. Estrategias para Redes Sociales</p>
+              <p><i className="fa-regular fa-circle me-1"></i> 7. Plugins y el Potencial de los Modelos GPT</p>
             </div>
           </div>
         </div>

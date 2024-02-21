@@ -11,7 +11,6 @@ function Login() {
     async (response) => {
       setLoading(true);
       const userObject = jwt_decode(response.credential);
-      console.log("userObject", userObject);
 
       try {
         const response = await fetch(process.env.REACT_APP_CHECK_EMAIL, {
@@ -23,9 +22,10 @@ function Login() {
         });
 
         const data = await response.json();
-        console.log("data", data);
+
         if (data.userExists) {
           console.log("El usuario está registrado");
+          localStorage.setItem("authToken", data.token);
           setError("");
           navigate("/dashboard");
         } else {
@@ -65,8 +65,8 @@ function Login() {
       <div className="form-image col-lg-5 col-md-6 col-sm-12">
         {loading && (
           <div className="col-12 d-flex justify-content-center">
-            <div class="spinner-border" role="status">
-              <span class="visually-hidden">Loading...</span>
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
           </div>
         )}
