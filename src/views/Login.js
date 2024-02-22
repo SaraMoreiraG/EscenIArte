@@ -56,52 +56,54 @@ function Login() {
   }, [handleCallbackResponse]);
 
   return (
-    <div className="login row m-0">
-      <div className="row justify-content-end p-0">
-        <div className="col-12 d-flex justify-content-end p-0">
-          <div id="signInDiv"></div>
-        </div>
-        <div className="col-12 justify-content-end">
+    <>
+      <div className="login row m-0">
+        <div className="row justify-content-end p-0">
+          <div className="col-12 d-flex justify-content-end p-0">
+            <div id="signInDiv"></div>
+          </div>
+          <div className="col-12 justify-content-end">
             <p className="text-end text-error">{error}</p>
           </div>
-        {loading && (
-          <div className="col-12 d-flex justify-content-end">
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
+          {loading && (
+            <div className="col-12 d-flex justify-content-end">
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
             </div>
-          </div>
-        )}
-      </div>
-      <div className="image-container col-lg-6 col-md-5 col-sm-12 p-0">
-        <img
-          src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
-          alt="Esceniarte logo"
-          className="img-fluid w-100"
-        />
-      </div>
-      <div className="col-lg-6 col-md-7 col-sm-12 py-5 px-3">
-        <h4>ACCESO AL CURSO</h4>
-        <h1>
-          Forma Parte de la{" "}
-          <span className="text-purple">Comunidad de Creadores </span>{" "}
-          Conectados
-        </h1>
-        <p className="mb-5">
-          Desde los conceptos básicos hasta su integración en la creatividad
-          teatral. Inicia tu aventura en el universo de la tecnología del
-          futuro. <br></br> ¿Aún no tienes el curso?
-        </p>
-        <a
-          href="https://buy.stripe.com/4gw037bHd7OP2HedQQ"
-          target="_blank"
-          rel="noreferrer"
-          className="btn-purple"
-        >
-          ¡Inscribete ahora!
-        </a>
+          )}
+        </div>
+        <div className="image-container col-lg-6 col-md-5 col-sm-12 p-0">
+          <img
+            src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
+            alt="Esceniarte logo"
+            className="img-fluid w-100"
+          />
+        </div>
+        <div className="col-lg-6 col-md-7 col-sm-12 py-5 px-3">
+          <h4>ACCESO AL CURSO</h4>
+          <h1>
+            Forma Parte de la{" "}
+            <span className="text-purple">Comunidad de Creadores </span>{" "}
+            Conectados
+          </h1>
+          <p className="mb-5">
+            Desde los conceptos básicos hasta su integración en la creatividad
+            teatral. Inicia tu aventura en el universo de la tecnología del
+            futuro. <br></br> ¿Aún no tienes el curso?
+          </p>
+          <a
+            href="https://buy.stripe.com/4gw037bHd7OP2HedQQ"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-purple"
+          >
+            ¡Inscribete ahora!
+          </a>
+        </div>
       </div>
       <NavbarLogin />
-    </div>
+    </>
   );
 }
 

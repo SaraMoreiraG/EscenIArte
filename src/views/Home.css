@@ -16,13 +16,18 @@
 
 /* cambiar por a  */
 .navigation-bar button,
-.links Link {
+.nav-link{
 	color: white;
 	background-color: transparent;
 	border: none;
 	text-decoration: none;
 	padding: 0.5em;
 	font-weight: bold;
+}
+
+.navigation-bar button:hover,
+.nav-link:hover{
+	color: #623a97;
 }
 
 .arrow-wrapper {

@@ -60,14 +60,14 @@ function Module() {
         </div>
       )}
       <div className="header-center">
-        <h2>Estrategias de Venta y Organización</h2>
+        <h2>Creación de Imágenes con DALL·E</h2>
       </div>
       <div className="row justify-content-center my-5">
         <div className="col-7">
           <div className="class-wrapper row">
             <div className="col-6 p-0">
               <img
-                src="https://esceniarte-images.s3.amazonaws.com/1-potencial-creativo/modules/1-Introduccion+a+la+IA+en+Artes+Escenicas.webp"
+                src="https://esceniarte-images.s3.amazonaws.com/dall-e-module.webp"
                 alt="class 1"
                 className="img-fluid"
                 onClick={() =>
@@ -78,10 +78,9 @@ function Module() {
               />
             </div>
             <div className="col-6 p-3">
-              <h3>Introducción a la Distribución Teatral</h3>
+              <h3>Aplicación de DALL·E en las artes escénicas</h3>
               <p>
-                Descubre cómo ChatGPT revoluciona la distribución teatral desde
-                el primer acto.
+                Aprende a transformar tu arte con la visión de DALL·E.
               </p>
               <hr></hr>
               <div className="col-6 d-flex justify-content-between my-3">
@@ -173,12 +172,12 @@ function Module() {
               </Link>
               <Link to={"/module/23"}>
                 <p>
-                  <i className="fa-solid fa-circle me-1"></i> 3. Estrategias de
+                  <i className="fa-regular fa-circle me-1"></i> 3. Estrategias de
                   Venta y Organización
                 </p>
               </Link>
               <p>
-                <i className="fa-regular fa-circle me-1"></i> 4. Innovación y
+                <i className="fa-solid fa-circle me-1"></i> 4. Innovación y
                 Generación de Ideas
               </p>
               <p>

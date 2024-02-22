@@ -30,7 +30,7 @@ function NavbarLogin() {
     <footer className="navigation-bar">
       {isNavBarVisible && (
         <div className="links">
-          <Link to={'/'}>Más información</Link>
+          <Link to={'/'} className="nav-link my-1">Más información</Link>
         </div>
       )}
     </footer>

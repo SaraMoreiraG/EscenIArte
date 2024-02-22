@@ -306,7 +306,7 @@ function Home() {
                 />
               </div>
               <h3>FAQ y Tutoriales en Video</h3>
-              <p>Toda la información en un solo lugar</p>
+              <p>No te quedes con ninguna duda</p>
             </div>
           </div>
         </div>
@@ -345,7 +345,7 @@ function Home() {
           <div className="no-big-screen">
             <div className="col-10">
               <img
-                src="https://ann.axiomthemes.com/splash/src/img/elm/1.jpg"
+                src="https://esceniarte-images.s3.amazonaws.com/dashboard.webp"
                 className="img-fluid"
                 alt="Background"
               />
@@ -400,7 +400,7 @@ function Home() {
           <div className="position-relative text-center col-12 bg-primary">
             {/* <!-- Imagen de fondo --> */}
             <img
-              src="https://esceniarte-images.s3.amazonaws.com/dashboard.png"
+              src="https://esceniarte-images.s3.amazonaws.com/behid-dashboard.webp"
               className="img-fluid"
               alt="Background"
             />
@@ -408,7 +408,7 @@ function Home() {
             {/* <!-- Imagen superpuesta --> */}
             <div className="overlay-image-container">
               <img
-                src="https://esceniarte-images.s3.amazonaws.com/dashboard.png"
+                src="https://esceniarte-images.s3.amazonaws.com/dashboard.webp"
                 className="img-fluid "
                 alt="Overlay"
               />
