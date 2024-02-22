@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import NavbarLogin from "../components/NavbarLogin";
 
 function Login() {
   const [error, setError] = useState("");
@@ -56,21 +57,27 @@ function Login() {
 
   return (
     <div className="login row m-0">
-      <div className="col-12 d-flex justify-content-end">
-        <div>
+      <div className="row justify-content-end p-0">
+        <div className="col-12 d-flex justify-content-end p-0">
           <div id="signInDiv"></div>
-          <p className="text-end text-error">{error}</p>
         </div>
-      </div>
-      <div className="image-container col-lg-6 col-md-5 col-sm-12 p-0">
+        <div className="col-12 justify-content-end">
+            <p className="text-end text-error">{error}</p>
+          </div>
         {loading && (
-          <div className="col-12 d-flex justify-content-center">
+          <div className="col-12 d-flex justify-content-end">
             <div className="spinner-border" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
           </div>
         )}
-        <img src="https://esceniarte.s3.amazonaws.com/logo.jpeg" alt='Esceniarte logo' className="img-fluid w-100"/>
+      </div>
+      <div className="image-container col-lg-6 col-md-5 col-sm-12 p-0">
+        <img
+          src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
+          alt="Esceniarte logo"
+          className="img-fluid w-100"
+        />
       </div>
       <div className="col-lg-6 col-md-7 col-sm-12 py-5 px-3">
         <h4>ACCESO AL CURSO</h4>
@@ -93,6 +100,7 @@ function Login() {
           ¡Inscribete ahora!
         </a>
       </div>
+      <NavbarLogin />
     </div>
   );
 }

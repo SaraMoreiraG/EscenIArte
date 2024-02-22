@@ -3,16 +3,20 @@
 	position: fixed;
 	bottom: 0;
 	width: 100%;
+	padding: 0;
 }
 
 .navigation-bar .links {
 	display: flex;
 	justify-content: space-evenly;
 	background-color: #000000;
+	padding: 5px 0;
+	margin: 0
 }
 
 /* cambiar por a  */
-.navigation-bar button {
+.navigation-bar button,
+.links Link {
 	color: white;
 	background-color: transparent;
 	border: none;
