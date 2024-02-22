@@ -145,10 +145,21 @@ p {
 .login {
   display: flex;
   flex-direction: row;
-  height: 100vh;
   align-items: center;
   justify-content: space-between;
-  padding: 0 60px;
+  padding: 100px 60px;
+}
+
+#signInDiv {
+  max-width: 100%;
+  padding: 2px;
+  background-color: #623a97;
+  border-radius: 8px;
+  transition: background-color 0.5s ease;
+}
+
+#signInDiv:hover {
+  background-color: #5ab75b;
 }
 
 .remember-password {
@@ -224,8 +235,8 @@ p {
   }
 
   .login {
-    height: 100%;
-    padding: 20px 0;
+    height: auto;
+    padding: 40px 0;
     justify-content: start;
   }
 }

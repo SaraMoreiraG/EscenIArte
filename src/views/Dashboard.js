@@ -3,21 +3,68 @@ import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 const Dashboard = () => {
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    name: "",
+    coursesId: [],
+    coursesInfo: [],
+  });
+  const [error, setError] = useState("");
+
+  console.log("UserInfo: ", userInfo);
 
   useEffect(() => {
+    const fetchCoursesInfo = async (courseIds, authToken) => {
+      try {
+        const coursesInfo = await Promise.all(
+          courseIds.map(async (courseId) => {
+            console.log("Va a intentar el fetch", courseId);
+            const response = await fetch(
+              `https://3g9vmjpmk5.execute-api.us-east-1.amazonaws.com/prod/get-course-by-id/${courseId.courseId}`,
+              {
+                method: "GET",
+                headers: {
+                  Authorization: `Bearer ${authToken}`,
+                  "Content-Type": "application/json",
+                },
+                mode: 'cors'
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error(
+                `Failed to fetch course with ID ${courseId}: ${response.statusText}`
+              );
+            }
+
+            return response.json();
+          })
+        );
+
+        return coursesInfo;
+      } catch (err) {
+        setError(err.message);
+        console.error(err);
+        return [];
+      }
+    };
+
     const token = localStorage.getItem("authToken");
     if (token) {
       const decoded = jwt_decode(token);
-      console.log("El token decoded", decoded);
-      setUserInfo({
-        email: decoded.email,
-        name: decoded.nombreDelAlumno,
-        coursesId: decoded.coursesID,
+      console.log("Token decoded", decoded);
+      fetchCoursesInfo(decoded.coursesID, token).then((coursesInfo) => {
+        setUserInfo((prevInfo) => ({
+          ...prevInfo,
+          email: decoded.email,
+          name: decoded.nombreDelAlumno,
+          coursesId: decoded.coursesID,
+          coursesInfo,
+        }));
       });
-    console.log("User info:", userInfo);
     }
-  }, [userInfo]);
+  }, []);
+
   // const modules = [
   //   {
   //     id: 1,
@@ -88,24 +135,27 @@ const Dashboard = () => {
   //       "Integra la IA en una propuesta artística innovadora, aplicando todos los conocimientos adquiridos.",
   //   },
   // ];
+
   return (
     <div className="dashboard row m-0 text-center">
       <h4>PANEL DEL ALUMNO</h4>
       <h2>¡Bienvenidx {userInfo.name}!</h2>
       <p> Inicia tu aventura en el universo de la tecnología del futuro.</p>
+      <p>{error}</p>
       <div className="row my-5">
-        {userInfo.coursesId && userInfo.coursesId.map((course) => (
-          <Link
-            to={`/module/1`}
-            key={course.courseId}
-            className="module col-lg-4 col-md-5 col-12 p-2"
-          >
-            <img src={course.courseImage} className="img-fluid" alt="" />
-            <div className="module-hover-text">
-              <p>{course.courseTitle}</p>
-            </div>
-          </Link>
-        ))}
+        {userInfo.coursesId &&
+          userInfo.coursesId.map((course) => (
+            <Link
+              to={`/module/1`}
+              key={course.courseId}
+              className="module col-lg-4 col-md-5 col-12 p-2"
+            >
+              <img src={course.courseImage} className="img-fluid" alt="" />
+              <div className="module-hover-text">
+                <p>{course.courseTitle}</p>
+              </div>
+            </Link>
+          ))}
       </div>
     </div>
   );

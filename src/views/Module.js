@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './Module.css'
+import "./Module.css";
 function Module() {
   // Estado para controlar la visibilidad del modal
   const [isModalOpen, setIsModalOpen] = useState(false);
-	const [videoInModal, setVideoInModal] = useState()
+  const [videoInModal, setVideoInModal] = useState();
+
   // Función para abrir el modal
   const openModal = (video) => {
-	setVideoInModal(video)
-	setIsModalOpen(true)
-	scrollToSection('video')
-};
+    setVideoInModal(video);
+    setIsModalOpen(true);
+    scrollToSection("video");
+  };
 
-const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId) => {
     // Prevent the default anchor link behavior
     const section = document.getElementById(sectionId);
     if (section) {
@@ -69,12 +70,19 @@ const scrollToSection = (sectionId) => {
                 src="https://esceniarte-images.s3.amazonaws.com/1-potencial-creativo/modules/1-Introduccion+a+la+IA+en+Artes+Escenicas.webp"
                 alt="class 1"
                 className="img-fluid"
-                onClick={() => openModal('https://player.vimeo.com/video/896261088?h=cc5afb0f31&title=0&byline=0&portrait=0')}
+                onClick={() =>
+                  openModal(
+                    "https://player.vimeo.com/video/896261088?h=cc5afb0f31&title=0&byline=0&portrait=0"
+                  )
+                }
               />
             </div>
             <div className="col-6 p-3">
               <h3>Introducción a la Distribución Teatral</h3>
-              <p>Descubre cómo ChatGPT revoluciona la distribución teatral desde el primer acto.</p>
+              <p>
+                Descubre cómo ChatGPT revoluciona la distribución teatral desde
+                el primer acto.
+              </p>
               <hr></hr>
               <div className="col-6 d-flex justify-content-between my-3">
                 <span>
@@ -86,18 +94,25 @@ const scrollToSection = (sectionId) => {
               </div>
             </div>
           </div>
-		  <div className="class-wrapper row">
+          <div className="class-wrapper row">
             <div className="col-6 p-0">
               <img
                 src="https://esceniarte-images.s3.amazonaws.com/1-potencial-creativo/modules/2-ChatGPT+y+Creatividad.png"
                 alt="class 1"
                 className="img-fluid"
-                onClick={() => openModal('https://player.vimeo.com/video/896261088?h=cc5afb0f31&title=0&byline=0&portrait=0')}
+                onClick={() =>
+                  openModal(
+                    "https://player.vimeo.com/video/896261088?h=cc5afb0f31&title=0&byline=0&portrait=0"
+                  )
+                }
               />
             </div>
             <div className="col-6 p-3">
               <h3>Creación de Buyer Persona con ChatGPT</h3>
-              <p>Aprende a diseñar tu audiencia ideal con la inteligencia de ChatGPT.</p>
+              <p>
+                Aprende a diseñar tu audiencia ideal con la inteligencia de
+                ChatGPT.
+              </p>
               <hr></hr>
               <div className="col-6 d-flex justify-content-between my-3">
                 <span>
@@ -109,18 +124,25 @@ const scrollToSection = (sectionId) => {
               </div>
             </div>
           </div>
-		  <div className="class-wrapper row">
+          <div className="class-wrapper row">
             <div className="col-6 p-0">
               <img
                 src="https://esceniarte-images.s3.amazonaws.com/1-potencial-creativo/modules/3-IA+en+Produccio%CC%81n+y+Promocio%CC%81n.png"
                 alt="class 1"
                 className="img-fluid"
-                onClick={() => openModal('https://player.vimeo.com/video/885725676?h=b558d90589&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture')}
+                onClick={() =>
+                  openModal(
+                    'https://player.vimeo.com/video/885725676?h=b558d90589&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture'
+                  )
+                }
               />
             </div>
             <div className="col-6 p-3">
               <h3>Estrategias de Venta y Marketing</h3>
-              <p>Impulsa tus ventas y marketing con estrategias innovadoras gracias a ChatGPT.</p>
+              <p>
+                Impulsa tus ventas y marketing con estrategias innovadoras
+                gracias a ChatGPT.
+              </p>
               <hr></hr>
               <div className="col-6 d-flex justify-content-between my-3">
                 <span>
@@ -139,23 +161,38 @@ const scrollToSection = (sectionId) => {
             <div className="ps-4">
               <Link to={"/module/1"}>
                 <p>
-                <i className="fa-regular fa-circle me-1"></i> 1. Introducción a la IA
+                  <i className="fa-regular fa-circle me-1"></i> 1. Introducción
+                  a la IA
                 </p>
               </Link>
               <Link to={"/module/2"}>
                 <p>
-                  <i className="fa-solid fa-circle-notch me-1"></i> 2. Optimización de Comandos y Respuestas
+                  <i className="fa-solid fa-circle-notch me-1"></i> 2.
+                  Optimización de Comandos y Respuestas
                 </p>
               </Link>
               <Link to={"/module/23"}>
                 <p>
-                <i className="fa-solid fa-circle me-1"></i> 3. Estrategias de Venta y Organización
+                  <i className="fa-solid fa-circle me-1"></i> 3. Estrategias de
+                  Venta y Organización
                 </p>
               </Link>
-              <p><i className="fa-regular fa-circle me-1"></i> 4. Innovación y Generación de Ideas</p>
-              <p><i className="fa-regular fa-circle me-1"></i> 5. Creación de Imágenes con DALL·E</p>
-              <p><i className="fa-regular fa-circle me-1"></i> 6. Estrategias para Redes Sociales</p>
-              <p><i className="fa-regular fa-circle me-1"></i> 7. Plugins y el Potencial de los Modelos GPT</p>
+              <p>
+                <i className="fa-regular fa-circle me-1"></i> 4. Innovación y
+                Generación de Ideas
+              </p>
+              <p>
+                <i className="fa-regular fa-circle me-1"></i> 5. Creación de
+                Imágenes con DALL·E
+              </p>
+              <p>
+                <i className="fa-regular fa-circle me-1"></i> 6. Estrategias
+                para Redes Sociales
+              </p>
+              <p>
+                <i className="fa-regular fa-circle me-1"></i> 7. Plugins y el
+                Potencial de los Modelos GPT
+              </p>
             </div>
           </div>
         </div>

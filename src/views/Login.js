@@ -50,19 +50,19 @@ function Login() {
 
     google.accounts.id.renderButton(document.getElementById("signInDiv"), {
       theme: "outline",
-      size: "large",
+      size: "medium",
     });
   }, [handleCallbackResponse]);
 
   return (
-    <div className="login row m-0 p-0">
+    <div className="login row m-0">
       <div className="col-12 d-flex justify-content-end">
         <div>
           <div id="signInDiv"></div>
           <p className="text-end text-error">{error}</p>
         </div>
       </div>
-      <div className="form-image col-lg-5 col-md-6 col-sm-12">
+      <div className="image-container col-lg-6 col-md-5 col-sm-12 p-0">
         {loading && (
           <div className="col-12 d-flex justify-content-center">
             <div className="spinner-border" role="status">
@@ -70,15 +70,16 @@ function Login() {
             </div>
           </div>
         )}
+        <img src="https://esceniarte.s3.amazonaws.com/logo.jpeg" alt='Esceniarte logo' className="img-fluid w-100"/>
       </div>
-      <div className="col-lg-6 col-md-6 col-sm-8">
+      <div className="col-lg-6 col-md-7 col-sm-12 py-5 px-3">
         <h4>ACCESO AL CURSO</h4>
         <h1>
           Forma Parte de la{" "}
           <span className="text-purple">Comunidad de Creadores </span>{" "}
           Conectados
         </h1>
-        <p>
+        <p className="mb-5">
           Desde los conceptos básicos hasta su integración en la creatividad
           teatral. Inicia tu aventura en el universo de la tecnología del
           futuro. <br></br> ¿Aún no tienes el curso?
