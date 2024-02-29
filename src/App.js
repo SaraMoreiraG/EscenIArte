@@ -1,9 +1,10 @@
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 import Home from "./views/home";
 import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
 import Module from "./views/Module";
-import PrivateRoute from "./components/PrivateRoute";
+import CoursesManagement from "./views/CoursesManagement";
 import "./App.css";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/management" element={<CoursesManagement />} />
       </Routes>
     </Router>
   );

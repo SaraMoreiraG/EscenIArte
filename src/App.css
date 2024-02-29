@@ -180,6 +180,21 @@ p {
 	transition: transform 0.3s ease;
 }
 
+/* ========== CoursesManagement View ========== */
+.courses-management{
+  text-align: center;
+  padding: 40px 80px;
+}
+
+.course-row{
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #000000;
+  border-radius: 20px;
+  border: 1px solid  #ffffff;
+}
+
 /* ========== Responsive Adjustments ========== */
 @media (max-width: 1149px) {
   .fixed-button {
