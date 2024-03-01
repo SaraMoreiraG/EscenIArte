@@ -122,11 +122,11 @@ p {
 }
 
 .text-purple {
-	color: #623a97;
+  color: #623a97;
 }
 
 .text-green {
-	color: #258a59;
+  color: #258a59;
 }
 
 .no-big-medium-screen {
@@ -138,9 +138,10 @@ p {
   margin: 40px 0;
 }
 
-.bold{
+.bold {
   font-weight: 700;
 }
+
 /* ========== Login View ========== */
 .login {
   display: flex;
@@ -171,28 +172,40 @@ p {
 
 /* ========== Dashboard View ========== */
 .dashboard {
-	padding: 70px;
+  padding: 70px;
 }
 
 .module img {
-	border-radius: 20px;
-	cursor: pointer;
-	transition: transform 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 /* ========== CoursesManagement View ========== */
-.courses-management{
-  text-align: center;
-  padding: 40px 80px;
+.module-title,
+.fa-pen-to-square,
+.fa-circle-plus,
+.fa-circle-check,
+.fa-trash-can{
+  cursor: pointer;
 }
 
-.course-row{
-  display: flex;
-  align-items: center;
-  padding: 20px 0;
-  background-color: #000000;
-  border-radius: 20px;
-  border: 1px solid  #ffffff;
+.module-title:hover{
+  color: #623a97;
+}
+
+.fa-pen-to-square:hover,
+.fa-circle-plus:hover{
+  color: #3a9497;
+}
+
+.fa-trash-can:hover{
+  color: #9f1d1d;
+}
+
+.module-title.selected,
+.fa-circle-check:hover{
+  color: #258a59;
 }
 
 /* ========== Responsive Adjustments ========== */
@@ -202,6 +215,7 @@ p {
     right: 20px;
     padding: 0.8em 1.9em;
   }
+
   h1 {
     font-size: 2.8em;
     font-weight: 700;
