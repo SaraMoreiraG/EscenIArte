@@ -190,6 +190,11 @@ p {
   cursor: pointer;
 }
 
+.fa-pen-to-square.big,
+.fa-trash-can.big{
+  font-size: 20px;
+}
+
 .module-title:hover{
   color: #623a97;
 }
@@ -205,9 +210,53 @@ p {
 
 .module-title.selected,
 .fa-circle-check:hover{
-  color: #258a59;
+  color: #3a9497;
 }
 
+.img-editing{
+  background-size: cover;
+  background-position: center;
+  padding: 30px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.img-editing textarea{
+  background-color: #000;
+  width: 80%;
+}
+.bg-white{
+  background: #f6f6f6;
+  color: #000;
+  border-radius: 8px;
+}
+
+textarea.title{
+  font-size: 24px;
+  line-height: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.pdf-link{
+  border: 1px solid #6601ff;
+  background-color: #000;
+	border-radius: 8px;
+  width: 95%;
+}
+
+.save-button{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: #025d48;
+  padding: 15px 17px 15px;
+	border-radius: 8px;
+}
+
+.save-button:hover{
+  background-color: #258a59;
+}
 /* ========== Responsive Adjustments ========== */
 @media (max-width: 1149px) {
   .fixed-button {
