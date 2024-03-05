@@ -1,5 +1,6 @@
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
+import AdminRoute from "./components/AdminRoute";
 import Home from "./views/home";
 import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
@@ -29,7 +30,14 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/management" element={<CoursesManagement />} />
+        <Route
+          path="/management"
+          element={
+            <AdminRoute>
+              <CoursesManagement />
+            </AdminRoute>
+          }
+        />
       </Routes>
     </Router>
   );

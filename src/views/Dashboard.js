@@ -8,6 +8,7 @@ const Dashboard = () => {
     name: "",
     coursesId: [],
     coursesInfo: [],
+    isAdmin: false,
   });
   const [error, setError] = useState("");
 
@@ -33,7 +34,7 @@ const Dashboard = () => {
 
             if (!response.ok) {
               throw new Error(
-                `Failed to fetch course with ID ${courseId}: ${response.statusText}`
+                `Failed to fetch course with ID ${courseId}: ${response}`
               );
             }
 
@@ -60,6 +61,7 @@ const Dashboard = () => {
           name: decoded.nombreDelAlumno,
           coursesId: decoded.coursesID,
           coursesInfo,
+          isAdmin: decoded.admin || false,
         }));
       });
     }
