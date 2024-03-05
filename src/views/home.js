@@ -196,16 +196,16 @@ function Home() {
     <>
       <div className="hero" id="hero">
         <Link to="/login" className="btn-purple fixed-button">
-          <span className="button-text">Entrar</span>
+          <span className="button-text">¡Únete!</span>
           <i className="fa-solid fa-right-to-bracket button-icon"></i>
         </Link>
         <div className="hero-text">
           <h1>
-            Desbloquea el Potencial Creativo de ChatGPT en las Artes Escénicas
+            Curso de ChatGPT en las Artes Escénicas
           </h1>
           <p>
-            Desde los conceptos básicos hasta su integración en la creatividad
-            teatral. <br></br>Inicia tu aventura en el universo de la tecnología
+          Desbloquea el Potencial Creativo de ChatGPT en las Artes Escénicas
+           <br></br>Inicia tu aventura en el universo de la tecnología
             del futuro.
           </p>
           <button

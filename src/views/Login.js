@@ -73,14 +73,7 @@ function Login() {
             </div>
           )}
         </div>
-        <div className="image-container col-lg-6 col-md-5 col-sm-12 p-0">
-          <img
-            src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
-            alt="Esceniarte logo"
-            className="img-fluid w-100"
-          />
-        </div>
-        <div className="col-lg-6 col-md-7 col-sm-12 py-5 px-3">
+        <div className="col-lg-6 col-md-7 col-sm-12 pb-5 pt-2 px-3">
           <h4>ACCESO AL CURSO</h4>
           <h1>
             Forma Parte de la{" "}
@@ -101,6 +94,14 @@ function Login() {
             ¡Inscribete ahora!
           </a>
         </div>
+        <div className="image-container col-lg-6 col-md-5 col-sm-12 p-0">
+          <img
+            src="https://esceniarte.s3.amazonaws.com/logo.jpeg"
+            alt="Esceniarte logo"
+            className="img-fluid w-100"
+          />
+        </div>
+
       </div>
       <NavbarLogin />
     </>

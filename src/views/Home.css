@@ -325,6 +325,19 @@
 		width: 600px;
 	}
 
+	.hero-text p {
+		display: none;
+	}
+
+	.continue-button {
+		padding: 0.5em 1em;
+		border-radius: 20px;
+		font-weight: bold;
+		position: absolute;
+		bottom: 80px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 	.image-wrapper img {
 		width: 180px;
 	}
@@ -457,7 +470,7 @@
 }
 
 /* Adjustments for screens smaller than 480px */
-@media (max-width: 480px) {
+@media (max-width: 576px) {
 	.arrow {
 		padding: 2px 5px;
 	}
@@ -472,10 +485,6 @@
 
 	.hero-text h1 {
 		width: 320px;
-	}
-
-	.hero-text p {
-		display: none;
 	}
 
 	.course-details {

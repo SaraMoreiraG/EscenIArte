@@ -213,6 +213,9 @@ p {
 }
 
 @media (max-width: 768px) {
+  h1 {
+    font-size: 34px;
+  }
   h2 {
     font-size: 32px;
   }
@@ -248,14 +251,7 @@ p {
 
   .fixed-button {
     padding: 0.5em 1em;
-  }
-
-  .fixed-button .button-icon {
-    display: inline;
-  }
-
-  .fixed-button .button-text {
-    display: none;
+    font-size: 14px;
   }
 
   .form-image {
