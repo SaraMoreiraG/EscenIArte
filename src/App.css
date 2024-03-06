@@ -151,7 +151,7 @@ p {
 }
 
 #signInDiv {
-  max-width: 100%;
+  /* max-width: 100%; */
   padding: 2px;
   background-color: #623a97;
   border-radius: 8px;
@@ -160,6 +160,10 @@ p {
 
 #signInDiv:hover {
   background-color: #5ab75b;
+}
+
+.second-sign-in{
+  display: none;
 }
 
 .remember-password {
@@ -225,6 +229,14 @@ p {
   }
 
   .no-big-medium-screen {
+    display: flex;
+  }
+
+  .first-sign-in{
+    display: none;
+  }
+
+  .second-sign-in{
     display: flex;
   }
 
