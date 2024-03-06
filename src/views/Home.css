@@ -320,6 +320,9 @@
 
 /* Adjustments for screens smaller than 992px */
 @media (max-width: 992px) {
+	.hero{
+		max-height: 80vh;
+	}
 	.hero-text h1 {
 		font-size: 48px;
 		width: 600px;
