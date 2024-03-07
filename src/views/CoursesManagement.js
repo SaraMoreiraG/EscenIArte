@@ -102,7 +102,10 @@ function CoursesManagement() {
           <div className="row justify-content-center my-5">
             <div className="col-7">
               {course.modules && (
-				<ClassesManagement classes={course.modules[selectedModule].classes} selectedModule={selectedModule}/>
+                <ClassesManagement
+                  classes={course.modules[selectedModule].classes}
+                  selectedModule={selectedModule}
+                />
               )}
             </div>
 

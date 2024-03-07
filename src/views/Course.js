@@ -1,7 +1,39 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+
+import ModulesManagement from "../components/ModulesManagement";
+import ClassesManagement from "../components/ClassesManagement";
+
+import { fetchCourseById } from "../apiServices/usersApi";
+
 import "./Module.css";
-function Module() {
+
+function Course() {
+  const [admin, setAdmin] = useState(true);
+  const { id } = useParams();
+  const [courseInfo, setCourseInfo] = useState(null);
+  const [selectedModule, setSelectedModule] = useState(0);
+  const [error, setError] = useState("");
+
+  console.log("Course Info: ", courseInfo);
+
+  useEffect(() => {
+    const loadCourseInfo = async () => {
+      try {
+        const data = await fetchCourseById(id);
+        setCourseInfo(data);
+        setError('');
+      } catch (error) {
+        console.error(error);
+        setError(error.message);
+      }
+    };
+
+    if (id) {
+      loadCourseInfo();
+    }
+  }, [id]);
+
   // Estado para controlar la visibilidad del modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [videoInModal, setVideoInModal] = useState();
@@ -13,6 +45,9 @@ function Module() {
     scrollToSection("video");
   };
 
+  // Función para cerrar el modal
+  const closeModal = () => setIsModalOpen(false);
+
   const scrollToSection = (sectionId) => {
     // Prevent the default anchor link behavior
     const section = document.getElementById(sectionId);
@@ -21,8 +56,13 @@ function Module() {
     }
   };
 
-  // Función para cerrar el modal
-  const closeModal = () => setIsModalOpen(false);
+  if (error) {
+    return <div>Error: {error}</div>; // Mostramos un mensaje de error si lo hay
+  }
+
+  if (!courseInfo) {
+    return <div>Loading...</div>; // Renderiza un estado de carga si la información del curso aún no está disponible
+  }
 
   return (
     <div className="module-details">
@@ -59,9 +99,36 @@ function Module() {
           </div>
         </div>
       )}
-      <div className="header-center">
-        <h2>Creación de Imágenes con DALL·E</h2>
+      {courseInfo && (
+        <div className="header-center">
+          <h2>{courseInfo.name}</h2>
+        </div>
+      )}
+
+      <div className="row justify-content-center my-5">
+        <div className="col-7">
+          {courseInfo.modules && (
+            <ClassesManagement
+              classes={courseInfo.modules[selectedModule].classes}
+              selectedModule={selectedModule}
+              admin={admin}
+            />
+          )}
+        </div>
+
+        <div className="col-3">
+          {courseInfo.modules && (
+            <ModulesManagement
+              courseId={courseInfo.id}
+              allModules={courseInfo.modules}
+              selectedModule={selectedModule}
+              setSelectedModule={setSelectedModule}
+              admin={admin}
+            />
+          )}
+        </div>
       </div>
+
       <div className="row justify-content-center my-5">
         <div className="col-7">
           <div className="class-wrapper row">
@@ -79,9 +146,7 @@ function Module() {
             </div>
             <div className="col-6 p-3">
               <h3>Aplicación de DALL·E en las artes escénicas</h3>
-              <p>
-                Aprende a transformar tu arte con la visión de DALL·E.
-              </p>
+              <p>Aprende a transformar tu arte con la visión de DALL·E.</p>
               <hr></hr>
               <div className="col-6 d-flex justify-content-between my-3">
                 <span>
@@ -172,8 +237,8 @@ function Module() {
               </Link>
               <Link to={"/module/23"}>
                 <p>
-                  <i className="fa-regular fa-circle me-1"></i> 3. Estrategias de
-                  Venta y Organización
+                  <i className="fa-regular fa-circle me-1"></i> 3. Estrategias
+                  de Venta y Organización
                 </p>
               </Link>
               <p>
@@ -200,4 +265,4 @@ function Module() {
   );
 }
 
-export default Module;
+export default Course;

@@ -320,11 +320,27 @@
 
 /* Adjustments for screens smaller than 992px */
 @media (max-width: 992px) {
+	.hero{
+		max-height: 80vh;
+	}
 	.hero-text h1 {
 		font-size: 48px;
 		width: 600px;
 	}
 
+	.hero-text p {
+		display: none;
+	}
+
+	.continue-button {
+		padding: 0.5em 1em;
+		border-radius: 20px;
+		font-weight: bold;
+		position: absolute;
+		bottom: 80px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 	.image-wrapper img {
 		width: 180px;
 	}
@@ -457,7 +473,7 @@
 }
 
 /* Adjustments for screens smaller than 480px */
-@media (max-width: 480px) {
+@media (max-width: 576px) {
 	.arrow {
 		padding: 2px 5px;
 	}

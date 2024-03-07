@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function ClassesManagement({ classes, selectedModule }) {
+function ClassesManagement({ classes, selectedModule, admin }) {
   //   console.log("clases: ", classes);
   const [editingClass, setEditingClass] = useState({
     status: false,
@@ -93,12 +93,12 @@ function ClassesManagement({ classes, selectedModule }) {
   };
 
   const saveClassChanges = () => {
-	console.log('Datos de la clase que se quiere editar: ', editingClass)
-  }
+    console.log("Datos de la clase que se quiere editar: ", editingClass);
+  };
 
   const addNewClass = () => {
-	console.log('Datos de la clase que se quiere añadir: ', editingClass)
-  }
+    console.log("Datos de la clase que se quiere añadir: ", editingClass);
+  };
 
   //   const addNewClass = (id) => {
   //     if (editingModule.moduleName !== "") {
@@ -158,7 +158,7 @@ function ClassesManagement({ classes, selectedModule }) {
     <div>
       {classes.map((info, index) => (
         <div className="class-wrapper row" key={info.id}>
-          {editingClass.status && editingClass.classIndex === index ? (
+          {admin && editingClass.status && editingClass.classIndex === index ? (
             <>
               <div className="col-6 p-0">
                 <div
@@ -243,7 +243,9 @@ function ClassesManagement({ classes, selectedModule }) {
               <div className="col-12 d-flex justify-content-center pb-3">
                 <div className="save-button ">
                   <i className="fa-regular fa-floppy-disk me-3"></i>
-                  <p className="m-0" onClick={saveClassChanges}>GUARDAR</p>
+                  <p className="m-0" onClick={saveClassChanges}>
+                    GUARDAR
+                  </p>
                 </div>
               </div>
             </>
@@ -259,10 +261,12 @@ function ClassesManagement({ classes, selectedModule }) {
               <div className="col-6 p-3">
                 <div className="d-flex justify-content-between">
                   <h3>{info.name}</h3>
-                  <i
-                    className="fa-regular fa-pen-to-square big"
-                    onClick={() => startEditing(index)}
-                  ></i>
+                  {admin && (
+                    <i
+                      className="fa-regular fa-pen-to-square big"
+                      onClick={() => startEditing(index)}
+                    ></i>
+                  )}
                 </div>
                 <p>{info.description}</p>
                 <hr></hr>
@@ -275,110 +279,122 @@ function ClassesManagement({ classes, selectedModule }) {
                     <i className="fa-solid fa-angles-down me-1"></i> PDF
                   </button>
                 </div>
-                <div className="text-end">
-                  <i
-                    className="fa-regular fa-trash-can big"
-                    onClick={() => deleteModule(info.id)}
-                  ></i>
-                </div>
+                {admin && (
+                  <div className="text-end">
+                    <i
+                      className="fa-regular fa-trash-can big"
+                      onClick={() => deleteModule(info.id)}
+                    ></i>
+                  </div>
+                )}
               </div>
             </>
           )}
         </div>
       ))}
-      {addingClass && (
-        <div className="class-wrapper row">
-          <div className="col-6 p-0">
-            <div
-              className="img-editing"
-              style={{
-                backgroundImage: `url(${editingClass.img.url || "Imagen URL"})`,
-              }}
+      {admin && addingClass && (
+        <>
+          <div className="class-wrapper row">
+            <div className="col-6 p-0">
+              <div
+                className="img-editing"
+                style={{
+                  backgroundImage: `url(${
+                    editingClass.img.url || "Imagen URL"
+                  })`,
+                }}
+              >
+                <textarea
+                  type="text"
+                  className="p-2"
+                  rows={6}
+                  name="img.url"
+                  value={editingClass.img.url || "Imagen URL"}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="d-flex justify-content-center align-items-center mt-2">
+                <span>alt:</span>
+                <textarea
+                  type="text"
+                  className="text-center bg-white ms-2 p-2"
+                  rows={1}
+                  name="img.alt"
+                  value={editingClass.img.alt || "Imagen alt"}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+            <div className="col-6 px-3 pt-3">
+              <div className="d-flex justify-content-between mb-3">
+                <textarea
+                  type="text"
+                  className="title bg-white w-100 p-2"
+                  rows={3}
+                  name="name"
+                  value={editingClass.name || "Nombre de la clase"}
+                  onChange={handleInputChange}
+                />
+                <i
+                  className="fa-solid fa-xmark big ms-3"
+                  onClick={stopEditing}
+                ></i>
+              </div>
+              <textarea
+                type="text"
+                className="bg-white w-100 p-2"
+                rows={2}
+                name="description"
+                value={editingClass.description || "Descripción"}
+                onChange={handleInputChange}
+              />
+              <hr></hr>
+              <div className="row justify-content-between align-items-center my-3">
+                <span className="col-1">
+                  <i className="fa-regular fa-clock ms-2"></i>
+                </span>
+                <div className="col-2 p-2">
+                  <textarea
+                    type="text"
+                    className="bg-white w-100 p-2"
+                    rows={1}
+                    name="duration"
+                    value={editingClass.duration || "m"}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="col-8 m-0">
+                  <textarea
+                    type="text"
+                    className="pdf-link p-2"
+                    rows={1}
+                    name="pdf"
+                    value={editingClass.pdf || "pdf url"}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="col-12 d-flex justify-content-center pb-3">
+              <div className="save-button ">
+                <i className="fa-regular fa-floppy-disk me-3"></i>
+                <p className="m-0" onClick={addNewClass}>
+                  GUARDAR
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <button
+              className="btn-new-class"
+              onClick={() => setAddingClass(true)}
             >
-              <textarea
-                type="text"
-                className="p-2"
-                rows={6}
-                name="img.url"
-                value={editingClass.img.url || "Imagen URL"}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="d-flex justify-content-center align-items-center mt-2">
-              <span>alt:</span>
-              <textarea
-                type="text"
-                className="text-center bg-white ms-2 p-2"
-                rows={1}
-                name="img.alt"
-                value={editingClass.img.alt || "Imagen alt"}
-                onChange={handleInputChange}
-              />
-            </div>
+              <i className="fa-solid fa-plus"></i> Añadir clase
+            </button>
           </div>
-          <div className="col-6 px-3 pt-3">
-            <div className="d-flex justify-content-between mb-3">
-              <textarea
-                type="text"
-                className="title bg-white w-100 p-2"
-                rows={3}
-                name="name"
-                value={editingClass.name || "Nombre de la clase"}
-                onChange={handleInputChange}
-              />
-              <i
-                className="fa-solid fa-xmark big ms-3"
-                onClick={stopEditing}
-              ></i>
-            </div>
-            <textarea
-              type="text"
-              className="bg-white w-100 p-2"
-              rows={2}
-              name="description"
-              value={editingClass.description || "Descripción"}
-              onChange={handleInputChange}
-            />
-            <hr></hr>
-            <div className="row justify-content-between align-items-center my-3">
-              <span className="col-1">
-                <i className="fa-regular fa-clock ms-2"></i>
-              </span>
-              <div className="col-2 p-2">
-                <textarea
-                  type="text"
-                  className="bg-white w-100 p-2"
-                  rows={1}
-                  name="duration"
-                  value={editingClass.duration || "m"}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="col-8 m-0">
-                <textarea
-                  type="text"
-                  className="pdf-link p-2"
-                  rows={1}
-                  name="pdf"
-                  value={editingClass.pdf || "pdf url"}
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="col-12 d-flex justify-content-center pb-3">
-            <div className="save-button ">
-              <i className="fa-regular fa-floppy-disk me-3"></i>
-              <p className="m-0" onClick={addNewClass}>GUARDAR</p>
-            </div>
-          </div>
-        </div>
+        </>
       )}
-      <div className="text-center">
-        <button className="btn-new-class" onClick={() => setAddingClass(true)}>
-          <i className="fa-solid fa-plus"></i> Añadir clase
-        </button>
-      </div>
     </div>
   );
 }

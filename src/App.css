@@ -153,7 +153,7 @@ p {
 }
 
 #signInDiv {
-  max-width: 100%;
+  /* max-width: 100%; */
   padding: 2px;
   background-color: #623a97;
   border-radius: 8px;
@@ -162,6 +162,10 @@ p {
 
 #signInDiv:hover {
   background-color: #5ab75b;
+}
+
+.second-sign-in{
+  display: none;
 }
 
 .remember-password {
@@ -305,6 +309,9 @@ textarea.title{
 }
 
 @media (max-width: 768px) {
+  h1 {
+    font-size: 34px;
+  }
   h2 {
     font-size: 32px;
   }
@@ -314,6 +321,14 @@ textarea.title{
   }
 
   .no-big-medium-screen {
+    display: flex;
+  }
+
+  .first-sign-in{
+    display: none;
+  }
+
+  .second-sign-in{
     display: flex;
   }
 
@@ -340,14 +355,7 @@ textarea.title{
 
   .fixed-button {
     padding: 0.5em 1em;
-  }
-
-  .fixed-button .button-icon {
-    display: inline;
-  }
-
-  .fixed-button .button-text {
-    display: none;
+    font-size: 14px;
   }
 
   .form-image {

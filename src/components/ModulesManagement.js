@@ -1,6 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
-function ModulesManagement({ allModules, selectedModule, setSelectedModule }) {
+function ModulesManagement({
+  courseId,
+  allModules,
+  selectedModule,
+  setSelectedModule,
+  admin,
+}) {
+  const token = localStorage.getItem("authToken");
   const [editingModule, setEditingModule] = useState({
     status: false,
     moduleIndex: null,
@@ -36,6 +43,42 @@ function ModulesManagement({ allModules, selectedModule, setSelectedModule }) {
         moduleId: id,
         readyForApiCall: true,
       }));
+
+      // Lógica para hacer PATCH a la API con module.id y editingModule.moduleName.
+      const body = {
+        courseId: courseId,
+        moduleId: id,
+        newName: editingModule.moduleName, // Asegúrate de ajustar este cuerpo a lo que tu API espera recibir.
+      };
+
+      fetch(
+        `https://vtedvak2bj.execute-api.us-east-1.amazonaws.com/prod/modules`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Asegúrate de que 'token' está definido y es válido
+          },
+          mode: "cors",
+          body: JSON.stringify(body),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+
+          setEditingModule({
+            status: false,
+            moduleIndex: null,
+            moduleName: "",
+            moduleId: null,
+          });
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
+      return { ...module, name: editingModule.moduleName };
     } else {
       setErrorModules("Escribe un nombre");
     }
@@ -51,7 +94,7 @@ function ModulesManagement({ allModules, selectedModule, setSelectedModule }) {
     });
   };
 
-  const saveModuleChanges = () => {
+  const saveModuleChanges = async () => {
     // Verificar si el nombre ha cambiado.
     const currentModule = allModules[editingModule.moduleIndex];
     if (currentModule.name === editingModule.moduleName) {
@@ -68,19 +111,38 @@ function ModulesManagement({ allModules, selectedModule, setSelectedModule }) {
 
     const updatedModules = allModules.map((module, index) => {
       if (index === editingModule.moduleIndex) {
-        console.log(
-          "Updating module with id:",
-          module.id,
-          "New name:",
-          editingModule.moduleName
-        );
-        // Aquí iría la lógica para hacer POST a tu API con module.id y editingModule.moduleName.
+        // Lógica para hacer PATCH a la API con module.id y editingModule.moduleName.
+        const body = {
+          courseId: courseId,
+          moduleId: editingModule.moduleId,
+          newName: editingModule.moduleName, // Asegúrate de ajustar este cuerpo a lo que tu API espera recibir.
+        };
+
+        fetch(
+          `https://vtedvak2bj.execute-api.us-east-1.amazonaws.com/prod/modules`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`, // Asegúrate de que 'token' está definido y es válido
+            },
+            mode: "cors",
+            body: JSON.stringify(body),
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
         return { ...module, name: editingModule.moduleName };
       }
       return module;
     });
 
-    // setallModules({ ...allModules, modules: updatedModules });
     setEditingModule({
       status: false,
       moduleIndex: null,
@@ -91,23 +153,52 @@ function ModulesManagement({ allModules, selectedModule, setSelectedModule }) {
 
   const deleteModule = (id) => {
     console.log("delete module id: ", id);
+    const body = {
+      courseId: courseId,
+      moduleId: id,
+    };
+
+    fetch(
+      `https://vtedvak2bj.execute-api.us-east-1.amazonaws.com/prod/delete-module`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Asegúrate de que 'token' está definido y es válido
+        },
+        mode: "cors",
+        body: JSON.stringify(body),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
+
   return (
     <div>
       <div className="side-navbar">
         <div className="d-flex align-items-center justify-content-between p-4">
           <h4>Módulos:</h4>
-          <div>
-            <i
-              className="fa-solid fa-circle-plus"
-              onClick={() => setAddingModule(!addingModule)}
-            ></i>
-          </div>
+          {admin && (
+            <div>
+              <i
+                className="fa-solid fa-circle-plus"
+                onClick={() => setAddingModule(!addingModule)}
+              ></i>
+            </div>
+          )}
         </div>
         <div className="p-4">
           {allModules.map((module, index) => (
             <div key={module.id}>
-              {editingModule.status && editingModule.moduleIndex === index ? (
+              {admin &&
+              editingModule.status &&
+              editingModule.moduleIndex === index ? (
                 <>
                   <div className="d-flex mb-3">
                     <p>{module.id}. </p>
@@ -144,21 +235,23 @@ function ModulesManagement({ allModules, selectedModule, setSelectedModule }) {
                   >
                     {module.id}. {module.name}
                   </p>
-                  <div className="d-flex justify-content-end mb-3">
-                    <i
-                      className="fa-regular fa-pen-to-square me-3"
-                      onClick={() => startEditing(index)}
-                    ></i>
-                    <i
-                      className="fa-regular fa-trash-can"
-                      onClick={() => deleteModule(module.id)}
-                    ></i>
-                  </div>
+                  {admin && (
+                    <div className="d-flex justify-content-end mb-3">
+                      <i
+                        className="fa-regular fa-pen-to-square me-3"
+                        onClick={() => startEditing(index)}
+                      ></i>
+                      <i
+                        className="fa-regular fa-trash-can"
+                        onClick={() => deleteModule(module.id)}
+                      ></i>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
           ))}
-          {addingModule && (
+          {admin && addingModule && (
             <>
               <div className="form-group pe-0">
                 {allModules.length + 1}.

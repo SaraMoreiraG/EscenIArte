@@ -4,7 +4,7 @@ import AdminRoute from "./components/AdminRoute";
 import Home from "./views/home";
 import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
-import Module from "./views/Module";
+import Course from "./views/Course";
 import CoursesManagement from "./views/CoursesManagement";
 import "./App.css";
 
@@ -23,10 +23,10 @@ function App() {
           }
         />
         <Route
-          path="/module/:moduleId"
+          path="/course/:id"
           element={
             <PrivateRoute>
-              <Module />
+              <Course />
             </PrivateRoute>
           }
         />
