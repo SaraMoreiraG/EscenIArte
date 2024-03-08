@@ -11,6 +11,7 @@ import "./Module.css";
 function Course() {
   const [admin, setAdmin] = useState(true);
   const { id } = useParams();
+  const [isEdited, setIsEdited] = useState(false)
   const [courseInfo, setCourseInfo] = useState(null);
   const [selectedModule, setSelectedModule] = useState(0);
   const [error, setError] = useState("");
@@ -32,7 +33,7 @@ function Course() {
     if (id) {
       loadCourseInfo();
     }
-  }, [id]);
+  }, [id, isEdited]);
 
   // Estado para controlar la visibilidad del modal
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -109,20 +110,25 @@ function Course() {
         <div className="col-7">
           {courseInfo.modules && (
             <ClassesManagement
-              classes={courseInfo.modules[selectedModule].classes}
+              courseId={courseInfo.id}
+              allClasses={courseInfo.modules[selectedModule].classes}
               selectedModule={selectedModule}
+              isEdited = {isEdited}
+              setIsEdited = {setIsEdited}
               admin={admin}
             />
           )}
         </div>
 
-        <div className="col-3">
+        <div className="col-lg-3 col-md-12">
           {courseInfo.modules && (
             <ModulesManagement
               courseId={courseInfo.id}
               allModules={courseInfo.modules}
               selectedModule={selectedModule}
               setSelectedModule={setSelectedModule}
+              isEdited = {isEdited}
+              setIsEdited = {setIsEdited}
               admin={admin}
             />
           )}

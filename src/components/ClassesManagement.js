@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-function ClassesManagement({ classes, selectedModule, admin }) {
+function ClassesManagement({
+  courseId,
+  allClasses,
+  selectedModule,
+  isEdited,
+  setIsEdited,
+  admin,
+}) {
   //   console.log("clases: ", classes);
   const [editingClass, setEditingClass] = useState({
     status: false,
@@ -57,7 +64,7 @@ function ClassesManagement({ classes, selectedModule, admin }) {
   };
 
   const startEditing = (classIndex) => {
-    const currentClass = classes[classIndex];
+    const currentClass = allClasses[classIndex];
     console.log("Current Class:", currentClass);
     setEditingClass({
       status: true,
@@ -114,7 +121,7 @@ function ClassesManagement({ classes, selectedModule, admin }) {
 
   //   const saveModuleChanges = () => {
   //     // Verificar si el nombre ha cambiado.
-  //     const currentModule = classes[editingModule.moduleIndex];
+  //     const currentModule = allCeditingModule.moduleIndex];
   //     if (currentModule.name === editingModule.moduleName) {
   //       // Si el nombre no ha cambiado, solo salir del modo de edición.
   //       console.log("No changes made, exiting edit mode.");
@@ -127,7 +134,7 @@ function ClassesManagement({ classes, selectedModule, admin }) {
   //       return; // Finalizar la función aquí.
   //     }
 
-  //     const updatedModules = classes.map((module, index) => {
+  //     const updatedModules = allCmap((module, index) => {
   //       if (index === editingModule.moduleIndex) {
   //         console.log(
   //           "Updating module with id:",
@@ -141,7 +148,7 @@ function ClassesManagement({ classes, selectedModule, admin }) {
   //       return module;
   //     });
 
-  //     // setclasses({ ...classes, modules: updatedModules });
+  //     // setallC{ ...allC modules: updatedModules });
   //     setEditingModule({
   //       status: false,
   //       moduleIndex: null,
@@ -156,7 +163,7 @@ function ClassesManagement({ classes, selectedModule, admin }) {
 
   return (
     <div>
-      {classes.map((info, index) => (
+      {allClasses.map((info, index) => (
         <div className="class-wrapper row" key={info.id}>
           {admin && editingClass.status && editingClass.classIndex === index ? (
             <>
@@ -384,7 +391,6 @@ function ClassesManagement({ classes, selectedModule, admin }) {
               </div>
             </div>
           </div>
-
           <div className="text-center">
             <button
               className="btn-new-class"
