@@ -20,6 +20,7 @@ const getFetchOptions = (method, body = null) => ({
  * @param {Object} body - The request payload.
  */
 export const updateOrAddResource = async (type, body) => {
+	console.log(body)
   const endpoint = type === 'module' ? '/modules' : '/clases';
   try {
     const response = await fetch(`${BASE_URL}${endpoint}`, getFetchOptions('PATCH', body));
@@ -38,6 +39,7 @@ export const updateOrAddResource = async (type, body) => {
  */
 export const deleteResource = async (type, body) => {
   const endpoint = type === 'module' ? '/modules' : '/clases';
+  console.log(body)
   try {
     const response = await fetch(`${BASE_URL}${endpoint}`, getFetchOptions('DELETE', body));
     if (!response.ok) throw new Error(`Error deleting ${type}: ${response.statusText}`);

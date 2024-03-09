@@ -9,3 +9,22 @@ export const handleInputChange = (field, setEditingObject) => (e) => {
 	const value = e.target.value;
 	setEditingObject((prev) => ({ ...prev, [field]: value }));
 };
+
+export const findItemById = (items) => (id) => items.find(item => item.id === id);
+
+export const updateEditingState = (setEditingState) => (newState) => {
+  setEditingState(currentState => ({
+    ...currentState,
+    ...newState,
+  }));
+};
+
+export const startEditingGeneric = (findFunction, setEditingState, adaptState) => (id) => {
+  const item = findFunction(id);
+  if (item) {
+    const newState = adaptState(item);
+    updateEditingState(setEditingState)(newState);
+  }
+};
+
+

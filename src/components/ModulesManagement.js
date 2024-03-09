@@ -23,6 +23,7 @@ function ModulesManagement({
 
   // Initiates editing mode for a selected module
   const startEditing = (moduleId) => {
+    setAddingModule(false)
     const currentModule = allModules.find((module) => module.id === moduleId);
     if (currentModule) {
     setEditingModule({
@@ -33,6 +34,15 @@ function ModulesManagement({
   }
   };
 
+  const startAdding = () => {
+    setEditingModule({
+      status: false,
+      moduleIndex: null,
+      moduleName: "",
+      moduleId: null,
+    });
+    setAddingModule(true)
+  }
   // Exits editing mode, resetting the editing module state
   const stopEditing = () => {
     setEditingModule({
@@ -41,6 +51,7 @@ function ModulesManagement({
       moduleName: "",
       moduleId: null,
     });
+    setAddingModule(false)
   };
 
   // Adds a new module or updates an existing one based on the state
@@ -80,6 +91,7 @@ function ModulesManagement({
         stopEditing();
         setIsEdited(!isEdited); // Toggle to refresh UI
         setIsLoading(false);
+        setErrorModules("");
       })
       .catch((error) => {
         console.error("Error updating/adding module:", error);
@@ -118,7 +130,7 @@ function ModulesManagement({
               <div>
                 <i
                   className="fa-solid fa-circle-plus"
-                  onClick={() => setAddingModule(!addingModule)}
+                  onClick={startAdding}
                 ></i>
               </div>
             ))}
@@ -150,7 +162,7 @@ function ModulesManagement({
                         <input
                           type="text"
                           className="col-12"
-                          value={editingModule.moduleName || module.name}
+                          value={editingModule.moduleName}
                           onChange={handleInputChange('moduleName', setEditingModule)}
                         />
                       </div>
@@ -170,11 +182,11 @@ function ModulesManagement({
                   <div>
                     <p
                       className={
-                        selectedModule === index
+                        selectedModule === module.id
                           ? "module-title selected m-0"
                           : "module-title m-0"
                       }
-                      onClick={() => setSelectedModule(index)}
+                      onClick={() => setSelectedModule(module.id)}
                     >
                       {module.name}
                     </p>
@@ -200,7 +212,7 @@ function ModulesManagement({
                 <input
                   type="text"
                   className="col-12"
-                  value={editingModule.moduleName || 'New Module'}
+                  value={editingModule.moduleName}
                   onChange={handleInputChange('moduleName', setEditingModule)}
                 ></input>
               </div>
