@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 import ModulesManagement from "../components/ModulesManagement";
 import ClassesManagement from "../components/ClassesManagement";
@@ -9,7 +10,15 @@ import { fetchCourseById } from "../apiServices/usersApi";
 import "./Module.css";
 
 function Course() {
-  const [admin, setAdmin] = useState(true);
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    name: "",
+    coursesId: [],
+    coursesInfo: [],
+    admin: false,
+  });
+  const navigate = useNavigate();
+  const prevCourseInfoRef = useRef();
   const { id } = useParams();
   const [isEdited, setIsEdited] = useState(false)
   const [courseInfo, setCourseInfo] = useState(null);
@@ -19,6 +28,21 @@ function Course() {
   console.log("Course Info: ", courseInfo);
 
   useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      const decoded = jwt_decode(token);
+
+      setUserInfo((prevInfo) => ({
+        ...prevInfo,
+        email: decoded.email,
+        name: decoded.nombreDelAlumno,
+        coursesId: decoded.coursesID,
+        admin: decoded.admin || false,
+      }));
+    } else {
+      navigate("/login");
+    }
+
     const loadCourseInfo = async () => {
       try {
         const data = await fetchCourseById(id);
@@ -33,36 +57,19 @@ function Course() {
     if (id) {
       loadCourseInfo();
     }
-  }, [id, isEdited]);
+  }, [id, isEdited, navigate]);
+
+  // Referencia para almacenar el valor anterior de courseInfo
 
   useEffect(() => {
-    // Selecciona el primer módulo solo cuando se carga courseInfo por primera vez o cambia
-    if (courseInfo && courseInfo.modules?.length > 0 && selectedModule === null) {
+    // Comprueba si courseInfo ha cambiado comparándolo con su valor anterior
+    if (courseInfo !== prevCourseInfoRef.current && courseInfo?.modules?.length > 0 && selectedModule === null) {
       setSelectedModule(courseInfo.modules[0].id);
     }
-  }, [courseInfo]);
 
-  // Estado para controlar la visibilidad del modal
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [videoInModal, setVideoInModal] = useState();
-
-  // Función para abrir el modal
-  const openModal = (video) => {
-    setVideoInModal(video);
-    setIsModalOpen(true);
-    scrollToSection("video");
-  };
-
-  // Función para cerrar el modal
-  const closeModal = () => setIsModalOpen(false);
-
-  const scrollToSection = (sectionId) => {
-    // Prevent the default anchor link behavior
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+    // Actualiza la referencia con el valor actual de courseInfo después de cada renderizado
+    prevCourseInfoRef.current = courseInfo;
+  }, [courseInfo, selectedModule, setSelectedModule]);
 
   if (error) {
     return <div>Error: {error}</div>; // Mostramos un mensaje de error si lo hay
@@ -74,39 +81,7 @@ function Course() {
 
   return (
     <div className="module-details">
-      {isModalOpen && (
-        <div className="full-modal" id="video">
-          <div className="modal-content">
-            <div className="text-end">
-              <i className="fa-solid fa-x" onClick={closeModal}></i>
-            </div>
-            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-              <iframe
-                src={videoInModal}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                }}
-                // frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                // allowFullScreen
-                title="Telstra 'This Is Footy Country' Video"
-              ></iframe>
-            </div>
-            <script src="https://player.vimeo.com/api/player.js"></script>
-            <p>
-              <a href="https://vimeo.com/896261088">
-                Telstra &quot;This Is Footy Country&quot;
-              </a>{" "}
-              from <a href="https://vimeo.com/user189947816">Mark Molloy</a> on{" "}
-              <a href="https://vimeo.com">Vimeo</a>.
-            </p>
-          </div>
-        </div>
-      )}
+
       {courseInfo && (
         <div className="header-center">
           <h2>{courseInfo.name}</h2>
@@ -115,20 +90,20 @@ function Course() {
 
       <div className="row justify-content-center my-5">
         <div className="col-lg-7 col-md-12">
-          {courseInfo.modules && (
+          {userInfo && courseInfo.modules && (
             <ClassesManagement
               courseId={courseInfo.id}
               allClasses={courseInfo.modules.find(module => module.id === selectedModule)?.classes || []}
               selectedModule={selectedModule}
               isEdited = {isEdited}
               setIsEdited = {setIsEdited}
-              admin={admin}
+              admin={userInfo.admin}
             />
           )}
         </div>
 
         <div className="col-lg-3 col-md-12">
-          {courseInfo.modules && (
+          {userInfo && courseInfo.modules && (
             <ModulesManagement
               courseId={courseInfo.id}
               allModules={courseInfo.modules}
@@ -136,7 +111,7 @@ function Course() {
               setSelectedModule={setSelectedModule}
               isEdited = {isEdited}
               setIsEdited = {setIsEdited}
-              admin={admin}
+              admin={userInfo.admin}
             />
           )}
         </div>

@@ -21,10 +21,33 @@ function ClassesManagement({
     alt: "",
     pdf: "",
     order: "",
+    videoIframe: "",
+    videoUrl: "",
   });
   const [addingClass, setAddingClass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [modalClassId, setModalClassId] = useState(null);
+
+  const [videoInModal, setVideoInModal] = useState();
+
+  // Función para abrir el modal
+  const openModal = (classId, video) => {
+    setVideoInModal(video);
+    setModalClassId(classId);
+    scrollToSection("video");
+  };
+
+  // Función para cerrar el modal
+  const closeModal = () => setModalClassId(null);
+
+  const scrollToSection = (sectionId) => {
+    // Prevent the default anchor link behavior
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     stopEditing();
@@ -63,8 +86,8 @@ function ClassesManagement({
       pdf: "",
       order: "",
     });
-    setAddingClass(true)
-  }
+    setAddingClass(true);
+  };
 
   // Exits editing mode, resetting the editing class state
   const stopEditing = () => {
@@ -278,40 +301,81 @@ function ClassesManagement({
               </>
             ) : (
               <>
-                <div className="col-6 p-0">
-                  <img src={info.url} alt={info.alt} className="img-fluid" />
-                </div>
-                <div className="col-6 p-3">
-                  <div className="d-flex justify-content-between">
-                    <h3>{info.name}</h3>
+                <div
+                  className="d-flex"
+                  onClick={() => openModal(info.id, info.videoIframe)}
+                >
+                  <div className="col-6 p-0">
+                    <img src={info.url} alt={info.alt} className="img-fluid" />
+                  </div>
+                  <div className="col-6 p-3">
+                    <div className="d-flex justify-content-between">
+                      <h3>{info.name}</h3>
+                      {admin && (
+                        <i
+                          className="fa-regular fa-pen-to-square big"
+                          onClick={() => startEditing(info.id)}
+                        ></i>
+                      )}
+                    </div>
+                    <p>{info.description}</p>
+                    <hr></hr>
+                    <div className="col-6 d-flex justify-content-between my-3">
+                      <span>
+                        <i className="fa-regular fa-clock ms-2"></i>{" "}
+                        {info.duration}'
+                      </span>
+                      <button className="btn-pdf">
+                        <i className="fa-solid fa-angles-down me-1"></i> PDF
+                      </button>
+                    </div>
                     {admin && (
-                      <i
-                        className="fa-regular fa-pen-to-square big"
-                        onClick={() => startEditing(info.id)}
-                      ></i>
+                      <div className="text-end">
+                        <i
+                          className="fa-regular fa-trash-can big"
+                          onClick={() => deleteClass(info.id)}
+                        ></i>
+                      </div>
                     )}
                   </div>
-                  <p>{info.description}</p>
-                  <hr></hr>
-                  <div className="col-6 d-flex justify-content-between my-3">
-                    <span>
-                      <i className="fa-regular fa-clock ms-2"></i>{" "}
-                      {info.duration}'
-                    </span>
-                    <button className="btn-pdf">
-                      <i className="fa-solid fa-angles-down me-1"></i> PDF
-                    </button>
-                  </div>
-                  {admin && (
-                    <div className="text-end">
-                      <i
-                        className="fa-regular fa-trash-can big"
-                        onClick={() => deleteClass(info.id)}
-                      ></i>
-                    </div>
-                  )}
                 </div>
               </>
+            )}
+            {modalClassId === info.id && (
+              <div className="full-modal col-12" id="video">
+                <div className="modal-content">
+                  <div className="text-end">
+                    <i className="fa-solid fa-x" onClick={closeModal}></i>
+                  </div>
+                  <div
+                    style={{
+                      padding: "56.25% 0 0 0",
+                      position: "relative",
+                    }}
+                  >
+                    <iframe
+                      src={videoInModal}
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      // frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      // allowFullScreen
+                      title="Telstra 'This Is Footy Country' Video"
+                    ></iframe>
+                  </div>
+                  <script src="https://player.vimeo.com/api/player.js"></script>
+                  <p>
+                    <a href={info.videoUrl}>
+                      {info.order}. {info.name}
+                    </a>
+                  </p>
+                </div>
+              </div>
             )}
           </div>
         ))}
@@ -417,10 +481,7 @@ function ClassesManagement({
             </div>
           )}
           <div className="text-center">
-            <button
-              className="btn-new-class"
-              onClick={startAdding}
-            >
+            <button className="btn-new-class" onClick={startAdding}>
               <i className="fa-solid fa-plus"></i> Añadir clase
             </button>
           </div>
