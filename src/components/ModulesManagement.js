@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { updateOrAddResource, deleteResource } from "../apiServices/adminApi";
+import { handleInputChange } from "../apiServices/managementFunctions";
 
 function ModulesManagement({
   courseId,
@@ -10,7 +11,7 @@ function ModulesManagement({
   setIsEdited,
   admin,
 }) {
-  const token = localStorage.getItem("authToken");
+  // State initialization
   const [editingModule, setEditingModule] = useState({
     status: false,
     moduleName: "",
@@ -20,23 +21,19 @@ function ModulesManagement({
   const [isLoading, setIsLoading] = useState(false);
   const [errorModules, setErrorModules] = useState("");
 
-  const handleEditModuleName = (e) => {
-    const newName = e.target.value;
-    setEditingModule((prev) => ({ ...prev, moduleName: newName }));
-  };
-
+  // Initiates editing mode for a selected module
   const startEditing = (moduleId) => {
     const currentModule = allModules.find((module) => module.id === moduleId);
-    console.log(currentModule);
     if (currentModule) {
     setEditingModule({
       status: true,
-      moduleName: currentModule.name, // Inicializa con el nombre actual del módulo
+      moduleName: currentModule.name,
       moduleId: moduleId,
     });
   }
   };
 
+  // Exits editing mode, resetting the editing module state
   const stopEditing = () => {
     setEditingModule({
       status: false,
@@ -46,6 +43,7 @@ function ModulesManagement({
     });
   };
 
+  // Adds a new module or updates an existing one based on the state
   const addOrUpdateModule = () => {
     let currentModule;
     if (editingModule.moduleId) {
@@ -80,7 +78,7 @@ function ModulesManagement({
       .then((data) => {
         console.log("Module updated/added:", data);
         stopEditing();
-        setIsEdited(!isEdited);
+        setIsEdited(!isEdited); // Toggle to refresh UI
         setIsLoading(false);
       })
       .catch((error) => {
@@ -90,6 +88,7 @@ function ModulesManagement({
       });
   };
 
+  // Deletes a module by its ID
   const deleteModule = async (moduleId) => {
     const body = { courseId, moduleId };
     setIsLoading(true)
@@ -152,7 +151,7 @@ function ModulesManagement({
                           type="text"
                           className="col-12"
                           value={editingModule.moduleName || module.name}
-                          onChange={handleEditModuleName}
+                          onChange={handleInputChange('moduleName', setEditingModule)}
                         />
                       </div>
                     </div>
@@ -202,7 +201,7 @@ function ModulesManagement({
                   type="text"
                   className="col-12"
                   value={editingModule.moduleName || 'New Module'}
-                  onChange={handleEditModuleName}
+                  onChange={handleInputChange('moduleName', setEditingModule)}
                 ></input>
               </div>
               <div className="text-end">

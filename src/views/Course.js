@@ -107,7 +107,7 @@ function Course() {
       )}
 
       <div className="row justify-content-center my-5">
-        <div className="col-7">
+        <div className="col-lg-7 col-md-12">
           {courseInfo.modules && (
             <ClassesManagement
               courseId={courseInfo.id}

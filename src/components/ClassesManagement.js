@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { updateOrAddResource, deleteResource } from "../apiServices/adminApi";
+import { handleInputChange } from "../apiServices/managementFunctions";
 
 function ClassesManagement({
   courseId,
@@ -8,181 +10,142 @@ function ClassesManagement({
   setIsEdited,
   admin,
 }) {
-  //   console.log("clases: ", classes);
+  // State initialization
   const [editingClass, setEditingClass] = useState({
     status: false,
-    classIndex: null,
-    classId: null,
+    id: null,
     name: "",
     description: "",
     duration: "",
-    img: {
-      url: "",
-      alt: "",
-    },
+    url: "",
+    alt: "",
     pdf: "",
-    readyForApiCall: false,
   });
   const [addingClass, setAddingClass] = useState(false);
-  //   const [errorModules, setErrorModules] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  //   useEffect(() => {
-  //     if (editingModule.readyForApiCall) {
-  //       setErrorModules("");
-  //       console.log(
-  //         "Llamando a la API con moduleId actualizado:",
-  //         editingModule.moduleId,
-  //         editingModule.moduleName
-  //       );
-  //       // Aquí iría tu lógica para llamar a la APIrror al llamar a la API:", error));
-  //     }
-  //     // eslint-disable-next-line
-  //   }, [editingModule.readyForApiCall]);
+  // Initiates editing mode for a selected class
+  const startEditing = (classId) => {
+    const currentClass = allClasses.find((clase) => clase.id === classId);
 
-  useEffect(() => {
-    stopEditing();
-  }, [selectedModule]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    // Dividir el nombre del campo para manejar propiedades anidadas
-    const nameParts = name.split(".");
-
-    if (nameParts.length === 2) {
-      // Manejar campos anidados como img.url o img.alt
-      setEditingClass((prev) => ({
-        ...prev,
-        [nameParts[0]]: {
-          ...prev[nameParts[0]],
-          [nameParts[1]]: value,
-        },
-      }));
-    } else {
-      // Manejar campos no anidados
-      setEditingClass((prev) => ({ ...prev, [name]: value }));
+    if (currentClass) {
+      setEditingClass({
+        status: true,
+        id: currentClass.id,
+        name: currentClass.name,
+        description: currentClass.description,
+        duration: currentClass.duration,
+        url: currentClass.url,
+        alt: currentClass.alt,
+        pdf: currentClass.pdf,
+      });
     }
   };
 
-  const startEditing = (classIndex) => {
-    const currentClass = allClasses[classIndex];
-    console.log("Current Class:", currentClass);
-    setEditingClass({
-      status: true,
-      classIndex: classIndex,
-      classId: currentClass.id,
-      name: currentClass.name,
-      description: currentClass.description,
-      duration: currentClass.duration,
-      img: {
-        url: currentClass.img.url,
-        alt: currentClass.img.alt,
-      },
-      pdf: currentClass.pdf,
-    });
-  };
-
+  // Exits editing mode, resetting the editing class state
   const stopEditing = () => {
     setEditingClass({
       status: false,
       classIndex: null,
-      classId: null,
+      id: null,
       name: "",
       description: "",
       duration: "",
-      img: {
-        url: "",
-        alt: "",
-      },
+      url: "",
+      alt: "",
       pdf: "",
       readyForApiCall: false,
     });
     setAddingClass(false);
   };
 
-  const saveClassChanges = () => {
-    console.log("Datos de la clase que se quiere editar: ", editingClass);
+  // Adds a new module or updates an existing one based on the state
+  const addOrUpdateClass = () => {
+    let currentClass;
+    if (editingClass.id) {
+      currentClass = allClasses.find((clase) => clase.id === editingClass.id);
+      // If attempting to update a class, but it doesn't exist, log an error and exit
+      if (!currentClass) {
+        console.error("Class to update not found.");
+        return;
+      }
+      // Check if no changes were made to the class for updates only.
+      if (currentClass === editingClass) {
+        console.log("No changes made, exiting edit mode.");
+        stopEditing();
+        return;
+      }
+    }
+
+    // Ensure the module name is provided.
+    if (!editingClass.name.trim()) {
+      setError("Introduce un nombre para la clase");
+      return;
+    }
+
+    setIsLoading(true);
+    const body = {
+      courseId: courseId,
+      id: editingClass.id, // Will be null for new modules
+      name: editingClass.name,
+      description: editingClass.description,
+      duration: editingClass.duration,
+      url: editingClass.url,
+      alt: editingClass.alt,
+      pdf: editingClass.pdf,
+    };
+
+    updateOrAddResource("class", body)
+      .then((data) => {
+        console.log("Class updated/added:", data);
+        stopEditing();
+        setIsEdited(!isEdited); // Toggle to refresh UI
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error updating/adding class:", error);
+        setError("No se ha podido completar la soliciud. Prueba de nuevo.");
+        setIsLoading(false);
+      });
   };
 
-  const addNewClass = () => {
-    console.log("Datos de la clase que se quiere añadir: ", editingClass);
-  };
-
-  //   const addNewClass = (id) => {
-  //     if (editingModule.moduleName !== "") {
-  //       setEditingModule((prevState) => ({
-  //         ...prevState,
-  //         moduleId: id,
-  //         readyForApiCall: true,
-  //       }));
-  //     } else {
-  //       setErrorModules("Escribe un nombre");
-  //     }
-  //   };
-
-  //   const saveModuleChanges = () => {
-  //     // Verificar si el nombre ha cambiado.
-  //     const currentModule = allCeditingModule.moduleIndex];
-  //     if (currentModule.name === editingModule.moduleName) {
-  //       // Si el nombre no ha cambiado, solo salir del modo de edición.
-  //       console.log("No changes made, exiting edit mode.");
-  //       setEditingModule({
-  //         status: false,
-  //         moduleIndex: null,
-  //         moduleName: "",
-  //         moduleId: null,
-  //       });
-  //       return; // Finalizar la función aquí.
-  //     }
-
-  //     const updatedModules = allCmap((module, index) => {
-  //       if (index === editingModule.moduleIndex) {
-  //         console.log(
-  //           "Updating module with id:",
-  //           module.id,
-  //           "New name:",
-  //           editingModule.moduleName
-  //         );
-  //         // Aquí iría la lógica para hacer POST a tu API con module.id y editingModule.moduleName.
-  //         return { ...module, name: editingModule.moduleName };
-  //       }
-  //       return module;
-  //     });
-
-  //     // setallC{ ...allC modules: updatedModules });
-  //     setEditingModule({
-  //       status: false,
-  //       moduleIndex: null,
-  //       moduleName: "",
-  //       moduleId: null,
-  //     });
-  //   };
-
-  const deleteModule = (id) => {
-    console.log("delete module id: ", id);
+  // Deletes a module by its ID
+  const deleteClass = async (classId) => {
+    console.log(selectedModule);
+    const body = { courseId, selectedModule, classId };
+    setIsLoading(true);
+    try {
+      await deleteResource("class", body);
+      console.log("Class deleted successfully");
+      setIsEdited(!isEdited);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Failed to delete class:", error);
+      setIsLoading(false);
+      setError("No se ha podido eliminar la clase. Prueba de nuevo.");
+    }
   };
 
   return (
     <div>
       {allClasses.map((info, index) => (
         <div className="class-wrapper row" key={info.id}>
-          {admin && editingClass.status && editingClass.classIndex === index ? (
+          {admin && editingClass.status && editingClass.id === info.id ? (
             <>
               <div className="col-6 p-0">
                 <div
                   className="img-editing"
                   style={{
-                    backgroundImage: `url(${
-                      editingClass.img.url || info.img.url
-                    })`,
+                    backgroundImage: `url(${editingClass.url || info.url})`,
                   }}
                 >
                   <textarea
                     type="text"
                     className="p-2"
                     rows={6}
-                    name="img.url"
-                    value={editingClass.img.url || info.img.url}
-                    onChange={handleInputChange}
+                    value={editingClass.url || info.url}
+                    onChange={handleInputChange("url", setEditingClass)}
                   />
                 </div>
                 <div className="d-flex justify-content-center align-items-center mt-2">
@@ -191,9 +154,8 @@ function ClassesManagement({
                     type="text"
                     className="text-center bg-white ms-2 p-2"
                     rows={1}
-                    name="img.alt"
-                    value={editingClass.img.alt || info.img.alt}
-                    onChange={handleInputChange}
+                    value={editingClass.alt || info.alt}
+                    onChange={handleInputChange("alt", setEditingClass)}
                   />
                 </div>
               </div>
@@ -203,9 +165,8 @@ function ClassesManagement({
                     type="text"
                     className="title bg-white w-100 p-2"
                     rows={3}
-                    name="name"
                     value={editingClass.name || info.name}
-                    onChange={handleInputChange}
+                    onChange={handleInputChange("name", setEditingClass)}
                   />
                   <i
                     className="fa-solid fa-xmark big ms-3"
@@ -216,9 +177,8 @@ function ClassesManagement({
                   type="text"
                   className="bg-white w-100 p-2"
                   rows={2}
-                  name="description"
                   value={editingClass.description || info.description}
-                  onChange={handleInputChange}
+                  onChange={handleInputChange("description", setEditingClass)}
                 />
                 <hr></hr>
                 <div className="row justify-content-between align-items-center my-3">
@@ -230,9 +190,8 @@ function ClassesManagement({
                       type="text"
                       className="bg-white w-100 p-2"
                       rows={1}
-                      name="duration"
                       value={editingClass.duration || info.duration}
-                      onChange={handleInputChange}
+                      onChange={handleInputChange("duration", setEditingClass)}
                     />
                   </div>
                   <div className="col-8 m-0">
@@ -240,30 +199,35 @@ function ClassesManagement({
                       type="text"
                       className="pdf-link p-2"
                       rows={1}
-                      name="pdf"
                       value={editingClass.pdf || info.pdf}
-                      onChange={handleInputChange}
+                      onChange={handleInputChange("pdf", setEditingClass)}
                     />
                   </div>
                 </div>
               </div>
               <div className="col-12 d-flex justify-content-center pb-3">
-                <div className="save-button ">
-                  <i className="fa-regular fa-floppy-disk me-3"></i>
-                  <p className="m-0" onClick={saveClassChanges}>
-                    GUARDAR
-                  </p>
-                </div>
+                {isLoading ? (
+                  <div className="save-button ">
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                    <p className="m-0">Guardando...</p>
+                  </div>
+                ) : (
+                  <div className="save-button" onClick={addOrUpdateClass}>
+                    <i className="fa-regular fa-floppy-disk me-3"></i>
+                    <p className="m-0">GUARDAR</p>
+                  </div>
+                )}
+              </div>
+              <div className="text-center">
+                {error && <p className="text-error col-12">{error}</p>}
               </div>
             </>
           ) : (
             <>
               <div className="col-6 p-0">
-                <img
-                  src={info.img.url}
-                  alt={info.img.alt}
-                  className="img-fluid"
-                />
+                <img src={info.url} alt={info.alt} className="img-fluid" />
               </div>
               <div className="col-6 p-3">
                 <div className="d-flex justify-content-between">
@@ -271,7 +235,7 @@ function ClassesManagement({
                   {admin && (
                     <i
                       className="fa-regular fa-pen-to-square big"
-                      onClick={() => startEditing(index)}
+                      onClick={() => startEditing(info.id)}
                     ></i>
                   )}
                 </div>
@@ -290,7 +254,7 @@ function ClassesManagement({
                   <div className="text-end">
                     <i
                       className="fa-regular fa-trash-can big"
-                      onClick={() => deleteModule(info.id)}
+                      onClick={() => deleteClass(info.id)}
                     ></i>
                   </div>
                 )}
@@ -306,18 +270,15 @@ function ClassesManagement({
               <div
                 className="img-editing"
                 style={{
-                  backgroundImage: `url(${
-                    editingClass.img.url || "Imagen URL"
-                  })`,
+                  backgroundImage: `url(${editingClass.url || "Imagen URL"})`,
                 }}
               >
                 <textarea
                   type="text"
                   className="p-2"
                   rows={6}
-                  name="img.url"
-                  value={editingClass.img.url || "Imagen URL"}
-                  onChange={handleInputChange}
+                  value={editingClass.url || "Imagen URL"}
+                  onChange={handleInputChange("url", setEditingClass)}
                 />
               </div>
               <div className="d-flex justify-content-center align-items-center mt-2">
@@ -326,9 +287,8 @@ function ClassesManagement({
                   type="text"
                   className="text-center bg-white ms-2 p-2"
                   rows={1}
-                  name="img.alt"
-                  value={editingClass.img.alt || "Imagen alt"}
-                  onChange={handleInputChange}
+                  value={editingClass.alt || "Imagen alt"}
+                  onChange={handleInputChange("alt", setEditingClass)}
                 />
               </div>
             </div>
@@ -338,9 +298,8 @@ function ClassesManagement({
                   type="text"
                   className="title bg-white w-100 p-2"
                   rows={3}
-                  name="name"
                   value={editingClass.name || "Nombre de la clase"}
-                  onChange={handleInputChange}
+                  onChange={handleInputChange("name", setEditingClass)}
                 />
                 <i
                   className="fa-solid fa-xmark big ms-3"
@@ -351,9 +310,8 @@ function ClassesManagement({
                 type="text"
                 className="bg-white w-100 p-2"
                 rows={2}
-                name="description"
                 value={editingClass.description || "Descripción"}
-                onChange={handleInputChange}
+                onChange={handleInputChange("description", setEditingClass)}
               />
               <hr></hr>
               <div className="row justify-content-between align-items-center my-3">
@@ -365,9 +323,8 @@ function ClassesManagement({
                     type="text"
                     className="bg-white w-100 p-2"
                     rows={1}
-                    name="duration"
                     value={editingClass.duration || "m"}
-                    onChange={handleInputChange}
+                    onChange={handleInputChange("duration", setEditingClass)}
                   />
                 </div>
                 <div className="col-8 m-0">
@@ -375,9 +332,8 @@ function ClassesManagement({
                     type="text"
                     className="pdf-link p-2"
                     rows={1}
-                    name="pdf"
                     value={editingClass.pdf || "pdf url"}
-                    onChange={handleInputChange}
+                    onChange={handleInputChange("pdf", setEditingClass)}
                   />
                 </div>
               </div>
@@ -385,7 +341,7 @@ function ClassesManagement({
             <div className="col-12 d-flex justify-content-center pb-3">
               <div className="save-button ">
                 <i className="fa-regular fa-floppy-disk me-3"></i>
-                <p className="m-0" onClick={addNewClass}>
+                <p className="m-0" onClick={addOrUpdateClass}>
                   GUARDAR
                 </p>
               </div>
