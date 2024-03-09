@@ -490,6 +490,16 @@
 		width: 320px;
 	}
 
+	.hero,
+	.promo {
+	  background-attachment: scroll; /* Deshabilita fixed para dispositivos móviles */
+	  background-size: cover; /* Ajusta según necesites */
+	}
+
+	.hero-text p {
+		display: none;
+	}
+
 	.course-details {
 		padding: 80px 0px 5px 0px;
 	}

@@ -1,9 +1,11 @@
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
+import AdminRoute from "./components/AdminRoute";
 import Home from "./views/home";
 import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
-import Module from "./views/Module";
-import PrivateRoute from "./components/PrivateRoute";
+import Course from "./views/Course";
+import CoursesManagement from "./views/CoursesManagement";
 import "./App.css";
 
 function App() {
@@ -21,11 +23,19 @@ function App() {
           }
         />
         <Route
-          path="/module/:moduleId"
+          path="/course/:id"
           element={
             <PrivateRoute>
-              <Module />
+              <Course />
             </PrivateRoute>
+          }
+        />
+        <Route
+          path="/management"
+          element={
+            <AdminRoute>
+              <CoursesManagement />
+            </AdminRoute>
           }
         />
       </Routes>

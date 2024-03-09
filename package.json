@@ -2,7 +2,7 @@
   "name": "esceniarte",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://SaraMoreiraG.github.io/EscenIArte",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.0",
     "@testing-library/jest-dom": "^5.17.0",

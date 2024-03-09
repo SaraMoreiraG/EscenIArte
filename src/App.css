@@ -44,7 +44,8 @@ p {
 }
 
 .btn-green,
-.btn-purple {
+.btn-purple,
+.btn-new-class {
   padding: 1em 2em;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border: none;
@@ -122,11 +123,11 @@ p {
 }
 
 .text-purple {
-	color: #623a97;
+  color: #623a97;
 }
 
 .text-green {
-	color: #258a59;
+  color: #258a59;
 }
 
 .no-big-medium-screen {
@@ -138,9 +139,10 @@ p {
   margin: 40px 0;
 }
 
-.bold{
+.bold {
   font-weight: 700;
 }
+
 /* ========== Login View ========== */
 .login {
   display: flex;
@@ -175,13 +177,102 @@ p {
 
 /* ========== Dashboard View ========== */
 .dashboard {
-	padding: 70px;
+  padding: 70px;
 }
 
 .module img {
-	border-radius: 20px;
-	cursor: pointer;
-	transition: transform 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* ========== CoursesManagement View ========== */
+.module-title,
+.fa-pen-to-square,
+.fa-circle-plus,
+.fa-circle-check,
+.fa-trash-can,
+.fa-xmark{
+  cursor: pointer;
+}
+
+.fa-pen-to-square.big,
+.fa-trash-can.big,
+.fa-xmark.big{
+  font-size: 20px;
+}
+
+.module-title:hover{
+  color: #623a97;
+}
+
+.fa-pen-to-square:hover,
+.fa-circle-plus:hover{
+  color: #3a9497;
+}
+
+.fa-trash-can:hover,
+.fa-xmark:hover{
+  color: #9f1d1d;
+}
+
+.module-title.selected,
+.fa-circle-check:hover{
+  color: #3a9497;
+}
+
+.img-editing{
+  background-size: cover;
+  background-position: center;
+  padding: 30px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.img-editing textarea{
+  background-color: #000;
+  width: 80%;
+}
+.bg-white{
+  background: #f6f6f6;
+  color: #000;
+  border-radius: 8px;
+}
+
+textarea.title{
+  font-size: 24px;
+  line-height: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.pdf-link{
+  border: 1px solid #6601ff;
+  background-color: #000;
+	border-radius: 8px;
+  width: 95%;
+}
+
+.save-button{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: #025d48;
+  padding: 10px 17px;
+	border-radius: 8px;
+}
+
+.save-button:hover{
+  background-color: #258a59;
+}
+
+.btn-new-class{
+  background-color: #623a97;
+  color: #f6f6f6;
+}
+
+.btn-new-class:hover{
+  background-color: #483a97;
 }
 
 /* ========== Responsive Adjustments ========== */
@@ -191,6 +282,7 @@ p {
     right: 20px;
     padding: 0.8em 1.9em;
   }
+
   h1 {
     font-size: 2.8em;
     font-weight: 700;
