@@ -2,7 +2,7 @@
   "name": "esceniarte",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://SaraMoreiraG.github.io/EscenIArte",
+  "homepage": "https://www.esceniarte.com/",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.0",
     "@testing-library/jest-dom": "^5.17.0",
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp CNAME build/CNAME",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
