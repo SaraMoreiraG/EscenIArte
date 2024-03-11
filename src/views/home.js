@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import NavbarHome from "../components/NavbarHome";
 
 import "./Home.css";
@@ -10,28 +9,28 @@ function Home() {
     {
       id: 1,
       text: "Aprenderás a integrar ChatGPT en tu proceso creativo, utilizando IA para la generación de ideas innovadoras y la creación de contenidos artísticos.",
-      shortText: "Dominio de ChatGPT en el Arte",
+      shortText: "ChatGPT en el Arte",
       imgSrc:
         "https://esceniarte-images.s3.amazonaws.com/home/1.-Dominio-de-ChatGPT-en-el-Arte.webp",
     },
     {
       id: 2,
-      text: "Desarrollarás estrategias para emplear la IA en la mejora de la producción artística y en la ejecución de campañas de marketing digital efectivas.",
-      shortText: "Innovación en Producción y Promoción",
+      text: "Desarrollarás estrategias para emplear la IA en la mejora de la producción la ejecución de campañas de marketing digital.",
+      shortText: "Producción y Promoción",
       imgSrc:
         "https://esceniarte-images.s3.amazonaws.com/home/2.Innovacio%CC%81n-en-Produccio%CC%81n-y-Promocio%CC%81n.webp",
     },
     {
       id: 3,
       text: "Adquirirás habilidades para crear y distribuir contenido digital atractivo, ampliando tu alcance y conectando con audiencias globales",
-      shortText: "Expansión de Audiencia Digital",
+      shortText: "Audiencia Digital",
       imgSrc:
         "https://esceniarte-images.s3.amazonaws.com/home/3.Expansio%CC%81n-de-Audiencia-Digital.webp",
     },
     {
       id: 4,
       text: "Te posicionarás a la vanguardia de la intersección entre arte y tecnología, preparado para explorar y liderar innovaciones en las artes escénicas.",
-      shortText: "Liderazgo Artístico Tecnológico",
+      shortText: "Liderazgo Artístico",
       imgSrc:
         "https://esceniarte-images.s3.amazonaws.com/home/4.-Liderazgo-Arti%CC%81stico-Tecnolo%CC%81gico.webp",
     },
@@ -194,10 +193,15 @@ function Home() {
   return (
     <>
       <div className="hero" id="hero">
-        <Link to="/login" className="btn-purple fixed-button">
+        <a
+          href="https://buy.stripe.com/4gw037bHd7OP2HedQQ"
+          target="_blank"
+          rel="noreferrer"
+          className="btn-purple fixed-button"
+        >
           <span className="button-text">¡Únete!</span>
           <i className="fa-solid fa-right-to-bracket button-icon"></i>
-        </Link>
+        </a>
         <div className="hero-text">
           <h1>Curso de ChatGPT en las Artes Escénicas</h1>
           <p>
@@ -213,26 +217,34 @@ function Home() {
           </button>
         </div>
       </div>
-
-      <div className="offer row m-0" id="precio">
-      <h4>¡ABRIMOS YA LAS PLAZAS DE INSCRIPCIÓN!</h4>
+      <div className="offer row m-0" id="offer">
+        <h4>¡ABRIMOS YA LAS PLAZAS DE INSCRIPCIÓN!</h4>
         <div className="col-lg-6 col-md-12">
-
           <h2 className="my-4">
-            Consigue un <span className="text-purple">50% de descuento</span> en nuestro curso ChatGPT para Artes
-            Escénicas
+            Consigue un <span className="text-purple">50% de descuento</span> en
+            nuestro curso ChatGPT para Artes Escénicas
           </h2>
-          {/* <p className="col-lg-12 col-md-9 mt-3">
-            Solo para los primeros en inscribirse cupón de descuento: IA50. No te quedes con las ganas y descubre cómo ChatGPT puede
-            transformar tu creatividad y producción artística.
-          </p> */}
           <div className="row m-0 py-3">
-            <h5><span className="text-green">COMIENZO:</span> 7 DE ABRIL 2024</h5>
-            <h5><span className="text-green">DURACIÓN:</span> 7 SEMANAS</h5>
-            <h5><span className="text-green">PRECIO ORIGINAL:</span> <del>799€</del></h5>
-            <h5><span className="text-green">OFERTA DE LANZAMIENTO:</span> 400€</h5>
+            <h5>
+              <span className="text-green">COMIENZO:</span> 7 DE ABRIL 2024
+            </h5>
+            <h5>
+              <span className="text-green">DURACIÓN:</span> 7 SEMANAS
+            </h5>
+            <h5>
+              <span className="text-green">PRECIO ORIGINAL:</span>{" "}
+              <del>799€</del>
+            </h5>
+            <h5>
+              <span className="text-green">OFERTA DE LANZAMIENTO:</span> 400€
+            </h5>
           </div>
-          <h4 className="mt-2">Además, recibirás como regalo un <span className="text-purple">libro exclusivo </span>sobre la aplicación de la IA en las artes escénicas, utiliza el <span className="text-purple">código: IA50.</span></h4>
+          <h4 className="mt-2">
+            Además, recibirás como regalo un{" "}
+            <span className="text-purple">libro exclusivo </span>sobre la
+            aplicación de la IA en las artes escénicas, utiliza el{" "}
+            <span className="text-purple">código: IA50.</span>
+          </h4>
           <div className="col-11 my-5 text-center">
             <a
               href="https://buy.stripe.com/4gw037bHd7OP2HedQQ"
@@ -257,13 +269,12 @@ function Home() {
       </div>
       <div className="course-details" id="detalles-curso">
         <div className="header-center">
-          {/* <h2><span className="text-green">Creatividad</span> Sin Límites: <br></br><span className="text-green">IA</span> en las <span className="text-green">Artes Escénicas</span></h2> */}
           <h2>
             Creatividad Sin Límites: <br></br>IA en las Artes Escénicas
           </h2>
         </div>
         <div className="images-container row mt-5 mx-0">
-          {imagesInfo.map((image) => (
+          {/* {imagesInfo.map((image) => (
             <div key={image.id} className="details-block col-md-3 col-sm-6">
               <div className="image-wrapper">
                 <div className="image-hover">
@@ -274,6 +285,24 @@ function Home() {
                 </div>
               </div>
               <h5 className="image-description">{image.shortText}</h5>
+            </div>
+          ))} */}
+          {imagesInfo.map((image) => (
+            <div
+              className="col-lg-3 col-md-6 col-sm-6 col-10 p-2"
+              key={image.id}
+            >
+              <div className="home-card details-block text-start py-1 px-3">
+                <h5 className="my-3">{image.shortText}</h5>
+                <div className="mb-2">
+                  <img
+                    src={image.imgSrc}
+                    alt={`Descripción ${image.shortText}`}
+                    className="img-fluid"
+                  />
+                </div>
+                <p>{image.text}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -291,7 +320,7 @@ function Home() {
                 />
               </div>
               <h3>7 módulos</h3>
-              <p>Más de 8 horas de contenido</p>
+              <p>Dominarás el escenario digital</p>
             </div>
             <div className="benefit-card large">
               <div className="text-green">
@@ -312,8 +341,8 @@ function Home() {
                   alt="acceso ilimitado"
                 />
               </div>
-              <h3>Acceso ilimitado</h3>
-              <p>Compra una vez, utilizalo siempre</p>
+              <h3>Un año de acceso</h3>
+              <p>Compra una vez, utilizalo todo el año</p>
             </div>
             <div className="benefit-card small">
               <div className="text-green">

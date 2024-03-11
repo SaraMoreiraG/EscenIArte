@@ -78,9 +78,13 @@
 	color: #f6f6f6;
 }
 
-.payment,
-.offer {
+.payment {
 	padding: 80px 60px;
+	justify-content: space-between;
+}
+
+.offer {
+	padding: 80px 60px 0 60px;
 	justify-content: space-between;
 }
 
@@ -194,6 +198,21 @@
 	overflow: auto;
 }
 
+.home-card{
+	background-image: linear-gradient(to left, #025d48, #483a97, #13142b);
+	border-radius: 20px;
+	transition: background-image 0.3s ease-in;
+}
+
+.home-card:hover{
+	background-image: linear-gradient(to left, #025d48, #483a97, #623a97);
+
+}
+
+.home-card img{
+	border-radius: 20px;
+}
+
 /* ========== Benefits Section ========== */
 
 .benefit-card {
@@ -295,12 +314,14 @@
 /* ========== Responsive Design Adjustments ========== */
 /* Adjustments for screens smaller than 1149px */
 @media (max-width: 1149px) {
-
 	.benefits,
 	.payment,
-	.offer,
 	.contact{
 		padding: 50px 25px;
+	}
+
+	.offer{
+		padding: 50px 25px 0 25px;
 	}
 
 	.footer {
@@ -308,7 +329,7 @@
 	}
 
 	.course-details {
-		padding: 80px 25px 30px 25px;
+		padding: 80px 25px 0px 25px;
 	}
 
 	.benefit-card.medium img {
@@ -377,7 +398,7 @@
 	}
 
 	.course-details {
-		padding: 80px 20px 20px 20px;
+		padding: 80px 20px 0px 20px;
 	}
 
 	.image-wrapper img {
@@ -460,7 +481,7 @@
 	}
 
 	.course-details {
-		padding: 80px 20px 10px 20px;
+		padding: 80px 20px 0px 20px;
 	}
 
 	.change-display{
@@ -503,7 +524,7 @@
 	}
 
 	.course-details {
-		padding: 80px 0px 5px 0px;
+		padding: 80px 0px 0px 0px;
 	}
 
 	.image-hover:hover img {

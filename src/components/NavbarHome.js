@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function NavbarHome() {
   const [isArrowVisible, setIsArrowVisible] = useState(false);
@@ -52,14 +53,16 @@ function NavbarHome() {
       )}
       {isNavBarVisible && (
         <div className="links">
-          <button onClick={() => scrollToSection("detalles-curso")}>
+          <button onClick={() => scrollToSection("offer")}>
             Curso
           </button>
           <button onClick={() => scrollToSection("instructor")}>
             Instructor
           </button>
-          <button onClick={() => scrollToSection("precio")}>Precio</button>
           <button onClick={() => scrollToSection("contacto")}>Contacto</button>
+          <Link to="/login">
+          <button onClick={() => scrollToSection("contacto")}>Acceso</button>
+          </Link>
         </div>
       )}
     </footer>
