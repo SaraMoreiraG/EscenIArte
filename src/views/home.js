@@ -233,7 +233,7 @@ function Home() {
             <h5><span className="text-green">OFERTA DE LANZAMIENTO:</span> 400€</h5>
           </div>
           <h4 className="mt-2">Además, recibirás como regalo un <span className="text-purple">libro exclusivo </span>sobre la aplicación de la IA en las artes escénicas, utiliza el <span className="text-purple">código: IA50.</span></h4>
-          <div className="col-11 mt-5 text-center">
+          <div className="col-11 my-5 text-center">
             <a
               href="https://buy.stripe.com/4gw037bHd7OP2HedQQ"
               target="_blank"
