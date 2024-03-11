@@ -78,7 +78,8 @@
 	color: #f6f6f6;
 }
 
-.payment {
+.payment,
+.offer {
 	padding: 80px 60px;
 	justify-content: space-between;
 }
@@ -297,6 +298,7 @@
 
 	.benefits,
 	.payment,
+	.offer,
 	.contact{
 		padding: 50px 25px;
 	}
