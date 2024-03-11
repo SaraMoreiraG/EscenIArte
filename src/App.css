@@ -155,13 +155,13 @@ p {
 #signInDiv {
   /* max-width: 100%; */
   padding: 2px;
-  background-color: #623a97;
+  background-image: linear-gradient(to left, #025d48, #483a97, #623a97);
   border-radius: 8px;
-  transition: background-color 0.5s ease;
+  transition: background-image 0.5s ease;
 }
 
 #signInDiv:hover {
-  background-color: #5ab75b;
+  background-image: linear-gradient(to left, #025d48, #258a59, #5ab75b);
 }
 
 .second-sign-in{
