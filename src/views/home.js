@@ -102,22 +102,21 @@ function Home() {
 
     try {
       const response = await fetch(process.env.REACT_APP_CONTACT_FORM_API, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(contactForm)
+        body: JSON.stringify(contactForm),
       });
 
-      if (!response.ok) throw new Error('Network response was not ok.');
+      if (!response.ok) throw new Error("Network response was not ok.");
 
       const data = await response.json();
       console.log("Mensaje enviado exitosamente", data);
       setErrors({
-        status: "Mensaje enviado. En breve nos pondremos en contacto."
+        status: "Mensaje enviado. En breve nos pondremos en contacto.",
       });
-      setContactForm({})
-
+      setContactForm({});
     } catch (error) {
       console.error("Error al enviar el mensaje", error);
       setErrors({ status: "Ha ocurrido un error, vuelve a intentarlo." });
@@ -144,16 +143,13 @@ function Home() {
     try {
       setEmailLoading(true);
       // Makes a POST request to the API endpoint with the email
-      const response = await fetch(
-        process.env.REACT_APP_SEND_EMAIL_API,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: userEmail }),
-        }
-      );
+      const response = await fetch(process.env.REACT_APP_SEND_EMAIL_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: userEmail }),
+      });
 
       const data = await response.json();
 
@@ -178,8 +174,11 @@ function Home() {
       }
       setEmailLoading(false);
     } catch (error) {
-          setEmailLoading(false);
-          setErrorUserEmail({ message: "Error al suscribir el correo.", code:'400' });
+      setEmailLoading(false);
+      setErrorUserEmail({
+        message: "Error al suscribir el correo.",
+        code: "400",
+      });
     }
   };
 
@@ -200,13 +199,11 @@ function Home() {
           <i className="fa-solid fa-right-to-bracket button-icon"></i>
         </Link>
         <div className="hero-text">
-          <h1>
-            Curso de ChatGPT en las Artes Escénicas
-          </h1>
+          <h1>Curso de ChatGPT en las Artes Escénicas</h1>
           <p>
-          Desbloquea el Potencial Creativo de ChatGPT en las Artes Escénicas
-           <br></br>Inicia tu aventura en el universo de la tecnología
-            del futuro.
+            Desbloquea el Potencial Creativo de ChatGPT en las Artes Escénicas
+            <br></br>Inicia tu aventura en el universo de la tecnología del
+            futuro.
           </p>
           <button
             onClick={() => scrollToSection("detalles-curso")}
@@ -214,6 +211,48 @@ function Home() {
           >
             Más información <i className="fa-solid fa-angles-down ms-1"></i>
           </button>
+        </div>
+      </div>
+
+      <div className="offer row m-0" id="precio">
+      <h4>¡ABRIMOS YA LAS PLAZAS DE INSCRIPCIÓN!</h4>
+        <div className="col-lg-6 col-md-12">
+
+          <h2 className="my-4">
+            Consigue un <span className="text-purple">50% de descuento</span> en nuestro curso ChatGPT para Artes
+            Escénicas
+          </h2>
+          {/* <p className="col-lg-12 col-md-9 mt-3">
+            Solo para los primeros en inscribirse cupón de descuento: IA50. No te quedes con las ganas y descubre cómo ChatGPT puede
+            transformar tu creatividad y producción artística.
+          </p> */}
+          <div className="row m-0 py-3">
+            <h5><span className="text-green">COMIENZO:</span> 7 DE ABRIL 2024</h5>
+            <h5><span className="text-green">DURACIÓN:</span> 7 SEMANAS</h5>
+            <h5><span className="text-green">PRECIO ORIGINAL:</span> <del>799€</del></h5>
+            <h5><span className="text-green">OFERTA DE LANZAMIENTO:</span> 400€</h5>
+          </div>
+          <h4 className="mt-2">Además, recibirás como regalo un <span className="text-purple">libro exclusivo </span>sobre la aplicación de la IA en las artes escénicas, utiliza el <span className="text-purple">código: IA50.</span></h4>
+          <div className="col-11 mt-5 text-center">
+            <a
+              href="https://buy.stripe.com/4gw037bHd7OP2HedQQ"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-green"
+            >
+              ¡Inscribete ahora!
+            </a>
+          </div>
+        </div>
+        <div className="col-lg-5 ps-4 col-md-12">
+          <div className="text-center col-12">
+            {/* <!-- Imagen del libro --> */}
+            <img
+              src="https://esceniarte-images.s3.amazonaws.com/Libro-IA-en-las-AAEE-Jose-Diego-Ramirez.webp"
+              className="img-fluid"
+              alt="Libro IA en las Artes Escénicas - Jose Diego Ramirez"
+            />
+          </div>
         </div>
       </div>
       <div className="course-details" id="detalles-curso">
