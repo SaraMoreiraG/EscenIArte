@@ -21,8 +21,9 @@ function ClassesManagement({
     alt: "",
     pdf: "",
     order: "",
-    videoIframe: "",
-    videoUrl: "",
+    // videoIframe: "",
+    // videoUrl: "",
+    vimeoCode: "",
   });
   const [addingClass, setAddingClass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,6 +37,7 @@ function ClassesManagement({
     setVideoInModal(video);
     setModalClassId(classId);
     scrollToSection("video");
+    console.log(videoInModal)
   };
 
   // Función para cerrar el modal
@@ -68,6 +70,7 @@ function ClassesManagement({
         alt: currentClass.alt,
         pdf: currentClass.pdf,
         order: currentClass.order,
+        vimeoCode: currentClass.vimeoCode
       });
     }
   };
@@ -85,6 +88,7 @@ function ClassesManagement({
       alt: "",
       pdf: "",
       order: "",
+      vimeoCode: "",
     });
     setAddingClass(true);
   };
@@ -102,6 +106,7 @@ function ClassesManagement({
       alt: "",
       pdf: "",
       order: "",
+      vimeoCode: ""
     });
     setAddingClass(false);
   };
@@ -149,6 +154,7 @@ function ClassesManagement({
         alt: editingClass.alt,
         pdf: editingClass.pdf,
         order: editingClass.order,
+        vimeoCode: editingClass.vimeoCode
       },
     };
 
@@ -230,6 +236,17 @@ function ClassesManagement({
                       onChange={handleInputChange("alt", setEditingClass)}
                     />
                   </div>
+                  <div className="d-flex justify-content-center align-items-center mt-2">
+
+                  <span>video:</span>
+                    <textarea
+                      type="text"
+                      className="text-center bg-white ms-2 p-2"
+                      rows={1}
+                      value={editingClass.vimeoCode}
+                      onChange={handleInputChange("vimeoCode", setEditingClass)}
+                    />
+                  </div>
                 </div>
                 <div className="col-6 px-3 pt-3">
                   <div className="d-flex justify-content-between mb-3">
@@ -303,7 +320,7 @@ function ClassesManagement({
               <>
                 <div
                   className="d-flex"
-                  onClick={() => openModal(info.id, info.videoIframe)}
+                  onClick={() => openModal(info.id, info.vimeoCode)}
                 >
                   <div className="col-6 p-0">
                     <img src={info.url} alt={info.alt} className="img-fluid" />
@@ -354,7 +371,7 @@ function ClassesManagement({
                     }}
                   >
                     <iframe
-                      src={videoInModal}
+                      src={`https://player.vimeo.com/video/${videoInModal}`}
                       style={{
                         position: "absolute",
                         top: 0,
@@ -370,7 +387,7 @@ function ClassesManagement({
                   </div>
                   <script src="https://player.vimeo.com/api/player.js"></script>
                   <p>
-                    <a href={info.videoUrl}>
+                    <a href={`https://vimeo.com/${info.vimeoCode}`}>
                       {info.order}. {info.name}
                     </a>
                   </p>

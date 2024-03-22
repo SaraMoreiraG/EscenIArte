@@ -25,10 +25,14 @@ function Login() {
         const data = await response.json();
 
         if (data.userExists) {
+          if(userObject.email === 'esceniarte@gmail.com'){
+            console.log(userObject)
+            navigate("/dashboard");
+          }
           console.log("El usuario está registrado");
           localStorage.setItem("authToken", data.token);
-          setError("");
-          navigate("/dashboard");
+          setError("El curso se abrirá el 7 de Abril"); //Editar antes del 7 abril
+          // navigate("/dashboard");
         } else {
           console.log("El usuario no existe");
           setError("*Inscríbete para acceder al curso.");
