@@ -226,7 +226,7 @@ function Home() {
           </h2>
           <div className="row m-0 py-3">
             <h5>
-              <span className="text-green">COMIENZO:</span> 7 DE ABRIL 2024
+              <span className="text-green">COMIENZO:</span> 20 DE MAYO 2024
             </h5>
             <h5>
               <span className="text-green">DURACIÓN:</span> 7 SEMANAS
