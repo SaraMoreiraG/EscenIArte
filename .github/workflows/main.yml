@@ -49,8 +49,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Deploy to GitHub Pages
         run: |
-          git config --global user.name "sara_moreira@hotmail.es"
-          git config --global user.email "SaraMoreiraG"
+          git config --global user.name "SaraMoreiraG"
+          git config --global user.email "sara_moreira@hotmail.es"
           npx gh-pages -d build -r https://x-access-token:${{ secrets.GH_PAGES_TOKEN }}@github.com/<tu_usuario>/<tu_repositorio>.git
         env:
           REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
