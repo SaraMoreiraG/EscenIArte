@@ -1,4 +1,4 @@
-name: Deploy to AWS S3
+name: Deploy to AWS S3 and GitHub Pages
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the React app
+      - name: Build the React app for AWS S3
         run: |
           REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} REACT_APP_CONTACT_FORM_API=${{ secrets.REACT_APP_CONTACT_FORM_API }} REACT_APP_SEND_EMAIL_API=${{ secrets.REACT_APP_SEND_EMAIL_API }} REACT_APP_CHECK_EMAIL=${{ secrets.REACT_APP_CHECK_EMAIL }} npm run build
 
@@ -47,3 +47,24 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Deploy to GitHub Pages
+        run: |
+          # Cleanup previous build
+          rm -rf build
+          # Build the app for GitHub Pages
+          REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} REACT_APP_CONTACT_FORM_API=${{ secrets.REACT_APP_CONTACT_FORM_API }} REACT_APP_SEND_EMAIL_API=${{ secrets.REACT_APP_SEND_EMAIL_API }} REACT_APP_CHECK_EMAIL=${{ secrets.REACT_APP_CHECK_EMAIL }} npm run build
+          # Deploy to GitHub Pages
+          git checkout --orphan gh-pages
+          git rm -rf .
+          cp -r build/* .
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push origin gh-pages --force
+          git checkout main
+          git branch -D gh-pages
+        env:
+          REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
+          REACT_APP_CONTACT_FORM_API: ${{ secrets.REACT_APP_CONTACT_FORM_API }}
+          REACT_APP_SEND_EMAIL_API: ${{ secrets.REACT_APP_SEND_EMAIL_API }}
+          REACT_APP_CHECK_EMAIL: ${{ secrets.REACT_APP_CHECK_EMAIL }}
