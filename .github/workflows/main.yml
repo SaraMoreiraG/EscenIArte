@@ -54,6 +54,9 @@ jobs:
           rm -rf build
           # Build the app for GitHub Pages
           REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} REACT_APP_CONTACT_FORM_API=${{ secrets.REACT_APP_CONTACT_FORM_API }} REACT_APP_SEND_EMAIL_API=${{ secrets.REACT_APP_SEND_EMAIL_API }} REACT_APP_CHECK_EMAIL=${{ secrets.REACT_APP_CHECK_EMAIL }} npm run build
+          # Setup Git identity
+          git config user.email "sara_moreira@hotmail.es"
+          git config user.name "SaraMoreiraG"
           # Deploy to GitHub Pages
           git checkout --orphan gh-pages
           git rm -rf .
