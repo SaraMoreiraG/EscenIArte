@@ -51,7 +51,7 @@ jobs:
         run: |
           git config --global user.name "SaraMoreiraG"
           git config --global user.email "sara_moreira@hotmail.es"
-          npx gh-pages -d build -r https://x-access-token:${{ secrets.GH_PAGES_TOKEN }}@github.com/<tu_usuario>/<tu_repositorio>.git
+          npx gh-pages -d build -r https://x-access-token:${{ secrets.GH_PAGES_TOKEN }}@github.com/SaraMoreiraG/EscenIArte.git
         env:
           REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
           REACT_APP_CONTACT_FORM_API: ${{ secrets.REACT_APP_CONTACT_FORM_API }}
