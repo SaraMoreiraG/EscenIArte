@@ -23,7 +23,7 @@ jobs:
           # Configure AWS CLI
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws configure set default.region us-east-1  # Replace with your desired region
+          aws configure set default.region us-east-1
           aws configure set default.output json
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -50,22 +50,11 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: |
-          # Cleanup previous build
-          rm -rf build
-          # Build the app for GitHub Pages
-          REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} REACT_APP_CONTACT_FORM_API=${{ secrets.REACT_APP_CONTACT_FORM_API }} REACT_APP_SEND_EMAIL_API=${{ secrets.REACT_APP_SEND_EMAIL_API }} REACT_APP_CHECK_EMAIL=${{ secrets.REACT_APP_CHECK_EMAIL }} npm run build
           # Setup Git identity
           git config user.email "sara_moreira@hotmail.es"
           git config user.name "SaraMoreiraG"
-          # Deploy to GitHub Pages
-          git checkout --orphan gh-pages
-          git rm -rf .
-          cp -r build/* .
-          git add .
-          git commit -m "Deploy to GitHub Pages"
-          git push origin gh-pages --force
-          git checkout main
-          git branch -D gh-pages
+          # Ejecuta los comandos para construir y desplegar
+          npm run deploy
         env:
           REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
           REACT_APP_CONTACT_FORM_API: ${{ secrets.REACT_APP_CONTACT_FORM_API }}
