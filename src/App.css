@@ -153,7 +153,6 @@ p {
 }
 
 #signInDiv {
-  /* max-width: 100%; */
   padding: 2px;
   background-image: linear-gradient(to left, #025d48, #483a97, #623a97);
   border-radius: 8px;
