@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/Parking-Praderas/static/css/main.f855e6bc.css",
-    "main.js": "/Parking-Praderas/static/js/main.58c430de.js",
-    "static/js/453.6babb453.chunk.js": "/Parking-Praderas/static/js/453.6babb453.chunk.js",
-    "index.html": "/Parking-Praderas/index.html",
-    "main.f855e6bc.css.map": "/Parking-Praderas/static/css/main.f855e6bc.css.map",
-    "main.58c430de.js.map": "/Parking-Praderas/static/js/main.58c430de.js.map",
-    "453.6babb453.chunk.js.map": "/Parking-Praderas/static/js/453.6babb453.chunk.js.map"
+    "main.css": "/static/css/main.ef9d2f3b.css",
+    "main.js": "/static/js/main.9b0e24ff.js",
+    "static/js/453.d84103b4.chunk.js": "/static/js/453.d84103b4.chunk.js",
+    "static/media/home-bg.png": "/static/media/home-bg.dbffb769e9bd4a02ebf5.png",
+    "index.html": "/index.html",
+    "main.ef9d2f3b.css.map": "/static/css/main.ef9d2f3b.css.map",
+    "main.9b0e24ff.js.map": "/static/js/main.9b0e24ff.js.map",
+    "453.d84103b4.chunk.js.map": "/static/js/453.d84103b4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.58c430de.js"
+    "static/css/main.ef9d2f3b.css",
+    "static/js/main.9b0e24ff.js"
   ]
 }
